@@ -1,0 +1,88 @@
+@media screen {
+  .pop-adduser-form {
+    height: 90%;
+    display: flex;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  .userform-wrapper {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .userform-input {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-label {
+    font-size: 0.9rem;
+  }
+  .user-input {
+    outline: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+  }
+
+  .user-input::placeholder {
+    color: var(--dark-color);
+  }
+
+  .user-input:hover {
+    border: 1px solid var(--primary-color);
+  }
+
+  .user-btn-f {
+    gap: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn-f {
+    display: flex;
+    width: 50%;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 0px;
+    justify-content: center;
+  }
+
+  .a-u {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .r-u {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .pop-adduser-form {
+    display: flex;
+  }
+
+  .userform-wrapper {
+    width: 40%;
+  }
+
+
+  .user-input {
+    padding: 12px 20px;
+  }
+
+  .btn-f {
+    border-radius: 8px;
+    padding: 15px 0px;
+  }
+
+}

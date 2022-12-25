@@ -1,0 +1,90 @@
+@media screen {
+  * {
+    /* dynamic style */
+    --secondary-color: rgb(53, 44, 53);
+    --light-color: rgb(244, 240, 244);
+    --dark-color: rgb(182, 179, 182);
+    --primary-color: rgb(240, 114, 36);
+    --background-color: rgb(255, 255, 255);
+    --primary-darken-color: rgb(212, 109, 44);
+    --background-shadow:0 0 0 10000px rgba(10, 10, 12, 0.5);
+    --box-shadow-style: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    --search-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    /* default font  */
+    @font-face {
+      font-family: "icomoon";
+      src: url("/fonts/icomoon.eot");
+      src: url("/fonts/icomoon.svg") format("svg");
+      src: url("/fonts/icomoon.ttf") format("ttf");
+      src: url("/fonts/icomoon.woff") format("woff");
+    }
+
+    /* reseting everything */
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+
+    /* global-width */
+    --side-bar-width: 6%;
+    --dash-board-width: 20%;
+    --side-drawer-width: 30%;
+    --side-bar-mobile-width: 10%;
+    --side-drawer-mobile-width:70%;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    font-weight: 300;
+    color: var(--secondary-color);
+    font-family: "icomoon", sans-serif;
+    background-color: var(--background-color);
+  }
+
+  a,
+  router-link {
+    text-decoration: none;
+  }
+
+  input {
+    outline: none;
+  }
+
+  button {
+    outline: none;
+    border: none;
+  }
+
+  input:focus,
+  input:hover {
+    outline: none;
+  }
+
+  .icon {
+    height: 24px;
+    width: 24px;
+    color: var(--secondary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  
+  
+
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

@@ -1,0 +1,84 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'Login',
+      component: () => import('@/views/authentication/logInView.vue')
+    },
+    {
+      path: '/admin-board',
+      name: 'AdminBoard',
+      component: () => import('@/views/admin/super-admin/adminBoard.vue')
+    },
+    {
+      path: '/team-board',
+      name: 'TeamBoard',
+      component: () => import('../views/admin/team-admin/teamBoard.vue')
+    },
+    {
+      path: '/data-board',
+      name: 'DataBoard',
+      component: () => import('../views/data-manager/dataBoard.vue')
+    },
+    {
+      path: '/league-board',
+      name: 'LeagueBoard',
+      component: () => import('@/views/league-director/leagueBoard.vue')
+    },
+    {
+      path: '/general-board',
+      name: 'GeneralBoard',
+      component: () => import('@/views/match-officials/general-coordinator/generalBoard.vue')
+    },
+    {
+      path: '/match-board',
+      name: 'MatchBoard',
+      component: () => import('@/views/match-officials/match-commissioner/matchBoard.vue')
+    },
+    {
+      path: '/referee-board',
+      name: 'RefereeBoard',
+      component: () => import('@/views/match-officials/referee/refereeBoard.vue')
+    },
+    {
+      path: '/assessor-board',
+      name: 'AssessorBoard',
+      component: () => import('@/views/match-officials/referee-assessor/assessorBoard.vue')
+    },
+    {
+      path: '/manager-board',
+      name: 'ManagerBoard',
+      component: () => import('../views/team-manager/teamBoard.vue')
+    },
+    {
+      path: '/notification',
+      name: 'Notification',
+      component: () => import('@/views/default-pages/NotificationView.vue')
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: () => import('@/views/default-pages/AboutView.vue')
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: () => import('@/views/default-pages/SettingsView.vue')
+    },
+    {
+      path: '/edit',
+      name: 'Edit',
+      component: () => import('@/views/data-manager/EditView.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/data-manager/DashBoard.vue')
+    },
+  ]
+})
+
+export default router

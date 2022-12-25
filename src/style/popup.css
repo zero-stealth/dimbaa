@@ -1,0 +1,44 @@
+@media screen {
+  .pop-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: fixed;
+    overflow: hidden;
+    padding: 10px 30px;
+    border-radius:12px;
+    box-shadow: var(--background-shadow);
+    background-color: var(--light-color);
+  }
+
+  .Close {
+    display: none;
+  }
+
+  .pop-up-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pop-up-details h1 {
+    color: var(--primary-color);
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .pop-circle {
+    box-shadow: none;   
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+    .pop-up-details h1 {
+        font-size: 1.5rem;
+      }
+
+}
