@@ -9,7 +9,12 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   build: {
     rollupOptions: {
-      external: [pinia],
+      external: ["pinia"],
+      output: {
+        globals: {
+          pinia: "pinia",
+        },
+      },
     },
   },
   resolve: {
