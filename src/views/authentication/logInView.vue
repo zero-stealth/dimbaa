@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref } from "vue";
 import { useAuthStore } from "../../stores/auth.js";
@@ -19,47 +18,55 @@ const login = () => {
       case "Kevin@admin.com":
         roleStore.setRoles("super-admin");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@team.com":
         roleStore.setRoles("team-admin");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@data.com":
         roleStore.setRoles("data-manager");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@league.com":
         roleStore.setRoles("league-director");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@general.com":
         roleStore.setRoles("general-coordinator");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@match.com":
-        authState.logIn();
         roleStore.setRoles("match-commissioner");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@referee.com":
         roleStore.setRoles("referee");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@assessor.com":
         roleStore.setRoles("referee-assessor");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       case "Kevin@teamManager.com":
         roleStore.setRoles("team-manager");
         authState.logIn();
+        authState.getUser(email.value);
         roleStore.route();
         break;
       default:

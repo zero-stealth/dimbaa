@@ -16,10 +16,15 @@ import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", () => {
   const isLoggedIn = ref(false);
+  const userName = ref(null);
 
   function logIn() {
     isLoggedIn.value = true;
   }
 
-  return { isLoggedIn, logIn };
+  function getUser(user) {
+    userName.value = user;
+  }
+
+  return { getUser, isLoggedIn, logIn , userName};
 });

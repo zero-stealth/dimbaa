@@ -1,0 +1,43 @@
+@media screen {
+    
+.data-content-r {
+    display: flex;
+    padding-top: 50px;
+    border-bottom:2px solid var(--light-color);
+}
+
+.data-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.data-n-b {
+    padding: 5px 30px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--background-color);
+}
+
+.datapage {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.data-b {
+    text-align: center ;
+}
+
+.data-b:first-child {
+    color: var(--primary-color);
+}
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+    .data-nav {
+        width: 30%;
+    }
+    
+}
+

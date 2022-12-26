@@ -1,6 +1,6 @@
 <template>
   <div class="notification-container">
-    <h1>team</h1>
+    <h1>history</h1>
   </div>
 </template>
 <script setup></script>
