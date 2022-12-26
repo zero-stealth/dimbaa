@@ -85,7 +85,7 @@ onMounted(async () => {
         <h2>User list</h2>
         <table>
           <tr>
-            <th>Team name</th>
+            <th>Username</th>
             <th>Email</th>
             <th>mobile</th>
 

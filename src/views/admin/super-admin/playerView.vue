@@ -45,7 +45,6 @@ onMounted(async () => {
     .request(options)
     .then(function (response) {
       data.value = response.data.players;
-      console.log(data.value)
     })
     .catch(function (error) {
       console.error(error);
@@ -56,7 +55,7 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Welcome</h1>
+        <h1>Player</h1>
         <span>Player</span>
       </div>
       <div class="main-wrapper">
@@ -66,7 +65,7 @@ onMounted(async () => {
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search User"
+            placeholder="Search Player"
           />
         </form>
         <div class="circle-wrapper">
@@ -83,7 +82,7 @@ onMounted(async () => {
       </div>
     </div>
       <div class="user-content">
-        <h2>Player list</h2>
+        <h2></h2>
         <table>
           <tr>
             <th>Player name</th>

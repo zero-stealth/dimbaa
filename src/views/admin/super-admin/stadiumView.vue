@@ -56,8 +56,8 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Welcome</h1>
-        <span>User</span>
+        <h1>Stadium</h1>
+        <span>Stadium</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -66,7 +66,7 @@ onMounted(async () => {
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search User"
+            placeholder="Search Stadium"
           />
         </form>
         <div class="circle-wrapper">
@@ -83,7 +83,7 @@ onMounted(async () => {
       </div>
     </div>
       <div class="user-content">
-        <h2>User list</h2>
+        <h2></h2>
         <table>
           <tr>
             <th>Stadium name</th>
