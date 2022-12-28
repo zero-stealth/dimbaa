@@ -1,5 +1,4 @@
 <script setup>
-import detail from "./detailsView.vue";
 import form1 from "./general-form/form1.vue";
 import form2 from "./general-form/form2.vue";
 import form3 from "./general-form/form3.vue";
@@ -13,6 +12,7 @@ import form10 from "./general-form/form10.vue";
 import form11 from "./general-form/form11.vue";
 import form12 from "./general-form/form12.vue";
 import form13 from "./general-form/form13.vue";
+import detail from "./general-form/detailsView.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
