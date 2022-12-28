@@ -29,7 +29,7 @@ const searchResult = computed(() => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "http://be-tblp.dimbaa.com/api/notifications",
+    url: "https://be-tblp.dimbaa.com/api/notifications",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

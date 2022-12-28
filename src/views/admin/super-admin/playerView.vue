@@ -32,7 +32,7 @@ const searchResult = computed(() => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "http://be-tblp.dimbaa.com/api/teammanager/players",
+    url: "https://be-tblp.dimbaa.com/api/teammanager/players",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

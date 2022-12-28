@@ -31,8 +31,7 @@ const searchResult = computed(() => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: `http://be-tblp.dimbaa.com/api/teammanager/players/`,
-    params: { id: `${search.value}` },
+    url: `https://be-tblp.dimbaa.com/api/teammanager/players/${search.value}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

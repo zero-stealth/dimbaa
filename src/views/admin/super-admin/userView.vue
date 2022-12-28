@@ -31,7 +31,7 @@ const seachResult = computed(() => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "http://be-tblp.dimbaa.com/api/admin/users",
+    url: "https://be-tblp.dimbaa.com/api/admin/users",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
