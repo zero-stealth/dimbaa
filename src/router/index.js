@@ -76,7 +76,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: () => import('@/views/data-manager/DashBoard.vue')
+      component: () => import('@/views/data-manager/dataView.vue')
     },
   ]
 })
