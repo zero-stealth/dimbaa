@@ -1,0 +1,41 @@
+@media screen {
+    .specific-content {
+        height: 100%;
+    }
+    
+    .tb-specific {
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .tb-specific tr {
+        text-align: center;
+    }
+    
+    .user-c-s {
+        width: 100%;
+        padding: 10%;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .user-c-s h1 {
+        font-size: 1rem;
+        text-align: center;
+    }   
+}
+
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+.user-c-s {
+    width: 74%;
+    padding: 10%;
+
+}
+
+}

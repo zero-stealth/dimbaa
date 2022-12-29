@@ -90,7 +90,8 @@ const reset = () => {
           />
       </div>
       <div class="user-btn-f">
-        <button type="submit" class="btn-f a-u">Add</button>
+        <button type="submit" class="btn-f a-u">Edit</button>
+          <button type="submit" class="btn-f r-u">Delete</button>
         <button type="submit" @click="reset" class="btn-f r-u">Reset</button>
       </div>
     </form>

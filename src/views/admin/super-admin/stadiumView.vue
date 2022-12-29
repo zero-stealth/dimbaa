@@ -1,21 +1,27 @@
 <script setup>
+import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
+import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
-import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import CreateUser from "@/components/form/createform/CreateUser.vue";
+import StadiumDetails from "@/components/specific/StadiumComponent.vue";
+import EditStadium from "@/components/form/updateform/UpdateStadium.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
-import axios from "axios";
+import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
+const activePage = shallowRef(StadiumDetails);
 const drawerStore = useDrawerStore();
+const routeStore = useRouteStore();
 const drawerStatus = ref(null);
+const showPage = ref(false);
+const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
+const check = ref(false);
 
 // update on changes
 watchEffect(() => {
@@ -23,11 +29,42 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
+//we use this id to determin which drawer opens
+//show page based
+const showSpecific = (id) => {
+  routeStore.setPlayerId(id);
+  showPage.value = !showPage.value;
+};
+
+const openCreate = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const openEdit = () => {
+  check.value = false;
+  drawerStore.togglePop();
+};
+
+const openDrawer = (id) => {
+  switch (id) {
+    case 1:
+      drawerID.value = 1;
+      drawerStore.toggleDrawer();
+      break;
+    case 2:
+      drawerID.value = 2;
+      drawerStore.toggleDrawer();
+      break;
+    default:
+    drawerID.value = null;
+      break;
+  }
+};
 //api
 const searchResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
 });
-
 
 onMounted(async () => {
   const options = {
@@ -63,28 +100,26 @@ onMounted(async () => {
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
           <input
-            type="text"
+          type="text"
             v-model="search"
             class="main-search"
             placeholder="Search Stadium"
           />
         </form>
         <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="drawerStore.toggleDrawer">
+          <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-c">
-            <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="drawerStore.togglePop">
+          <CircleDraw class="circle-a" @click="openCreate">
             <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>
     </div>
-      <div class="user-content">
-        <h2></h2>
-        <table>
+    <component :is="activePage" v-if="showPage == true" />
+    <div class="user-content" v-else>
+      <h2></h2>
+      <table>
           <tr>
             <th>Stadium name</th>
             <th>Region</th>
@@ -93,49 +128,63 @@ onMounted(async () => {
             <!-- <th>Stadium</th> -->
             <th>action</th>
           </tr>
-          <h1 v-if="data.length <= 0">loading data....................⚽</h1>
           <tr
-            v-for="({ name, region, location, capacity }, index) in searchResult"
+          v-for="({ id, name, region, location, capacity }, index) in searchResult"
             :key="index"
-          v-else>
+          >
             <td>{{ name }}</td>
             <td>{{ region }}</td>
             <td>{{ location }}</td>
             <td>{{ capacity }}</td>
-
             <td>
+            <div class="table-link-c">
               <div class="table-link">
-                <a href="#">View</a>
+                <a href="#" @click="showSpecific(id)">View</a>
               </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+              <!-- <div class="table-link">
+                <a href="#" @click="openEdit">Edit</a>
+              </div> -->
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
     <!-- side bar component for sorting  -->
     <SideDrawer
+      v-if="drawerID == 1"
       title="Sort by"
+      class="sort-drawer"
       :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
     >
       <div class="sort-user-c">
         <div class="sort-wrapper">
-          <h1>Parameter</h1>
+          <h1>Sort Stadium list using</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">User Role</label>
+              <label for="user-role">Stadium Name</label>
               <input
                 type="radio"
                 id="one"
-                value="userRole"
-                v-model="userRole"
+                value="StadiumName"
+                v-model="StadiumName"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">User Name</label>
+              <label for="username">Team</label>
               <input
                 type="radio"
                 id="one"
-                value="userName"
-                v-model="userRole"
+                value="Tean"
+                v-model="Team"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">City</label>
+              <input
+                type="radio"
+                id="one"
+                value="City"
+                v-model="City"
               />
             </div>
           </div>
@@ -166,8 +215,11 @@ onMounted(async () => {
       </div>
     </SideDrawer>
     <div>
-      <PopUP height="80" width="80" title="AddUser">
-        <CreateUser />
+      <PopUP title="Stadium" v-if="check == true">
+        <EditStadium />
+      </PopUP>
+      <PopUP title="Stadium" v-else>
+        <EditStadium />
       </PopUP>
     </div>
   </div>

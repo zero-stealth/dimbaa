@@ -1,13 +1,14 @@
 <script setup>
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
-import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import CreateUser from "@/components/form/createform/CreateUser.vue";
+import CreatePlaylist from "../../../components/form/createform/CreatePlayerList.vue";
+import DeletePlayerlist from "../../../components/form/deleteForm/DeletePlayerList.vue";
 import { ref, onMounted, computed, watchEffect } from "vue";
 import axios from "axios";
 
 const drawerStore = useDrawerStore();
 const drawerStatus = ref(null);
+const check = ref(false);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
@@ -16,6 +17,16 @@ watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const openAdd = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const openDelete = () => {
+  check.value = false;
+  drawerStore.togglePop();
+};
 
 //api
 const searchResult = computed(() => {
@@ -56,10 +67,10 @@ await axios
     <div class="team-list-c">
       <h3>Total Players : {{ searchResult.length }}</h3>
       <div class="list-btn">
-        <button class="btn-list list-add"  @click="drawerStore.togglePop">
+        <button class="btn-list list-add"   @click="openAdd">
       Add
       </button>
-      <button class="btn-list list-remove">
+      <button class="btn-list list-remove"  @click="openDelete" >
       Remove
       </button>
       </div>
@@ -86,63 +97,12 @@ await axios
         />
       </div>
     </div>
-    <!-- side bar component for sorting  -->
-    <SideDrawer
-      title="Sort by"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
-      <div class="sort-user-c">
-        <div class="sort-wrapper">
-          <h1>Parameter</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="player Name">Player Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="playerposition"
-                v-model="playerPosition"
-              />
-            </div>
-            <div class="sort-label-i">
-              <label for="username">User Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="playerid"
-                v-model="palyerId"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="sort-wrapper">
-          <h1>Order</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="userRole"
-              />
-            </div>
-            <div class="sort-label-i">
-              <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="userRole"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </SideDrawer>
     <div>
-      <PopUP height="80" width="80" title="AddUser">
-        <CreateUser />
+      <PopUP title="Add player" v-if="check == true">
+        <CreatePlaylist />
+      </PopUP>
+      <PopUP  v-else>
+        <DeletePlayerlist />
       </PopUP>
     </div>
   </div>

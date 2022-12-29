@@ -1,21 +1,29 @@
 <script setup>
+import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
+import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
+import userDetails from "@/components/specific/userComponent.vue";
 import CreateUser from "@/components/form/createform/CreateUser.vue";
+import EditUser from "@/components/form/updateform/EditDetails.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
-import axios from "axios";
+import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
+const activePage = shallowRef(userDetails);
 const drawerStore = useDrawerStore();
+const routeStore = useRouteStore();
 const drawerStatus = ref(null);
+const showPage = ref(false);
+const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
+const check = ref(false);
 
 // update on changes
 watchEffect(() => {
@@ -23,6 +31,38 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
+//we use this id to determin which drawer opens
+//show page based
+const showSpecific = (id) => {
+  routeStore.setPlayerId(id);
+  showPage.value = !showPage.value;
+};
+
+const openCreate = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const openEdit = () => {
+  check.value = false;
+  drawerStore.togglePop();
+};
+
+const openDrawer = (id) => {
+  switch (id) {
+    case 1:
+      drawerID.value = 1;
+      drawerStore.toggleDrawer();
+      break;
+    case 2:
+      drawerID.value = 2;
+      drawerStore.toggleDrawer();
+      break;
+    default:
+    drawerID.value = null;
+      break;
+  }
+};
 //api
 const seachResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
@@ -44,7 +84,7 @@ onMounted(async () => {
     .request(options)
     .then(function (response) {
       data.value = response.data.users;
-      console.log(data.value)
+      console.log(data.value);
     })
     .catch(function (error) {
       console.error(error);
@@ -69,49 +109,57 @@ onMounted(async () => {
           />
         </form>
         <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="drawerStore.toggleDrawer">
+          <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-c">
+          <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-a" @click="drawerStore.togglePop">
+          <CircleDraw class="circle-a" @click="openCreate">
             <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>
     </div>
-      <div class="user-content">
-        <h2>User list</h2>
-        <table>
-          <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>mobile</th>
+    <component :is="activePage" v-if="showPage == true" />
+    <div class="user-content" v-else>
+      <h2>User list</h2>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>mobile</th>
 
-            <!-- <th>Stadium</th> -->
-            <th>action</th>
-          </tr>
-        <h1 v-if="data.length <= 0">loading data....................⚽</h1>
-          <tr
-            v-for="({ name, email, mobile }, index) in seachResult"
-            :key="index"
-          v-else>
-            <td>{{ name }}</td>
-            <td>{{ email }}</td>
-            <td>{{ mobile }}</td>
+          <!-- <th>Stadium</th> -->
+          <th>action</th>
+        </tr>
+        <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
+        <tr
+        v-for="({ id, name, email, mobile }, index) in seachResult"
+          :key="index"
+        >
+          <td>{{ name }}</td>
+          <td>{{ email }}</td>
+          <td>{{ mobile }}</td>
 
-            <td>
+          <td>
+            <div class="table-link-c">
               <div class="table-link">
-                <a href="#">View</a>
+                <a href="#" @click="showSpecific(id)">View</a>
               </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+              <div class="table-link">
+                <a href="#" @click="openEdit">Edit</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
     <!-- side bar component for sorting  -->
     <SideDrawer
+      v-if="drawerID == 1"
       title="Sort by"
+      class="sort-drawer"
       :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
     >
       <div class="sort-user-c">
@@ -163,9 +211,37 @@ onMounted(async () => {
         </div>
       </div>
     </SideDrawer>
+    <!-- side bar component for filter  -->
+    <SideDrawer
+      v-else
+      title="Filter by"
+      class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
+    >
+      <div class="filter-c">
+        <h1>Enable switch to show in list</h1>
+        <div class="filter-wrapper">
+        <div class="filter-list">
+        <h2>Show All</h2>
+        <div class="filter-b-c">
+        filter
+        </div>
+        </div>
+        <div class="filter-list">
+        <h2>Show All</h2>
+        <div class="filter-b-c">
+        filter
+        </div>
+        </div>
+        </div>
+      </div>
+    </SideDrawer>
     <div>
-      <PopUP height="80" width="80" title="AddUser">
+      <PopUP title="AddUser" v-if="check == true">
         <CreateUser />
+      </PopUP>
+      <PopUP title="Edit User Details" v-else>
+        <EditUser />
       </PopUP>
     </div>
   </div>

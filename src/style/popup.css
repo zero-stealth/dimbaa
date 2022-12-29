@@ -9,6 +9,8 @@
     overflow: hidden;
     padding: 10px 30px;
     border-radius:12px;
+    width: fit-content;
+    height: fit-content;
     box-shadow: var(--background-shadow);
     background-color: var(--light-color);
   }

@@ -78,6 +78,11 @@ const router = createRouter({
       name: 'Dashboard',
       component: () => import('@/views/data-manager/dataView.vue')
     },
+    {
+      path: '/userdetails',
+      name: 'UserDetails',
+      component: () => import('@/components/specific/userComponent.vue')
+    },
   ]
 })
 
