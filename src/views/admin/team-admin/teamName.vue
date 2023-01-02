@@ -10,7 +10,7 @@ import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import TeamNameDetails from "@/components/specific/TeamNameComponent.vue";
 import CreateTeam from "@/components/form/createform/CreateTeam.vue";
-import ChangeStadium from "@/components/form/updateform/ChangeStadium.vue";
+import ChangeStadium from "../../../components/form/updateform/changeStadium.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
@@ -64,7 +64,7 @@ const openDrawer = (id) => {
   }
 };
 //api
-const seachResult = computed(() => {
+const searchResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
 });
 
@@ -136,7 +136,7 @@ onMounted(async () => {
           <th>action</th>
         </tr>
         <tr
-          v-for="({ id, name, region, stadium_id }, index) in seachResult"
+          v-for="({ id, name, region, stadium_id }, index) in searchResult"
           :key="index"
         >
           <td>{{ name }}</td>
