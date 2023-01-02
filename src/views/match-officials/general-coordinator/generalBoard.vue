@@ -35,6 +35,7 @@ const drawerStatus = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
+const check = ref(false);
 
 // update on changes
 watchEffect(() => {
@@ -43,10 +44,34 @@ watchEffect(() => {
 });
 
 console.log(authStore.userName);
-//api
-const seachResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
-});
+
+
+
+const openCreate = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const openEdit = () => {
+  check.value = false;
+  drawerStore.togglePop();
+};
+
+const openDrawer = (id) => {
+  switch (id) {
+    case 1:
+      drawerID.value = 1;
+      drawerStore.toggleDrawer();
+      break;
+    case 2:
+      drawerID.value = 2;
+      drawerStore.toggleDrawer();
+      break;
+    default:
+    drawerID.value = null;
+      break;
+  }
+};
 
 onMounted(async () => {
   const options = {
@@ -74,31 +99,10 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>{{ authStore.userName }}</h1>
-        <span>{{ authStore.userName }}</span>
-        <span>Data manager(organiser)</span>
+        <h1>General Coordinator Form</h1>
+        <span>General Coordinator Form</span>
       </div>
       <div class="main-wrapper">
-        <form action="" class="form-main">
-          <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search Here"
-          />
-        </form>
-        <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="drawerStore.toggleDrawer">
-            <MenuIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-c">
-            <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="drawerStore.togglePop">
-            <AddIcon class="icon icon-menu" />
-          </CircleDraw>
-        </div>
       </div>
     </div>
     <div class="data-content-r">
@@ -107,98 +111,98 @@ onMounted(async () => {
         <button
           class="data-n-b"
           @click="generalPage = detail"
-          :class="[detail == detail ? 'datapage' : '']"
+          :class="[generalPage == detail ? 'datapage' : '']"
         >
           Details
         </button>
          <button
           class="data-n-b"
           @click="generalPage = form1"
-          :class="[form1 == form1 ? 'datapage' : '']"
+          :class="[generalPage == form1 ? 'datapage' : '']"
         >
           1
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form2"
-          :class="[form2 == form2 ? 'datapage' : '']"
+          :class="[generalPage == form2 ? 'datapage' : '']"
         >
           2
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form3"
-          :class="[form3 == form3 ? 'datapage' : '']"
+          :class="[generalPage == form3 ? 'datapage' : '']"
         >
           3
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form4"
-          :class="[form4 == form4 ? 'datapage' : '']"
+          :class="[generalPage == form4 ? 'datapage' : '']"
         >
           4
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form5"
-          :class="[form5 == form5 ? 'datapage' : '']"
+          :class="[generalPage == form5 ? 'datapage' : '']"
         >
           5
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form6"
-          :class="[form6 == form6 ? 'datapage' : '']"
+          :class="[generalPage == form6 ? 'datapage' : '']"
         >
           6
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form7"
-          :class="[form7 == form7 ? 'datapage' : '']"
+          :class="[generalPage == form7 ? 'datapage' : '']"
         >
           7
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form8"
-          :class="[form8 == form8 ? 'datapage' : '']"
+          :class="[generalPage == form8 ? 'datapage' : '']"
         >
           8
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form9"
-          :class="[form9 == form9 ? 'datapage' : '']"
+          :class="[generalPage == form9 ? 'datapage' : '']"
         >
           9
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form10"
-          :class="[form10 == form10 ? 'datapage' : '']"
+          :class="[generalPage == form10 ? 'datapage' : '']"
         >
           10
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form11"
-          :class="[form11 == form11 ? 'datapage' : '']"
+          :class="[generalPage == form11 ? 'datapage' : '']"
         >
           11
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form12"
-          :class="[form12 == form12 ? 'datapage' : '']"
+          :class="[generalPage == form12 ? 'datapage' : '']"
         >
           12
         </button>
         <button
           class="data-n-b"
           @click="generalPage = form13"
-          :class="[form13 == form13 ? 'datapage' : '']"
+          :class="[generalPage == form13 ? 'datapage' : '']"
         >
           13
         </button>
@@ -207,65 +211,9 @@ onMounted(async () => {
     <!-- side bar component for sorting  -->
      <!-- inner data content -->
      <div class="inner-data-content">
-        <component :is="dataPage" />
+        <component :is="generalPage" />
       </div>
-    <SideDrawer
-      title="Sort by"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
-      <div class="sort-user-c">
-        <div class="sort-wrapper">
-          <h1>Parameter</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="user-role">User Role</label>
-              <input
-                type="radio"
-                id="one"
-                value="userRole"
-                v-model="userRole"
-              />
-            </div>
-            <div class="sort-label-i">
-              <label for="username">User Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="userName"
-                v-model="userRole"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="sort-wrapper">
-          <h1>Order</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="userRole"
-              />
-            </div>
-            <div class="sort-label-i">
-              <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="userRole"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </SideDrawer>
     <div>
-      <PopUP height="80" width="80" title="AddUser">
-        <CreateUser />
-      </PopUP>
     </div>
   </div>
 </template>

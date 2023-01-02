@@ -67,6 +67,10 @@
     width: 24px;
     color: var(--secondary-color);
   }
+
+  select {
+    outline: none;
+  }
 }
 
 /* using it as global style for larger devices  */

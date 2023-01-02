@@ -1,20 +1,27 @@
 <script setup>
 import { ref } from "vue";
-const playerName = ref("");
+const FirstName = ref("");
+const SecondName = ref("");
+const LastName = ref("");
 const jerseyNumber  = ref("");
 const Team = ref("");
 const Email = ref("");
 const Mobile = ref("");
 
 const getDetails = () => {
-//   console.log(
-//     jerseyNumber.value,
-//     mobile.value,
-//     Team.value,
-//     PlayerNumber.value,
-//     email.value,
-//     Team.value
-//   );
+  var playerDetails = JSON.stringify({
+  "team_id": 6,
+  "first_name": FirstName.value,
+  "middle_name": SecondName.value,
+  "last_name": LastName.value,
+  "local_id": 5,
+  "fifa_id": 3,
+  "playing_position": 19,
+  "weight": "dolores",
+  "height": "ea",
+  "nationality": "placeat",
+  "jersey_number": jerseyNumber.value
+});
 
   reset();
 };
@@ -38,13 +45,33 @@ const reset = () => {
       class="userform-wrapper"
     >
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">PlayerName</label>
+        <label for="add-user-input" class="user-label">FirstName</label>
         <input
           required
           type="text"
           class="user-input"
-          v-model="playerName"
-          placeholder="User Name"
+          v-model="FirstName"
+          placeholder="player Name"
+          />
+        </div>
+        <div class="userform-input">
+        <label for="add-user-input" class="user-label">SecondName</label>
+        <input
+          required
+          type="text"
+          class="user-input"
+          v-model="SecondName"
+          placeholder="player secondname"
+          />
+        </div>
+        <div class="userform-input">
+        <label for="add-user-input" class="user-label">LastName</label>
+        <input
+          required
+          type="text"
+          class="user-input"
+          v-model="LastName"
+          placeholder="player lastname"
           />
         </div>
     <div class="userform-input">

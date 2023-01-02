@@ -1,0 +1,82 @@
+@media screen {
+    
+.detail-container {
+    display: flex;
+    padding: 40px 20px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.d-label {
+    display: flex;
+    font-size: .8rem;
+    color: var(--primary-color);
+}
+
+.d-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.d-container1 {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.d-wrapper {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.d-input {
+    width: 50%;
+    border: none;
+    display: flex;
+}
+
+.detail-btn-f {
+    width: 30%;
+    gap: 100px;
+    display: flex;
+    padding: 50px 0;
+    justify-content: space-around;
+}
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+      
+.detail-container {
+    padding: 40px 0;
+}
+
+.d-label {
+    display: flex;
+    font-size: .9rem;
+}
+
+.d-form {
+    flex-wrap: wrap;
+}
+
+.d-wrapper {
+    align-items: center;
+    flex-direction: row;
+}
+
+.d-input {
+    width: 50%;
+    padding: 10px;
+    background-color: var(--light-color);
+}
+
+.detail-btn-f {
+    padding: 50px;
+}
+}

@@ -13,6 +13,10 @@
     flex-direction: column;
   }
 
+  .userform-wrapper span {
+    color: rgb(216, 8, 8);
+  }
+
   .userform-input {
     gap: 10px;
     display: flex;
@@ -22,6 +26,11 @@
   .user-label {
     font-size: 0.9rem;
   }
+  .icon-pic {
+    height: 30px;
+  }
+
+
   .user-input {
     outline: none;
     border-radius: 5px;

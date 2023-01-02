@@ -203,8 +203,8 @@ onMounted(async () => {
         </div>
       </div>
     </SideDrawer>
-    <!-- side bar component for filter  -->
-    <SideDrawer
+   <!-- side bar component for filter  -->
+   <SideDrawer
       v-else
       title="Filter by"
       class="sort-drawer"
@@ -213,14 +213,31 @@ onMounted(async () => {
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
+          <!-- show component  -->
           <div class="filter-list">
-            <h2>Show All</h2>
-            <div class="filter-b-c">filter</div>
+            <h2>Team Name</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="TeamName"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
           </div>
+          <!-- show component  -->
           <div class="filter-list">
-            <h2>Not assign Stadium</h2>
-            <div class="filter-b-c">filter</div>
+            <h2>Region</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="region"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
           </div>
+          <!-- show component  -->
         </div>
       </div>
     </SideDrawer>

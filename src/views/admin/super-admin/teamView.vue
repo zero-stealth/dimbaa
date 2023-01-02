@@ -228,18 +228,31 @@ onMounted(async () => {
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
-        <div class="filter-list">
-        <h2>Show All</h2>
-        <div class="filter-b-c">
-        filter
-        </div>
-        </div>
-        <div class="filter-list">
-        <h2>Not assign Stadium</h2>
-        <div class="filter-b-c">
-        filter
-        </div>
-        </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Show All</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="showall"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Not assign Stadium</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="superadmin"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
         </div>
       </div>
     </SideDrawer>

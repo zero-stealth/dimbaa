@@ -1,10 +1,13 @@
 <script setup>
+// import PicIcon from "@/icons/AddPhoto.vue"
 import { ref } from "vue";
 const playerName = ref("");
 const jerseyNumber  = ref("");
 const Team = ref("");
 const Email = ref("");
 const Mobile = ref("");
+const playerPic =ref("");
+const playerPosition = ref("");
 
 const getDetails = () => {
 //   console.log(
@@ -26,7 +29,10 @@ const reset = () => {
   Team.value = "";
   jerseyNumber.value = "";
   playerName.value = "";
+  playerPosition.value = "";
+  playerPic.value = "";
 };
+
 </script>
 <template>
   <div class="pop-adduser-form">
@@ -70,6 +76,16 @@ const reset = () => {
         </select>
       </div>
       <div class="userform-input">
+        <label for="add-user-input" class="user-label">Player position</label>
+        <input
+          required
+          type="text"
+          class="user-input"
+          v-model="playerPosition"
+          placeholder="position number"
+        />
+      </div>
+      <div class="userform-input">
         <label for="add-user-input" class="user-label">Email</label>
         <input
           required
@@ -89,9 +105,15 @@ const reset = () => {
             placeholder="+25438392045"
           />
       </div>
+      <div class="userform-input">
+      <label for="profilepic" class="user-label">Add pic</label>
+      <!-- <PicIcon class="icon-pic"> -->
+        <input type="file" :name="playerPic" id="profilepic" class="user-upload">
+      <!-- </PicIcon> -->
+      </div>
       <div class="user-btn-f">
         <button type="submit" class="btn-f a-u">Add</button>
-        <button type="submit" @click="reset" class="btn-f r-u">Reset</button>
+        <button type="reset" @click="reset" class="btn-f r-u">Reset</button>
       </div>
     </form>
   </div>

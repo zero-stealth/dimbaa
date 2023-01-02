@@ -2,6 +2,7 @@
     
 .data-content-r {
     display: flex;
+    overflow: auto;
     padding-top: 50px;
     border-bottom:2px solid var(--light-color);
 }
@@ -31,13 +32,104 @@
 .data-b:first-child {
     color: var(--primary-color);
 }
+
+/* data-view css  */
+.inner-view-content {
+    gap: 20px;
+    display: flex;
+    padding-top: 30px;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.inner-view-content h1 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+
+.inner-view-content tr {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+.inner-view-content th {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    justify-content: end;
+    flex-direction: row;
+    display: flex;
+}
+
+.inner-view-content td {
+    display: flex;
+
+}
+
+/* edit view  */
+
+.edit-view {
+    display: flex;
+}
+
+.edit-view-f {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.btn-f {
+    outline: none;
+    border: none;
+    padding: 10px 50px;
+    cursor: pointer;
+    border-radius: 5px;
+  
+  }
+  
+  .u-a {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+  
+  .u-r {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  
+}
+
+.e-u {
+ width: 150px;
+}
+
+.e-a {
+    background-color: var(--background-color);
+}
+
+
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+        
+
+
     .data-nav {
         width: 30%;
     }
+
+    .edit-view-f {
+        justify-content: end;
+        
+    }
+    
     
 }
 

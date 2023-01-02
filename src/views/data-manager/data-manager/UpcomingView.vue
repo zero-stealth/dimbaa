@@ -1,21 +1,31 @@
 <script setup>
+import axios from "axios";
+import { useRouteStore } from "@/stores/route";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
-import CreateUser from "@/components/form/createform/CreateUser.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
-import axios from "axios";
+import PlayerDetails from "@/components/specific/PlayerComponent.vue";
+import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
+const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
+const routeStore = useRouteStore();
 const drawerStatus = ref(null);
+const showPage = ref(false);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
+const check2 = ref(false);
 
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const openEdit2 = () => {
+  check2.value = false;
+  drawerStore.togglePop();
+};
 
 //api
 const seachResult = computed(() => {
@@ -38,7 +48,7 @@ onMounted(async () => {
     .request(options)
     .then(function (response) {
       data.value = response.data.users;
-      console.log(data.value)
+      console.log(data.value);
     })
     .catch(function (error) {
       console.error(error);
@@ -46,43 +56,42 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="upcoming-container-r">
-      <div class="upcoming-wrapper-r">
-        <table>
-          <tr>
-            <th>Round</th>
-            <th>Number</th>
-            <th>Date</th>
-            <th>Home Team</th>
-            <th>Away Team</th>
-            <th>Home Team</th>
-            <th>Venue</th>
-            <th>City</th>
-          </tr>
-        <h1 class="loading-u" v-if="data.length <= 0">loading data....................⚽</h1>
-          <tr
-            v-for="({ name, email, mobile }, index) in seachResult"
-            :key="index"
-          v-else>
-            <td>{{ round }}</td>
-            <td>{{ number }}</td>
-            <td>{{ date }}</td>
-            <td>{{ home_team }}</td>
-            <td>{{ away_team }}</td>
-            <td>{{ venue }}</td>
-            <td>{{ city }}</td>
-            <td>
+  <component :is="activePage" v-if="showPage == true" />
+  <div class="upcoming-container-r" v-else>
+    <div class="upcoming-wrapper-r">
+      <table>
+        <tr>
+          <th>Round</th>
+          <th>Number</th>
+          <th>Date</th>
+          <th>Home Team</th>
+          <th>Away Team</th>
+          <th>Venue</th>
+          <th>City</th>
+          <th>Action</th> 
+        </tr>
+        <tr
+        >
+        <td>{{ round }}</td>
+          <td>{{ number }}</td>
+          <td>{{ date }}</td>
+          <td>{{ home_team }}</td>
+          <td>{{ away_team }}</td>
+          <td>{{ venue }}</td>
+          <td>{{ city }}</td>
+          <td>
+            <div class="table-link-c">
               <div class="table-link">
-                <a href="#">Edit</a>
+                <a href="#" @click="openEdit2">Edit</a>
               </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+            </div>
+          </td>
+          
+        </tr>
+        
+      </table>
+    </div>
     <div>
-      <PopUP height="80" width="80" title="AddUser">
-        <CreateUser />
-      </PopUP>
     </div>
   </div>
 </template>

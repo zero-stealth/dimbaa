@@ -19,6 +19,7 @@ const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
+const showall = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
@@ -30,6 +31,10 @@ watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const toggle = () => {
+  showall.value = true;
+};
 
 //we use this id to determin which drawer opens
 //show page based
@@ -59,12 +64,12 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-    drawerID.value = null;
+      drawerID.value = null;
       break;
   }
 };
 //api
-const seachResult = computed(() => {
+const searchResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
 });
 
@@ -134,10 +139,7 @@ onMounted(async () => {
           <th>action</th>
         </tr>
         <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-        <tr
-        v-for="({ id, name, email, mobile }, index) in seachResult"
-          :key="index"
-        >
+        <tr>
           <td>{{ name }}</td>
           <td>{{ email }}</td>
           <td>{{ mobile }}</td>
@@ -221,18 +223,103 @@ onMounted(async () => {
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
-        <div class="filter-list">
-        <h2>Show All</h2>
-        <div class="filter-b-c">
-        filter
-        </div>
-        </div>
-        <div class="filter-list">
-        <h2>Show All</h2>
-        <div class="filter-b-c">
-        filter
-        </div>
-        </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Show All</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="showall"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Super Admin</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="superadmin"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Team Admin</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="teamAdmin"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Team manager</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="teamManager"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>General Coordinator</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="general"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Referee</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="referee"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Match Commissioner</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="match"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Referee Assessor</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="assessor"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
         </div>
       </div>
     </SideDrawer>

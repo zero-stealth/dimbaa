@@ -1,7 +1,51 @@
 <template>
-  <div class="notification-container">
-    <h1>team</h1>
+  <div class="detail-container">
+    <form action="" class="d-form">
+    <div class="d-container1">
+      <div class="d-wrapper">
+      <label for="" class="d-label">Competion</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">Date</label>
+      <input type="date" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">Played in (City)</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">M/No</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    </div>
+      <div class="d-container1">
+      <div class="d-wrapper">
+      <label for="" class="d-label">Team A</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">Team B</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">Stadium</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    <div class="d-wrapper">
+      <label for="" class="d-label">RD</label>
+      <input type="text" placeholder="predefined" class="d-input">
+    </div>
+    </div>
+    </form>
+    <div class="detail-btn-f ">
+        <button type="submit" class="btn-f u-a">Update</button>
+        <button type="submit" @click="reset" class="btn-f u-r e-a">Reset</button>
+      </div>
   </div>
 </template>
-<script setup></script>
-<style></style>
+<script setup>
+</script>
+<style>
+  @import "@/style/general.css"
+</style>
