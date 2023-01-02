@@ -7,6 +7,7 @@ import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import userDetails from "@/components/specific/userComponent.vue";
 import CreateUser from "@/components/form/createform/CreateUser.vue";
@@ -133,8 +134,10 @@ onMounted(async () => {
         <tr>
           <th>Username</th>
           <th>Email</th>
+          <th class="mobile-hide-h"  @click="showSpecific(id)">
+          <ArrowIcon class="mobile-hide icon"/>
+          </th>
           <th>mobile</th>
-
           <!-- <th>Stadium</th> -->
           <th>action</th>
         </tr>

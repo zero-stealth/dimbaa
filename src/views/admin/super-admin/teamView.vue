@@ -7,6 +7,7 @@ import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import TeamDetails from "@/components/specific/TeamComponent.vue";
 import CreateTeam from "@/components/form/createform/CreateTeam.vue";
@@ -59,7 +60,7 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-    drawerID.value = null;
+      drawerID.value = null;
       break;
   }
 };
@@ -123,24 +124,27 @@ onMounted(async () => {
     <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
-        <table>
-          <tr>
-            <th>Team name</th>
-            <th>Region</th>
-            <th>Stadium id</th>
-            <!-- <th>Stadium</th> -->
-            <th>action</th>
-          </tr>
+      <table>
+        <tr>
+          <th>Team name</th>
+          <th>Region</th>
+          <th class="mobile-hide-h" @click="showSpecific(id)">
+            <ArrowIcon class="mobile-hide icon" />
+          </th>
+          <th>Stadium id</th>
+          <!-- <th>Stadium</th> -->
+          <th>action</th>
+        </tr>
         <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-          <tr
-          v-for="({ id ,name, region, stadium_id }, index) in searchResult"
-            :key="index"
-          >
-            <td>{{ name }}</td>
-            <td>{{ region }}</td>
-            <td>{{ stadium_id }}</td>
+        <tr
+          v-for="({ id, name, region, stadium_id }, index) in searchResult"
+          :key="index"
+        >
+          <td>{{ name }}</td>
+          <td>{{ region }}</td>
+          <td>{{ stadium_id }}</td>
 
-            <td>
+          <td>
             <div class="table-link-c">
               <div class="table-link">
                 <a href="#" @click="showSpecific(id)">View</a>
@@ -175,21 +179,11 @@ onMounted(async () => {
             </div>
             <div class="sort-label-i">
               <label for="username">Region</label>
-              <input
-                type="radio"
-                id="one"
-                value="Region"
-                v-model="Region"
-              />
+              <input type="radio" id="one" value="Region" v-model="Region" />
             </div>
             <div class="sort-label-i">
               <label for="username">Stadium</label>
-              <input
-                type="radio"
-                id="one"
-                value="Stadium"
-                v-model="Stadium"
-              />
+              <input type="radio" id="one" value="Stadium" v-model="Stadium" />
             </div>
           </div>
         </div>
@@ -234,7 +228,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="showall"  />
+                <input type="checkbox" v-model="showall" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -246,7 +240,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="superadmin"  />
+                <input type="checkbox" v-model="superadmin" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

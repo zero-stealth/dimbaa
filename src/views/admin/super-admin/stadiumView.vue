@@ -5,6 +5,7 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import StadiumDetails from "@/components/specific/StadiumComponent.vue";
@@ -57,7 +58,7 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-    drawerID.value = null;
+      drawerID.value = null;
       break;
   }
 };
@@ -82,7 +83,7 @@ onMounted(async () => {
     .request(options)
     .then(function (response) {
       data.value = response.data.stadia;
-      console.log(data.value)
+      console.log(data.value);
     })
     .catch(function (error) {
       console.error(error);
@@ -100,7 +101,7 @@ onMounted(async () => {
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
           <input
-          type="text"
+            type="text"
             v-model="search"
             class="main-search"
             placeholder="Search Stadium"
@@ -120,23 +121,28 @@ onMounted(async () => {
     <div class="user-content" v-else>
       <h2></h2>
       <table>
-          <tr>
-            <th>Stadium name</th>
-            <th>Region</th>
-            <th>location</th>
-            <th>capacity</th>
-            <!-- <th>Stadium</th> -->
-            <th>action</th>
-          </tr>
-          <tr
-          v-for="({ id, name, region, location, capacity }, index) in searchResult"
-            :key="index"
-          >
-            <td>{{ name }}</td>
-            <td>{{ region }}</td>
-            <td>{{ location }}</td>
-            <td>{{ capacity }}</td>
-            <td>
+        <tr>
+          <th>Stadium name</th>
+          <th>Region</th>
+          <th class="mobile-hide-h" @click="showSpecific(id)">
+            <ArrowIcon class="mobile-hide icon" />
+          </th>
+          <th>location</th>
+          <th>capacity</th>
+          <!-- <th>Stadium</th> -->
+          <th>action</th>
+        </tr>
+        <tr
+          v-for="(
+            { id, name, region, location, capacity }, index
+          ) in searchResult"
+          :key="index"
+        >
+          <td>{{ name }}</td>
+          <td>{{ region }}</td>
+          <td>{{ location }}</td>
+          <td>{{ capacity }}</td>
+          <td>
             <div class="table-link-c">
               <div class="table-link">
                 <a href="#" @click="showSpecific(id)">View</a>
@@ -171,21 +177,11 @@ onMounted(async () => {
             </div>
             <div class="sort-label-i">
               <label for="username">Team</label>
-              <input
-                type="radio"
-                id="one"
-                value="Tean"
-                v-model="Team"
-              />
+              <input type="radio" id="one" value="Tean" v-model="Team" />
             </div>
             <div class="sort-label-i">
               <label for="username">City</label>
-              <input
-                type="radio"
-                id="one"
-                value="City"
-                v-model="City"
-              />
+              <input type="radio" id="one" value="City" v-model="City" />
             </div>
           </div>
         </div>

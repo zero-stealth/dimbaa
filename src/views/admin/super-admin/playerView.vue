@@ -5,6 +5,7 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import PlayerDetails from "@/components/specific/PlayerComponent.vue";
@@ -58,7 +59,7 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-    drawerID.value = null;
+      drawerID.value = null;
       break;
   }
 };
@@ -118,23 +119,28 @@ onMounted(async () => {
     <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
-        <table>
-          <tr>
-            <th>Player name</th>
-            <th>Jersey number</th>
-            <th>Signature</th>
-            <!-- <th>Stadium</th> -->
-            <th>action</th>
-          </tr>
-          <tr
-          v-for="({ first_name, middle_name,  jersey_number, signature }, index) in searchResult"
-            :key="index"
-          >
-            <td>{{ `${first_name} ${middle_name}` }}</td>
-            <td>{{ jersey_number }}</td>
-            <td>{{ signature }}</td>
+      <table>
+        <tr>
+          <th>Player name</th>
+          <th>Jersey number</th>
+          <th class="mobile-hide-h"  @click="showSpecific(id)">
+            <ArrowIcon class="mobile-hide icon" />
+          </th>
+          <th>Signature</th>
+          <!-- <th>Stadium</th> -->
+          <th>action</th>
+        </tr>
+        <tr
+          v-for="(
+            { first_name, middle_name, jersey_number, signature }, index
+          ) in searchResult"
+          :key="index"
+        >
+          <td>{{ `${first_name} ${middle_name}` }}</td>
+          <td>{{ jersey_number }}</td>
+          <td>{{ signature }}</td>
 
-            <td>
+          <td>
             <div class="table-link-c">
               <div class="table-link">
                 <a href="#" @click="showSpecific(id)">View</a>

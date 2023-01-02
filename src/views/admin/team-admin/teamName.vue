@@ -5,6 +5,7 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
@@ -132,6 +133,9 @@ onMounted(async () => {
         <tr>
           <th>Team name</th>
           <th>Region</th>
+          <th class="mobile-hide-h"  @click="showSpecific(id)">
+          <ArrowIcon class="mobile-hide icon"/>
+          </th>
           <!-- <th>Stadium</th> -->
           <th>action</th>
         </tr>
