@@ -5,7 +5,7 @@ import leaderPlayers from "./leadersPlayers.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
-import startingPlayers from "./StartingPlayers.vue";
+import startingPlayers from "./detailsView.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import substitutePlayers from "./substitutePlayers.vue";
