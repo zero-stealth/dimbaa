@@ -141,7 +141,7 @@ onMounted(async () => {
           last_name,
           playing_position,
         } in searchResult"
-        :key="`${searchResult}`"
+        :key="index"
       >
         <div class="team-d-x">
           <img
