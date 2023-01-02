@@ -85,6 +85,13 @@
     
 }
 
+.edit-table2 {
+    display: none;
+    border: 2px solid red;
+}
+
+
+
 .btn-f {
     outline: none;
     border: none;

@@ -61,18 +61,17 @@ onMounted(async () => {
     <div class="upcoming-wrapper-r">
       <table>
         <tr>
-          <th>Round</th>
-          <th>Number</th>
-          <th>Date</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
-          <th>Venue</th>
-          <th>City</th>
-          <th>Action</th> 
+            <th>Round</th>
+            <th>Number</th>
+            <th>Date</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Venue</th>
+            <th>City</th>
+            <th>Action</th>
         </tr>
-        <tr
-        >
-        <td>{{ round }}</td>
+        <tr>
+          <td>{{ round }}</td>
           <td>{{ number }}</td>
           <td>{{ date }}</td>
           <td>{{ home_team }}</td>
@@ -86,13 +85,10 @@ onMounted(async () => {
               </div>
             </div>
           </td>
-          
         </tr>
-        
       </table>
     </div>
-    <div>
-    </div>
+    <div></div>
   </div>
 </template>
 <style>

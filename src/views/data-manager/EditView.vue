@@ -2,11 +2,8 @@
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
-import current from "./data-manager/CurrentView.vue";
-import history from "./data-manager/HistoryView.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
-import upcoming from "./data-manager/UpcomingView.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
@@ -14,7 +11,6 @@ import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
-const dataPage = shallowRef(upcoming);
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
@@ -98,12 +94,13 @@ const openDrawer = (id) => {
         <button type="submit" @click="reset" class="btn-f u-r e-u e-a">Reset</button>
       </div>
      <form action="" >
-      <table >
+      <table>
     <tr>
-      <th>Selected</th>
+        <th>Selected</th>
     <th>Round</th>
     <th>Date</th>
-    <th>Number</th>
+   
+        <th>Number</th>
     <th>Home Team</th>
     <th>Away Team</th>
     <th>Venue</th>
