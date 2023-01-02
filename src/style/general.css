@@ -26,6 +26,12 @@
     flex-direction: column;
 }
 
+
+.detail-view {
+    display: flex;
+    justify-content: space-between;
+}
+
 .d-wrapper {
     width: 100%;
     gap: 15px;

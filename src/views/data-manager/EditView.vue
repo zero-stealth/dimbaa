@@ -27,8 +27,6 @@ watchEffect(() => {
 
 console.log(authStore.userName);
 
-
-
 const openCreate = () => {
   check.value = true;
   drawerStore.togglePop();
@@ -50,14 +48,13 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-    drawerID.value = null;
+      drawerID.value = null;
       break;
   }
 };
-
 </script>
 <template>
- <div class="main-container">
+  <div class="main-container">
     <div class="nav-top">
       <div class="main-details data-b">
         <h1>{{ authStore.userName }}</h1>
@@ -86,27 +83,32 @@ const openDrawer = (id) => {
           </CircleDraw>
         </div>
       </div>
-    </div> 
-     <!-- inner data content -->
-     <div class="inner-view-content edit-view">
+    </div>
+    <!-- inner data content -->
+    <div class="inner-view-content edit-view">
       <div class="edit-view-f">
-        <button type="submit" @click="assign" class="btn-f u-a e-u">Assign</button>
-        <button type="submit" @click="reset" class="btn-f u-r e-u e-a">Reset</button>
+        <button type="submit" @click="assign" class="btn-f u-a e-u">
+          Assign
+        </button>
+        <button type="submit" @click="reset" class="btn-f u-r e-u e-a">
+          Reset
+        </button>
       </div>
-     <form action="" >
-      <table>
-    <tr>
-        <th>Selected</th>
-    <th>Round</th>
-    <th>Date</th>
-   
-        <th>Number</th>
-    <th>Home Team</th>
-    <th>Away Team</th>
-    <th>Venue</th>
-    <th>City</th>
-    </tr>
-    <!-- <tr>
+      <form action="">
+        <div class="table-slide">
+          <table>
+            <tr>
+              <th>Selected</th>
+              <th>Round</th>
+              <th>Date</th>
+
+              <th>Number</th>
+              <th>Home Team</th>
+              <th>Away Team</th>
+              <th>Venue</th>
+              <th>City</th>
+            </tr>
+            <!-- <tr>
     <td><input type="checkbox" :name="team1" id=""></td>
     <td>1</td>
     <td>00/00/000</td>
@@ -116,11 +118,12 @@ const openDrawer = (id) => {
     <td>Jamhuri stadium</td>
     <td>Dodoma</td>
     </tr> -->
-     </table>
-     </form>
-      </div>    
-   <!-- side bar component for sorting  -->
-   <SideDrawer
+          </table>
+        </div>
+      </form>
+    </div>
+    <!-- side bar component for sorting  -->
+    <SideDrawer
       v-if="drawerID == 1"
       title="Sort by"
       class="sort-drawer"
@@ -168,30 +171,15 @@ const openDrawer = (id) => {
             </div>
             <div class="sort-label-i">
               <label for="username">Venue</label>
-              <input
-                type="radio"
-                id="one"
-                value="venue"
-                v-model="venue"
-              />
+              <input type="radio" id="one" value="venue" v-model="venue" />
             </div>
             <div class="sort-label-i">
               <label for="username">City</label>
-              <input
-                type="radio"
-                id="one"
-                value="city"
-                v-model="city"
-              />
+              <input type="radio" id="one" value="city" v-model="city" />
             </div>
             <div class="sort-label-i">
               <label for="username">Date</label>
-              <input
-                type="radio"
-                id="one"
-                value="date"
-                v-model="date"
-              />
+              <input type="radio" id="one" value="date" v-model="date" />
             </div>
           </div>
         </div>
@@ -220,8 +208,8 @@ const openDrawer = (id) => {
         </div>
       </div>
     </SideDrawer>
-      <!-- side bar component for filter  -->
-      <SideDrawer
+    <!-- side bar component for filter  -->
+    <SideDrawer
       v-else
       title="Filter by"
       class="sort-drawer"
@@ -236,7 +224,7 @@ const openDrawer = (id) => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="Showall"  />
+                <input type="checkbox" v-model="Showall" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -248,19 +236,19 @@ const openDrawer = (id) => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="incomplete"  />
+                <input type="checkbox" v-model="incomplete" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
           <!-- show component  -->
-              <div class="filter-list">
+          <div class="filter-list">
             <h2>Pending Profile</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="pending"  />
+                <input type="checkbox" v-model="pending" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -272,11 +260,12 @@ const openDrawer = (id) => {
     </SideDrawer>
     <div>
       <PopUP title="Edit match" v-if="check == true">
-      <EditMatch/>  
+        <EditMatch />
       </PopUP>
     </div>
   </div>
 </template>
 <style>
 @import "@/style/data.css";
+@import "@/style/main.css";
 </style>

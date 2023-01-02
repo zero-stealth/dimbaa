@@ -14,8 +14,8 @@
   .pop-inner {
     gap: 10px;
     display: flex;
-    flex-direction: column;
     overflow-y: scroll;
+    flex-direction: column;
   }
   
   .pop-inner-c {

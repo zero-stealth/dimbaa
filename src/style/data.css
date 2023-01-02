@@ -57,20 +57,6 @@
 }
 
 
-
-.inner-view-content th {
-    background-color: var(--background-color);
-    color: var(--secondary-color);
-    justify-content: end;
-    flex-direction: row;
-    display: flex;
-}
-
-.inner-view-content td {
-    display: flex;
-
-}
-
 /* edit view  */
 
 .edit-view {
@@ -87,7 +73,11 @@
 
 .edit-table2 {
     display: none;
-    border: 2px solid red;
+}
+
+.edit-view th {
+    color: var(--secondary-color);
+    background-color: var(--background-color);
 }
 
 

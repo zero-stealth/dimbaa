@@ -34,6 +34,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="specific-content">
+    <div class="table-slide">
       <table class="tb-specific">
         <tr>
             <th>Stadium name</th>
@@ -52,6 +53,7 @@ onMounted(async () => {
             <td>{{ capacity }}</td>
         </tr>
       </table>
+    </div>
     </div>
 </template>
 <style>

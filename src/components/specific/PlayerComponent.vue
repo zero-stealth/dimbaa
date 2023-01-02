@@ -34,6 +34,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="specific-content">
+    <div class="table-slide">
       <table class="tb-specific">
         <tr>
             <th>Player name</th>
@@ -49,6 +50,7 @@ onMounted(async () => {
             <td>{{ signature }}</td>
         </tr>
       </table>
+    </div>
     </div>
 </template>
 <style>

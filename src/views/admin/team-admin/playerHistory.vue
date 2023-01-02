@@ -5,7 +5,6 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import CreatePlayer from "@/components/form/createform/CreatePlayer.vue";
@@ -157,7 +156,8 @@ onMounted(async () => {
           class="player-pic"
         />
       </div> -->
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
           <th>POs</th>
           <th>Nationality</th>
@@ -176,6 +176,7 @@ onMounted(async () => {
           </td>
         </tr>
       </table>
+      </div>
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer

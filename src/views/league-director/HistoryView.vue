@@ -58,8 +58,8 @@ onMounted(async () => {
 <template>
   <component :is="activePage" v-if="showPage == true" />
   <div class="upcoming-container-r" v-else>
-    <div class="upcoming-wrapper-r">
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
           <th>Round</th>
           <th>Number</th>
@@ -90,10 +90,10 @@ onMounted(async () => {
         </tr>
         
       </table>
+      </div>
     </div>
     <div>
     </div>
-  </div>
 </template>
 <style>
 @import "@/style/upcoming.css";

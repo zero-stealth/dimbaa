@@ -5,7 +5,6 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import PlayerDetails from "@/components/specific/PlayerComponent.vue";
@@ -119,13 +118,11 @@ onMounted(async () => {
     <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
           <th>Player name</th>
           <th>Jersey number</th>
-          <th class="mobile-hide-h"  @click="showSpecific(id)">
-            <ArrowIcon class="mobile-hide icon" />
-          </th>
           <th>Signature</th>
           <!-- <th>Stadium</th> -->
           <th>action</th>
@@ -152,6 +149,8 @@ onMounted(async () => {
           </td>
         </tr>
       </table>
+      </div>
+   
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer

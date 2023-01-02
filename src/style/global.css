@@ -1,7 +1,7 @@
 @media screen {
   * {
     /* dynamic style */
-    --secondary-color: rgb(53, 44, 53);
+    --secondary-color: rgb(61, 54, 61);
     --light-color: rgb(244, 240, 244);
     --dark-color: rgb(182, 179, 182);
     --primary-color: rgb(240, 114, 36);

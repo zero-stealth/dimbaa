@@ -7,7 +7,6 @@ import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import userDetails from "@/components/specific/userComponent.vue";
 import CreateUser from "@/components/form/createform/CreateUser.vue";
@@ -130,38 +129,37 @@ onMounted(async () => {
     <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
       <h2>User list</h2>
-      <table>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th class="mobile-hide-h"  @click="showSpecific(id)">
-          <ArrowIcon class="mobile-hide icon"/>
-          </th>
-          <th>mobile</th>
-          <!-- <th>Stadium</th> -->
-          <th>action</th>
-        </tr>
-        <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-        <tr
-        v-for="({ id ,name, email, mobile }, index) in searchResult"
+      <div class="table-slide">
+        <table>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>mobile</th>
+            <!-- <th>Stadium</th> -->
+            <th>action</th>
+          </tr>
+          <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
+          <tr
+            v-for="({ id, name, email, mobile }, index) in searchResult"
             :key="index"
-        >
-          <td>{{ name }}</td>
-          <td>{{ email }}</td>
-          <td>{{ mobile }}</td>
+          >
+            <td>{{ name }}</td>
+            <td>{{ email }}</td>
+            <td>{{ mobile }}</td>
 
-          <td>
-            <div class="table-link-c">
-              <div class="table-link">
-                <a href="#" @click="showSpecific(id)">View</a>
+            <td>
+              <div class="table-link-c">
+                <!-- <div class="table-link">
+                  <a href="#" @click="showSpecific(id)">View</a>
+                </div> -->
+                <div class="table-link">
+                  <a href="#" @click="openEdit">Edit</a>
+                </div>
               </div>
-              <div class="table-link">
-                <a href="#" @click="openEdit">Edit</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer
@@ -235,7 +233,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="showall"  />
+                <input type="checkbox" v-model="showall" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -247,7 +245,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="superadmin"  />
+                <input type="checkbox" v-model="superadmin" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -259,7 +257,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="teamAdmin"  />
+                <input type="checkbox" v-model="teamAdmin" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -271,7 +269,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="teamManager"  />
+                <input type="checkbox" v-model="teamManager" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -283,7 +281,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="general"  />
+                <input type="checkbox" v-model="general" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -295,7 +293,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="referee"  />
+                <input type="checkbox" v-model="referee" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -307,7 +305,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="match"  />
+                <input type="checkbox" v-model="match" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -319,7 +317,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="assessor"  />
+                <input type="checkbox" v-model="assessor" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

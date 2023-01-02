@@ -7,7 +7,6 @@ import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import TeamDetails from "@/components/specific/TeamComponent.vue";
 import CreateTeam from "@/components/form/createform/CreateTeam.vue";
@@ -124,13 +123,11 @@ onMounted(async () => {
     <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
           <th>Team name</th>
           <th>Region</th>
-          <th class="mobile-hide-h" @click="showSpecific(id)">
-            <ArrowIcon class="mobile-hide icon" />
-          </th>
           <th>Stadium id</th>
           <!-- <th>Stadium</th> -->
           <th>action</th>
@@ -146,9 +143,9 @@ onMounted(async () => {
 
           <td>
             <div class="table-link-c">
-              <div class="table-link">
+              <!-- <div class="table-link">
                 <a href="#" @click="showSpecific(id)">View</a>
-              </div>
+              </div> -->
               <div class="table-link">
                 <a href="#" @click="openEdit">Edit</a>
               </div>
@@ -156,6 +153,7 @@ onMounted(async () => {
           </td>
         </tr>
       </table>
+      </div>
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer

@@ -5,7 +5,6 @@ import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
@@ -129,13 +128,11 @@ onMounted(async () => {
         <span>Stadium Name: </span>
         <a href="#"  @click="openEdit">Change</a>
       </div>
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
           <th>Team name</th>
           <th>Region</th>
-          <th class="mobile-hide-h"  @click="showSpecific(id)">
-          <ArrowIcon class="mobile-hide icon"/>
-          </th>
           <!-- <th>Stadium</th> -->
           <th>action</th>
         </tr>
@@ -155,6 +152,7 @@ onMounted(async () => {
           </td>
         </tr>
       </table>
+      </div>
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer

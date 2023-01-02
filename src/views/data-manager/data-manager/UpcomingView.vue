@@ -59,7 +59,8 @@ onMounted(async () => {
   <component :is="activePage" v-if="showPage == true" />
   <div class="upcoming-container-r" v-else>
     <div class="upcoming-wrapper-r">
-      <table>
+      <div class="table-slide">
+        <table>
         <tr>
             <th>Round</th>
             <th>Number</th>
@@ -87,6 +88,7 @@ onMounted(async () => {
           </td>
         </tr>
       </table>
+      </div>
     </div>
     <div></div>
   </div>

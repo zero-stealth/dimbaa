@@ -1,6 +1,7 @@
 @media screen {
   .main-container {
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     overflow-y: auto;
   }
 
@@ -216,57 +217,44 @@
     height: 100%;
   }
 
-  table,
-  th,
-  tr {
-    border-collapse: collapse;
+  /* table css  */
+
+  .table-slide {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
   }
 
-  th {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 0.6rem;
-    font-weight: 300;
-    padding: 20px 0;
+  table {
+    width: 100%;
   }
 
-  th:last-child {
-    text-align: center;
-  }
+  tr:nth-child(even) {
+    background-color: var(--light-color);
 
-  tr {
-    /* text-align: start; */
-    padding: 10px;
-    font-size: 0.5rem;
-    text-align: center;
-    text-transform: capitalize;
-    /* background-color: var(-light-color); */
   }
 
   td {
-    visibility: hidden;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    padding: 8px 10px;
+    font-size: .8rem;
   }
-
-
+  
   th {
-    color: var(--secondary-color);
-    background-color: var(--background-color);
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: start;
+    text-transform: capitalize;
+    color:var(--background-color);
+    background-color: var(--primary-color);
   }
 
-  th:nth-child(n+4) {
-    visibility: hidden;
+  
 
-  }
+  /* table css  */
 
-  .mobile-hide {
-    color: var(--secondary-color);
-  }
-
-  .mobile-hide-h {
-    display: flex;
-  }
 
   .table-link-c {
     display: flex;
@@ -590,35 +578,6 @@ input:checked + .slider:before {
 
   .mobile-hide-h {
     display: none;
-  }
-
-  th {
-    text-align: start;
-    font-size: 0.8rem;
-    color: var(--background-color);
-    background-color: var(--primary-color);
-  }
-
-  th:first-child {
-    padding-left: 5px;
-  }
-
-  th:nth-child(n+4) {
-    visibility: visible;
-
-  }
-
-
-  tr {
-    text-align: start;
-    font-size: 0.8rem;
-    border-bottom: 1px solid var(--light-color);
-
-  }
-
-  td {
-    visibility: visible;
-    padding: 15px 0;
   }
 
     /* filter css  */  

@@ -34,6 +34,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="specific-content">
+    <div class="table-slide">
       <table class="tb-specific">
         <tr>
           <th>Username</th>
@@ -55,6 +56,7 @@ onMounted(async () => {
           <td>{{ role }}</td>
         </tr>
       </table>
+    </div>
     </div>
 </template>
 <style>
