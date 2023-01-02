@@ -139,7 +139,10 @@ onMounted(async () => {
           <th>action</th>
         </tr>
         <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-        <tr>
+        <tr
+        v-for="({ id ,name, email, mobile }, index) in searchResult"
+            :key="index"
+        >
           <td>{{ name }}</td>
           <td>{{ email }}</td>
           <td>{{ mobile }}</td>

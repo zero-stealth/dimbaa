@@ -64,7 +64,7 @@ const openDrawer = (id) => {
   }
 };
 //api
-const seachResult = computed(() => {
+const searchResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
 });
 
@@ -133,7 +133,7 @@ onMounted(async () => {
           </tr>
         <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
           <tr
-          v-for="({ id ,name, region, stadium_id }, index) in seachResult"
+          v-for="({ id ,name, region, stadium_id }, index) in searchResult"
             :key="index"
           >
             <td>{{ name }}</td>
