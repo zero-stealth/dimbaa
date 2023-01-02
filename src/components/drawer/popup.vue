@@ -26,16 +26,25 @@ const props = defineProps({
       :class="[open == false ? 'Close' : '']"
       :style="{ width: `${props.width}%`, height: `${props.height}%`}"
     >
-      <div class="pop-up-details">
-        <h1>{{ props.title }}</h1>
-        <CircleDrawer class="pop-circle" @click="drawerStore.togglePop">
+    <div class="pop-inner">
+    <div class="pop-inner-c">
+      <div class="pop-circle-container">
+      <CircleDrawer class="pop-circle" @click="drawerStore.togglePop">
           <ExitIcon class="icon pop-exit-icon" />
         </CircleDrawer>
+    </div>
+      <div class="pop-up-details">
+        <h1>{{ props.title }}</h1>
       </div>
+    </div>
+    <div class="pop-sec-d">
       <slot></slot>
+    </div>
+    </div>
     </div>
   </Teleport>
 </template>
 <style>
 @import "@/style/popup.css";
 </style>
+

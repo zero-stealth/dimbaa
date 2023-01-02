@@ -4,32 +4,50 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 90%;
     margin: auto;
     position: fixed;
     overflow: hidden;
-    padding: 10px 30px;
-    border-radius:12px;
-    width: fit-content;
-    box-shadow: var(--background-shadow);
+    overflow-y: auto;
     background-color: var(--light-color);
+  }
+  
+  .pop-inner {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  
+  .pop-inner-c {
+    background-color: var(--background-color);
+    box-shadow: var(--search-shadow);
+    border-radius: 5px;
+  }
+  
+
+  .pop-circle-container {
+    display: flex;
+    justify-content: end;
+  }
+  
+  .pop-up-details {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .pop-up-details h1 {
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+
+  .pop-sec-d {
+    padding: 10px;
   }
 
   .Close {
     display: none;
-  }
-
-  .pop-up-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .pop-up-details h1 {
-    color: var(--primary-color);
-    text-transform: capitalize;
-    text-align: center;
-    font-size: 1.2rem;
   }
 
   .pop-circle {
@@ -39,8 +57,17 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-    .pop-up-details h1 {
-        font-size: 1.5rem;
-      }
+
+  .pop-container {
+    height: 90%;
+    border-radius: 10px;
+    width: fit-content;
+  }
+
+  .pop-inner-c {
+    background-color: var(--light-color);
+    box-shadow: none;
+    
+  }
 
 }

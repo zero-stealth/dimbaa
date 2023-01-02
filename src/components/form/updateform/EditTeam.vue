@@ -5,14 +5,15 @@ import { ref, onMounted, computed } from "vue";
 const Stadium = ref("");
 const TeamName = ref("");
 const Region = ref("");
-
 const data = ref([]);
 const search = ref("");
 
 //api
-const seachResult = computed(() => {
+const searchResult = computed(() => {
   return data.value.filter((d) => d.name.includes(search.value));
 });
+
+console.log(data.value)
 
 const getDetails = () => {
   reset();
@@ -97,9 +98,7 @@ onMounted(async () => {
             <th>mobile</th>
           </tr>
           <tr
-            v-for="(
-              { first_name, middle_name, jersey_number, email, mobile }, index
-            ) in searchResult"
+          v-for="({ first_name, middle_name,  jersey_number, mobile, email }, index) in searchResult"
             :key="index"
           >
             <td>{{ `${first_name} ${middle_name}` }}</td>
