@@ -56,6 +56,11 @@
     flex-direction: column;
 }
 
+.inner-view-content th {
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+}
+
 
 .inner-view-content h1 {
     font-size: 1.4rem;
@@ -144,6 +149,7 @@
 
     .data-b h1 {
         align-items: flex-start;
+        justify-content: flex-start;
     }
     
     

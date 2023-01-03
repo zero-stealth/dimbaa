@@ -14,7 +14,10 @@
   display: flex;
 }
 
-
+.upcoming-container-r th {
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+}
 
 .upcoming-wrapper-r h1 {
   text-align: center;
