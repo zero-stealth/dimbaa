@@ -3,7 +3,7 @@ import issue from "./IssueView.vue";
 import match from "./matchView.vue";
 import color from "./colorView.vue";
 import final from "./finalView.vue";
-import current from "./CurrentView.vue";
+import current from "./currentView.vue";
 import history from "./historyView.vue";
 import condition from "./condtionView.vue";
 import challenge from "./challengeView.vue";
