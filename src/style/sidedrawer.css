@@ -29,7 +29,7 @@
     background-color: var(--light-color);
     box-shadow:none;
     position: fixed;
-    opacity: 20%;
+    opacity: 50%;
     top: 40px;
 }
 
