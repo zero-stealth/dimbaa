@@ -3,7 +3,7 @@
     <form action="" class="d-form">
     <div class="d-container1">
       <div class="d-wrapper">
-      <label for="" class="d-label">Competion</label>
+      <label for="" class="d-label">Competition</label>
       <input type="text" placeholder="predefined" class="d-input">
     </div>
     <div class="d-wrapper">
@@ -38,9 +38,9 @@
     </div>
     </div>
     </form>
-    <div class="detail-btn-f ">
-        <button type="submit" class="btn-f u-a">Update</button>
-        <button type="submit" @click="reset" class="btn-f u-r e-a">Reset</button>
+    <div class="general-btn">
+        <button type="submit" class="btn-g g-a">Update</button>
+        <button type="submit" @click="reset" class="btn-g g-u">Reset</button>
       </div>
   </div>
 </template>

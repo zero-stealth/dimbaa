@@ -14,14 +14,6 @@ import form12 from "./general-form/form12.vue";
 import form13 from "./general-form/form13.vue";
 import detail from "./general-form/detailsView.vue";
 import { useDrawerStore } from "@/stores/drawer";
-import PopUP from "@/components/drawer/popup.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
-import MenuIcon from "@/components/icons/MenuIcon.vue";
-import SearchIcon from "@/components/icons/SearchIcon.vue";
-import FilterIcon from "@/components/icons/FilterIcon.vue";
-import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import CreateUser from "@/components/form/createform/CreateUser.vue";
-import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import { useAuthStore } from "@/stores/auth.js";
 import { shallowRef } from "vue";
 
@@ -34,44 +26,11 @@ const authStore = useAuthStore();
 const drawerStatus = ref(null);
 const open = ref(null);
 const data = ref([]);
-const search = ref("");
-const check = ref(false);
-
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
-
-console.log(authStore.userName);
-
-
-
-const openCreate = () => {
-  check.value = true;
-  drawerStore.togglePop();
-};
-
-const openEdit = () => {
-  check.value = false;
-  drawerStore.togglePop();
-};
-
-const openDrawer = (id) => {
-  switch (id) {
-    case 1:
-      drawerID.value = 1;
-      drawerStore.toggleDrawer();
-      break;
-    case 2:
-      drawerID.value = 2;
-      drawerStore.toggleDrawer();
-      break;
-    default:
-    drawerID.value = null;
-      break;
-  }
-};
 
 onMounted(async () => {
   const options = {
@@ -99,10 +58,8 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>General Coordinator Form</h1>
-        <span>General Coordinator Form</span>
-      </div>
-      <div class="main-wrapper">
+        <h2>General Coordinator Form</h2>
+        <span>{{ authStore.userName }}</span>
       </div>
     </div>
     <div class="data-content-r">

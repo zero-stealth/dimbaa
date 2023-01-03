@@ -5,7 +5,7 @@ import leaderPlayers from "./leadersPlayers.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
-import startingPlayers from "./detailsView.vue";
+import startingPlayers from "./StartingPlayers.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import substitutePlayers from "./substitutePlayers.vue";
@@ -68,7 +68,7 @@ const openDrawer = (id) => {
       <div class="main-details data-b">
         <h1>{{ authStore.userName }}</h1>
         <span>{{ authStore.userName }}</span>
-        <span>Data manager(organiser)</span>
+        <span>Line up form</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

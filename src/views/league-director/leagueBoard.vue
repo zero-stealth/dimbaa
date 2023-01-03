@@ -66,7 +66,6 @@ const openDrawer = (id) => {
       <div class="main-details data-b">
         <h1>{{ authStore.userName }}</h1>
         <span>{{ authStore.userName }}</span>
-        <span>league director</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

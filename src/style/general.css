@@ -47,12 +47,35 @@
 }
 
 .detail-btn-f {
-    width: 30%;
-    gap: 100px;
+    gap: 20%;
+    padding:40px 0;
+    display: flex;
+}
+
+.general-btn {
+    width: 100%;
     display: flex;
     padding: 50px 0;
-    justify-content: space-around;
+    justify-content: space-between;
 }
+
+.btn-g {
+    border-radius: 5px;
+    padding: 10px 40px;
+}
+
+.g-a {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.g-u {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    background-color: var(--background-color);
+}
+
+
 }
 
 /* using it as global style for larger devices  */
@@ -82,7 +105,10 @@
     background-color: var(--light-color);
 }
 
-.detail-btn-f {
-    padding: 50px;
+.general-btn {
+    padding: 80px 0;
+    justify-content: space-evenly;
 }
+
+
 }

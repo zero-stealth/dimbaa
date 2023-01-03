@@ -59,9 +59,10 @@
 @media only screen and (min-width: 48em) {
 
   .pop-container {
-    height: 90%;
     border-radius: 10px;
     width: fit-content;
+    height: 80%;
+    padding:0 10px;
   }
 
   .pop-inner-c {

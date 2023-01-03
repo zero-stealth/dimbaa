@@ -26,8 +26,20 @@
 }
 
 .data-b {
-    text-align: center ;
+    width: 100%;
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+
 }
+
+.data-b h1 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 2px solid red;
+}
+
 
 .data-b:first-child {
     color: var(--primary-color);
@@ -83,9 +95,9 @@
 
 
 .btn-f {
+    padding: 10px 50px;
     outline: none;
     border: none;
-    padding: 10px 50px;
     cursor: pointer;
     border-radius: 5px;
   
@@ -118,6 +130,7 @@
         
 
 
+
     .data-nav {
         width: 30%;
     }
@@ -126,6 +139,11 @@
         justify-content: end;
         
     }
+
+    .data-b h1 {
+        align-items: flex-start;
+    }
+    
     
     
 }
