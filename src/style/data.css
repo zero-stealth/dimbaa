@@ -42,7 +42,24 @@
 
 }
 
+.team-b-txt {
+    gap: 10px;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.team-b-txt h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+
+.team-b-txt h4 {
+    font-size: 1rem;
+    font-weight: 300;
+}
 .data-b:first-child {
     color: var(--primary-color);
 }
@@ -136,6 +153,9 @@
 @media only screen and (min-width: 48em) {
         
 
+    .team-b-txt {
+        display: flex;
+    }
 
 
     .data-nav {

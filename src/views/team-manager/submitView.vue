@@ -1,34 +1,36 @@
+<script>
+</script>
 <template>
-  <div class="detail-container">
-    <form action="" class="d-form  detail-view">
-    <div class="d-container1">
-      <div class="d-wrapper">
-      <label for="" class="d-label">Team for</label>
-      <input type="text" placeholder="type here" class="d-input">
+  <div class="form1-container r9">
+    <!-- form input container  -->
+    <h1>I confirm that this form has the correct team mentioned playing with</h1>
+    <div class="form9-r">
+    <label for="">Team of</label>
+    <input type="text" class="form1-input i-r8" placeholder="Type here">
     </div>
-    <div class="d-wrapper">
-      <label for="" class="d-label">Current Date</label>
-      <input type="date" placeholder="predefined" class="d-input">
+    <div class="form9-r">
+    <label for="">Current Date</label>
+    <input type="text" class="form1-input i-r8"  placeholder="Type here">
     </div>
-    <div class="d-wrapper">
-      <label for="" class="d-label">Manager Signature</label>
-      <input type="text" placeholder="predefined" class="d-input">
+    <!-- form input container  -->
+      <div class="form9-r">
+    <label for="">Manager's Signature</label>
+    <input type="text" class="form1-input i-r8"  placeholder="Type here">
     </div>
- 
-    <div class="d-wrapper">
-      <label for="" class="d-label">Coach Signature</label>
-      <input type="text" placeholder="predefined" class="d-input">
+    <div class="form9-r">
+    <label for="">Coach's Signature</label>
+    <input type="text" class="form1-input i-r8"  placeholder="Type here">
     </div>
-    </div>
-    </form>
-    <div class="general-btn">
-        <button type="submit" class="btn-g g-a">Update</button>
-        <button type="submit" @click="reset" class="btn-g g-u">Reset</button>
+    <!-- form input container  -->
+    <div class="btn1-center">
+      <div class="form1-btn">
+        <button class="btn1 btn1-a">Reset</button>
+        <button class="btn1 btn1-b hide-m">Save draft</button>
+        <button class="btn1 btn1-b">Submit</button>
       </div>
+    </div>
   </div>
 </template>
-<script setup>
-</script>
 <style>
-  @import "@/style/general.css"
+@import "@/style/report.css";
 </style>

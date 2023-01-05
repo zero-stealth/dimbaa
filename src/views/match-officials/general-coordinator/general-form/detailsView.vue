@@ -38,10 +38,14 @@
     </div>
     </div>
     </form>
-    <div class="general-btn">
-        <button type="submit" class="btn-g g-a">Update</button>
-        <button type="submit" @click="reset" class="btn-g g-u">Reset</button>
+    <!-- input container  -->
+  <div class="btn1-center">
+      <div class="form1-btn">
+        <button class="btn1 btn1-a">Reset</button>
+        <button class="btn1 btn1-b hide-m">Update</button>
+        <button class="btn1 btn1-b">Next</button>
       </div>
+    </div>
   </div>
 </template>
 <script setup>

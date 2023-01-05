@@ -1,5 +1,7 @@
 <script setup>
 import details from "./detailsView.vue";
+import Upcoming from "./UpcomingView.vue";
+import History from "./historyView.vue";
 import submitPlayers from "./submitView.vue";
 import leaderPlayers from "./leadersPlayers.vue";
 import { useDrawerStore } from "@/stores/drawer";
@@ -16,7 +18,7 @@ import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
-const dataPage = shallowRef(details);
+const dataPage = shallowRef(Upcoming);
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
@@ -93,9 +95,27 @@ const openDrawer = (id) => {
         </div>
       </div>
     </div>
+    <div class="team-b-txt">
+      <h1>Line Up form</h1>
+    <h4>Orodha ya wachezaji</h4>
+    </div>  
       <div class="data-content-r">
       <!-- data nav  -->
       <div class="data-nav">
+        <button
+          class="data-n-b"
+          @click="dataPage = Upcoming"
+          :class="[dataPage == Upcoming ? 'datapage' : '']"
+        >
+          Upcoming
+        </button>
+        <button
+          class="data-n-b"
+          @click="dataPage = History"
+          :class="[dataPage == History ? 'datapage' : '']"
+        >
+          History
+        </button>
         <button
           class="data-n-b"
           @click="dataPage = details"
