@@ -1,7 +1,52 @@
+<script setup>
+import FormA from "./9Form/formA.vue";
+import FormB from "./9Form/formB.vue";
+import FormC from "./9Form/formC.vue";
+import { ref, onMounted, computed, watchEffect } from "vue";
+import { shallowRef } from "vue";
+
+const refereePage = shallowRef(FormA);
+</script>
 <template>
-  <div class="notification-container">
-    <h1>team</h1>
+  <div class="form1-container r1">
+    <!-- inner content  -->
+    <div class="referee-inner-x">
+      <component :is="refereePage" />
+    </div>
+    <!-- inner content  -->
+    <div class="report-nav">
+      <button
+        class="form-n-b"
+        @click="refereePage = FormA"
+        :class="[refereePage == FormA ? 'datapage' : '']"
+      >
+        A
+      </button>
+      <button
+        class="form-n-b"
+        @click="refereePage = FormB"
+        :class="[refereePage == FormB ? 'datapage' : '']"
+      >
+        B
+      </button>
+      <button
+        class="form-n-b"
+        @click="refereePage = FormC"
+        :class="[refereePage == FormC ? 'datapage' : '']"
+      >
+        C
+      </button>
+    </div>
+  </div>
+  <div class="btn1-center">
+    <div class="form1-btn">
+      <button class="btn1 btn1-a">Reset</button>
+      <button class="btn1 btn1-b hide-m">Save draft</button>
+      <button class="btn1 btn1-b">Next</button>
+    </div>
   </div>
 </template>
-<script setup></script>
-<style></style>
+<style>
+@import "@/style/form.css";
+@import "@/style/report.css";
+</style>
