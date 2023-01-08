@@ -21,6 +21,34 @@
     flex-direction: column;
   }
 
+  .second-t {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .second-t h2 {
+    font-size: 1.2rem;
+  }
+
+  .icon-second {
+    left: -50px;
+    position: relative;
+    transform: scaleX(-1);
+  }
+
+  .icon-s {
+    left: -30px;
+    position: relative;
+    transform: scaleX(-1);
+  }
+
+  .second-btn {
+    position: relative; 
+    background-color: var(--background-color);
+  }
+
   .main-details h1 {
     display: none;
     font-weight: bold;
@@ -158,6 +186,12 @@
     text-align: center;
   }
 
+  .general-re {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
   /* player history  */
 
   .team-player-x {
@@ -258,7 +292,9 @@
 
 
   .table-link-c {
+    gap: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
   }
 
@@ -422,7 +458,6 @@ input:checked + .slider:before {
 @media only screen and (min-width: 48em) {
   .main-container {
     padding: 10px;
- 
 
   }
 
@@ -440,6 +475,11 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
   }
+
+  .general-re span {
+    display: none;
+  }
+
 
   .main-details h1 {
     display: flex;
@@ -463,6 +503,11 @@ input:checked + .slider:before {
     justify-content: space-between;
   }
 
+  .second-m {
+    display: none;
+  }
+
+  
   .team-list-c h3 {
     font-size: 1rem;
   }
@@ -517,6 +562,10 @@ input:checked + .slider:before {
     background-color: var(--background-color);
   }
 
+  .icon-second {
+    left: -350px;
+  }
+
   .form-main .icon {
     display: none;
   }
@@ -558,6 +607,15 @@ input:checked + .slider:before {
     padding: 5px;
 
   }
+
+  .second-t h2 {
+    font-size: 1.4rem;
+  }
+
+  .icon-s {
+    left: -300px;
+  }
+
   
   .user-content h2 {
     height: 50px;

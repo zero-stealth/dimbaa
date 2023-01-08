@@ -8,6 +8,12 @@
 
 }
 
+.detail-container h2 {
+    color: var(--primary-color);
+    padding-bottom: 30px;
+    font-size: 1rem;
+}
+
 .d-label {
     display: flex;
     font-size: .8rem;

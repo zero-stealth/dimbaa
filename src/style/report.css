@@ -36,7 +36,6 @@
         flex-wrap: wrap;
     }
 
-
     .form-n-b {
         width: 40px;
         height: 40px;
@@ -136,12 +135,9 @@
        
     .f12-contain {
         gap: 20px;
+        width: 100%;
         display: flex;
         flex-direction: column;
-    }
-
-    .i-r12 {
-        width: 50%;
     }
 
     .f12-divide {
@@ -151,9 +147,9 @@
     }
 
     .f12-r {
-        gap: 20px;
-        width: 100%;
+        gap: 10px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
     }
 
@@ -217,7 +213,7 @@
     }
 
     .f13-f {
-        width: 40%;
+        width: 50%;
         justify-content: space-between;
     }
 
@@ -226,6 +222,7 @@
     }
     
     .f12-contain {
+        width: fit-content;
         flex-direction: row;
     }
 
@@ -239,6 +236,10 @@
         }
 
         /* css for Form 10 */
+
+    .f12-r {
+        flex-direction: row;
+    }
 
     .r-input {
         text-align: center;

@@ -1,27 +1,26 @@
 <script setup>
-import issue from "./IssueView.vue";
-import match from "./matchView.vue";
-import color from "./colorView.vue";
-import final from "./finalView.vue";
-import current from "./currentView.vue";
 import history from "./historyView.vue";
-import condition from "./condtionView.vue";
-import challenge from "./challengeView.vue";
-import operations from "./operationView.vue";
-import cooperation from "./cooperationView.vue";
-import { useDrawerStore } from "@/stores/drawer";
+import pre from "./match-pre.vue";
+import post from "./match-post.vue";
+import upcoming from "./upcomingView.vue";
 import { useAuthStore } from "@/stores/auth.js";
-import { shallowRef } from "vue";
+import { useDrawerStore } from "@/stores/drawer";
+import MenuIcon from "@/components/icons/MenuIcon.vue";
+import FilterIcon from "@/components/icons/FilterIcon.vue";
+import SearchIcon from "@/components/icons/SearchIcon.vue";
+import SideDrawer from "@/components/drawer/SideDrawer.vue";
+import CircleDraw from "@/components/drawer/CircleDrawer.vue";
+import { ref, watchEffect, shallowRef } from "vue";
 
-import { ref, onMounted, computed, watchEffect } from "vue";
-import axios from "axios";
-
-const generalPage = shallowRef(current);
+const dataPage = shallowRef(upcoming);
 const drawerStore = useDrawerStore();
+const postPage = shallowRef(post);
+const prePage = shallowRef(pre);
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
+const drawerID = ref(null);
 const open = ref(null);
-const data = ref([]);
+const search = ref("");
 
 // update on changes
 watchEffect(() => {
@@ -29,117 +28,199 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-onMounted(async () => {
-  const options = {
-    method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/users",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNWZhMGRiODY3YTM0NTg3MTg2ZDk3MDdiMDBmYzliYWM4M2QyZjAzOWM2ZjhjZjVlMTRlMWUwY2UxZGYxYmRhNDdiYWYxNWEyMjJhMDhkMmIiLCJpYXQiOjE2NzExOTM1MzguNTU0MTM0LCJuYmYiOjE2NzExOTM1MzguNTU0MTM2LCJleHAiOjE2ODY5MTgzMzguNTQ4NTAxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.kYBwzo9ZoKTL9GG_j9iMpswww1UriiHYPufljSVJo_5QyLiJrI4Wb2k0sPD7iDb0SmlrFQnUdSI8knqLUZBe2Sd2bC4r4c_otOdYLnQAyxmM-0fJh_jVIGYgCjFF7msWOWsTcyl8fg7-Uj3yrsAxoxOdQW-L28dx4-hFAZUR9eOs2XCwU0cf9TUnGdqxvUm_wFBBou509NtZec1bmaAgUbG9GSpAfk7mfmuUOU1u7ElrOTFyvvN4bAI_70DpK3XUDJ0Nw81YsCO0_kp_Nr1hAZ2fmcIPXe-xKvwSPfp_7cMmT6HqV9MdQwPK7-ISoJq_eTy2fGvfHDQrWyKLDyKp8W0Fs5z6PURwT2hFZ6tV3jxCMH-sAzgTY72xXdb3EjG4etbbyc-wAWXmPQ9WB5SeOms2Xqm4M41XQbNeyK-qy2jYcDQLnYVnRZihWdBTLcBf64_DFuMWzRhvu4hTL8_fVu94whAWW-Oi9-s7BKRftDf3paExjJtEaT6-kUDnzRpe_Yfw9nfWDxA8LYUUsukYDDqvSshVRk5eG6kp3K169pppD7gAKakpORggebMgEHn4DGX7ieowJk3XCfDrIxZ5EVoX3HGZjamaRPmnl-bX2lvBTjBm3uFSGrLnMbckzS4fdpYK3YnNmyBESm9-sOCQ-5M3Nf6jsFQH6FdeWnGoo0E",
-    },
-  };
 
-  axios
-    .request(options)
-    .then(function (response) {
-      data.value = response.data.users;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
+const openDrawer = (id) => {
+  switch (id) {
+    case 1:
+      drawerID.value = 1;
+      drawerStore.toggleDrawer();
+      break;
+    case 2:
+      drawerID.value = 2;
+      drawerStore.toggleDrawer();
+      break;
+    default:
+    drawerID.value = null;
+      break;
+  }
+};
+
 </script>
 <template>
-  <div class="main-container">
+  <div v-if="drawerStore.showPost == true">
+    <component :is="postPage" />
+  </div>
+  <div v-else-if="drawerStore.showPre == true">
+    <component :is="prePage" />
+  </div>
+ <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details data-b">
-        <h2>Pre-Match Report</h2>
-        <span>{{ authStore.userName }}</span>
+        <h1>{{ authStore.userName }}</h1>
+        <span>Referee Form</span>
+      </div>
+      <div class="main-wrapper">
+        <form action="" class="form-main">
+          <SearchIcon class="icon icon-search" />
+          <input
+            type="text"
+            v-model="search"
+            class="main-search"
+            placeholder="Search Here"
+          />
+        </form>
+        <div class="circle-wrapper">
+          <CircleDraw class="circle-c" @click="openDrawer(1)">
+            <MenuIcon class="icon icon-menu" />
+          </CircleDraw>
+          <CircleDraw class="circle-c" @click="openDrawer(2)">
+            <FilterIcon class="icon icon-menu" />
+          </CircleDraw>
+        </div>
       </div>
     </div>
-    <div class="data-content-r">
+      <div class="data-content-r">
       <!-- data nav  -->
-      <div class="data-nav">
         <button
           class="data-n-b"
-          @click="generalPage = current"
-          :class="[generalPage == current ? 'datapage' : '']"
+          @click="dataPage = upcoming"
+          :class="[dataPage == upcoming ? 'datapage' : '']"
         >
-          Current
+          Upcoming
         </button>
         <button
           class="data-n-b"
-          @click="generalPage = history"
-          :class="[generalPage == history ? 'datapage' : '']"
+          @click="dataPage = history"
+          :class="[dataPage == history ? 'datapage' : '']"
         >
           History
         </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = match"
-          :class="[generalPage == match ? 'datapage' : '']"
-        >
-          Match
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = condition"
-          :class="[generalPage == condition ? 'datapage' : '']"
-        >
-          Conditions
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = operations"
-          :class="[generalPage == operations ? 'datapage' : '']"
-        >
-          Operations
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = cooperation"
-          :class="[generalPage == cooperation ? 'datapage' : '']"
-        >
-          CooperationS
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = color"
-          :class="[generalPage == color ? 'datapage' : '']"
-        >
-          Color
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = issue"
-          :class="[generalPage == issue ? 'datapage' : '']"
-        >
-          Issue
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = challenge"
-          :class="[generalPage == challenge ? 'datapage' : '']"
-        >
-          Challenges
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = final"
-          :class="[generalPage == final ? 'datapage' : '']"
-        >
-          Final
-        </button>
       </div>
-    </div>
-    <!-- side bar component for sorting  -->
-    <!-- inner data content -->
-    <div class="inner-data-content">
-      <component :is="generalPage" />
-    </div>
-    <div></div>
+     <!-- inner data content -->
+     <div class="inner-data-content">
+        <component :is="dataPage" />
+      </div>    
+   <!-- side bar component for sorting  -->
+   <SideDrawer
+      v-if="drawerID == 1"
+      title="Sort by"
+      class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
+    >
+      <div class="sort-user-c">
+        <div class="sort-wrapper">
+          <h1>Parameter</h1>
+          <div class="sort-user-i">
+            <div class="sort-label-i">
+              <label for="username">Home Team</label>
+              <input
+                type="radio"
+                id="one"
+                value="homeTeam"
+                v-model="homeTeam"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">Away Team</label>
+              <input
+                type="radio"
+                id="one"
+                value="awayTeam"
+                v-model="awayTeam"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">Venue</label>
+              <input
+                type="radio"
+                id="one"
+                value="venue"
+                v-model="venue"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">City</label>
+              <input
+                type="radio"
+                id="one"
+                value="city"
+                v-model="city"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">Date</label>
+              <input
+                type="radio"
+                id="one"
+                value="date"
+                v-model="date"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="sort-wrapper">
+          <h1>Order</h1>
+          <div class="sort-user-i">
+            <div class="sort-label-i">
+              <label for="ascending">Ascending</label>
+              <input
+                type="radio"
+                id="one"
+                value="Ascending"
+                v-model="userRole"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="descending">Descending</label>
+              <input
+                type="radio"
+                id="one"
+                value="Descending"
+                v-model="userRole"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </SideDrawer>
+      <!-- side bar component for filter  -->
+      <SideDrawer
+      v-else
+      title="Filter by"
+      class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
+    >
+      <div class="filter-c">
+        <h1>Enable switch to show in list</h1>
+        <div class="filter-wrapper">
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Show All</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="Showall"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+              <div class="filter-list">
+            <h2>Pending Form Filling</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="pending"  />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
+          <!-- show component  -->
+        </div>
+      </div>
+    </SideDrawer>
   </div>
 </template>
 <style>

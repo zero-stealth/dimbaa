@@ -1,0 +1,77 @@
+<script></script>
+<template>
+  <div class="form1-container pre-o-form">
+    <!-- input container  -->
+    <h1>Confirmed Team Colors after the Inspection During MCM</h1>
+    <div class="form1-wrapper f2-w pre-form1-w">
+      <div class="form1-w ">
+        <label for="">Home Team (Field player)</label>
+        <div class="form1-i">
+          <input
+            type="text"
+            class="form1-input short-i"
+            placeholder="Jersey Color"
+          />
+          <input type="text" class="form1-input short-i" placeholder="Shorts color" />
+          <input type="text" class="form1-input short-i" placeholder="Socks" />
+        </div>
+      </div>
+    </div>
+    <!-- input container  -->
+    <div class="form1-wrapper f2-w pre-form1-w">
+      <div class="form1-w ">
+        <label for="">Home Team (GoalKeeper)</label>
+        <div class="form1-i">
+          <input
+            type="text"
+            class="form1-input short-i"
+            placeholder="Jersey Color"
+          />
+          <input type="text" class="form1-input short-i" placeholder="Shorts color" />
+          <input type="text" class="form1-input short-i" placeholder="Socks" />
+        </div>
+      </div>
+    </div>
+    <!-- input container  -->
+    <div class="form1-wrapper f2-w pre-form1-w">
+      <div class="form1-w ">
+        <label for="">Away Team (Field player)</label>
+        <div class="form1-i">
+          <input
+            type="text"
+            class="form1-input short-i"
+            placeholder="Jersey Color"
+          />
+          <input type="text" class="form1-input short-i" placeholder="Shorts color" />
+          <input type="text" class="form1-input short-i" placeholder="Socks" />
+        </div>
+      </div>
+    </div>
+    <!-- input container  -->
+    <div class="form1-wrapper f2-w pre-form1-w">
+      <div class="form1-w ">
+        <label for="">Away Team (GoalKeeper)</label>
+        <div class="form1-i">
+          <input
+            type="text"
+            class="form1-input short-i"
+            placeholder="Jersey Color"
+          />
+          <input type="text" class="form1-input short-i" placeholder="Shorts color" />
+          <input type="text" class="form1-input short-i" placeholder="Socks" />
+        </div>
+      </div>
+    </div>
+    <div class="btn1-center">
+      <div class="form1-btn">
+        <button class="btn1 btn1-a">Reset</button>
+        <button class="btn1 btn1-b hide-m">Save draft</button>
+        <button class="btn1 btn1-b">Next</button>
+      </div>
+    </div>
+  </div>
+</template>
+<style>
+@import "@/style/form.css";
+@import "@/style/pre.css";
+</style>

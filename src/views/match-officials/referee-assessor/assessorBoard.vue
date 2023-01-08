@@ -1,28 +1,18 @@
 <script setup>
-import details from "./detailView.vue";
-import Upcoming from "./upcomingView.vue";
-import History from "./historyView.vue";
-import form1 from "./assessor-form/form1.vue";
-import form2 from "./assessor-form/form2.vue";
-import form3 from "./assessor-form/form3.vue";
-import form4 from "./assessor-form/form4.vue";
-import form5 from "./assessor-form/form5.vue";
-import form6 from "./assessor-form/form6.vue";
-import form7 from "./assessor-form/form7.vue";
-import form8 from "./assessor-form/form8.vue";
-import { useDrawerStore } from "@/stores/drawer";
-import PopUP from "@/components/drawer/popup.vue";
+import history from "./historyView.vue";
+import second from "./assess-second.vue";
+import upcoming from "./upcomingView.vue";
 import { useAuthStore } from "@/stores/auth.js";
-import AddIcon from "@/components/icons/AddIcon.vue";
+import { useDrawerStore } from "@/stores/drawer";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
-const dataPage = shallowRef(Upcoming);
+const dataPage = shallowRef(upcoming);
+const secondPage = shallowRef(second);
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
@@ -39,15 +29,12 @@ watchEffect(() => {
 
 console.log(authStore.userName);
 
+
 const openCreate = () => {
   check.value = true;
   drawerStore.togglePop();
 };
 
-const openEdit = () => {
-  check.value = false;
-  drawerStore.togglePop();
-};
 
 const openDrawer = (id) => {
   switch (id) {
@@ -60,18 +47,23 @@ const openDrawer = (id) => {
       drawerStore.toggleDrawer();
       break;
     default:
-      drawerID.value = null;
+    drawerID.value = null;
       break;
   }
 };
+
+console.log(drawerStore.showSecond)
 </script>
 <template>
-  <div class="main-container">
+  <div v-if="drawerStore.showSecond == true">
+    <component :is="secondPage" />
+  </div>
+ <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details data-b">
         <h1>{{ authStore.userName }}</h1>
         <span>{{ authStore.userName }}</span>
-        <span>Referee Assessor form</span>
+        <span>Referee Assesor</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -90,103 +82,32 @@ const openDrawer = (id) => {
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
-          </CircleDraw>
         </div>
       </div>
     </div>
-    <div class="team-b-txt">
-      <h1>Referee Assesor form</h1>
-    </div>
-    <div class="data-content-r">
+      <div class="data-content-r">
       <!-- data nav  -->
-      <div class="data-nav">
         <button
           class="data-n-b"
-          @click="dataPage = Upcoming"
-          :class="[dataPage == Upcoming ? 'datapage' : '']"
+          @click="dataPage = upcoming"
+          :class="[dataPage == upcoming ? 'datapage' : '']"
         >
           Upcoming
         </button>
         <button
           class="data-n-b"
-          @click="dataPage = History"
-          :class="[dataPage == History ? 'datapage' : '']"
+          @click="dataPage = history"
+          :class="[dataPage == history ? 'datapage' : '']"
         >
           History
         </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = details"
-          :class="[dataPage == details ? 'datapage' : '']"
-        >
-          Details
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form1"
-          :class="[dataPage == form1 ? 'datapage' : '']"
-        >
-          1
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form2"
-          :class="[dataPage == form2 ? 'datapage' : '']"
-        >
-          2
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form3"
-          :class="[dataPage == form3 ? 'datapage' : '']"
-        >
-          3
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form4"
-          :class="[dataPage == form4 ? 'datapage' : '']"
-        >
-          4
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form5"
-          :class="[dataPage == form5 ? 'datapage' : '']"
-        >
-          5
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form6"
-          :class="[dataPage == form6 ? 'datapage' : '']"
-        >
-          6
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form7"
-          :class="[dataPage == form7 ? 'datapage' : '']"
-        >
-          7
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = form8"
-          :class="[dataPage == form8 ? 'datapage' : '']"
-        >
-          8
-        </button>
       </div>
-    </div>
-    <!-- inner data content -->
-    <div class="inner-data-content">
-      <component :is="dataPage" />
-    </div>
-    <!-- side bar component for sorting  -->
-    <SideDrawer
+     <!-- inner data content -->
+     <div class="inner-data-content">
+        <component :is="dataPage" />
+      </div>    
+   <!-- side bar component for sorting  -->
+   <SideDrawer
       v-if="drawerID == 1"
       title="Sort by"
       class="sort-drawer"
@@ -197,26 +118,49 @@ const openDrawer = (id) => {
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">User Role</label>
+              <label for="username">Home Team</label>
               <input
                 type="radio"
                 id="one"
-                value="userRole"
-                v-model="userRole"
+                value="homeTeam"
+                v-model="homeTeam"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">User Name</label>
+              <label for="username">Away Team</label>
               <input
                 type="radio"
                 id="one"
-                value="userName"
-                v-model="userName"
+                value="awayTeam"
+                v-model="awayTeam"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">etc</label>
-              <input type="radio" id="one" value="etc" v-model="etc" />
+              <label for="username">Venue</label>
+              <input
+                type="radio"
+                id="one"
+                value="venue"
+                v-model="venue"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">City</label>
+              <input
+                type="radio"
+                id="one"
+                value="city"
+                v-model="city"
+              />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">Date</label>
+              <input
+                type="radio"
+                id="one"
+                value="date"
+                v-model="date"
+              />
             </div>
           </div>
         </div>
@@ -245,8 +189,8 @@ const openDrawer = (id) => {
         </div>
       </div>
     </SideDrawer>
-    <!-- side bar component for filter  -->
-    <SideDrawer
+      <!-- side bar component for filter  -->
+      <SideDrawer
       v-else
       title="Filter by"
       class="sort-drawer"
@@ -261,32 +205,28 @@ const openDrawer = (id) => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="Showall" />
+                <input type="checkbox" v-model="Showall"  />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
           <!-- show component  -->
-          <div class="filter-list">
-            <h2>Pending line up form</h2>
+              <div class="filter-list">
+            <h2>Pending Form Filling</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="pending" />
+                <input type="checkbox" v-model="pending"  />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
+          <!-- show component  -->
         </div>
       </div>
     </SideDrawer>
-    <div>
-      <PopUP title="Edit match" v-if="check == true">
-        <EditMatch />
-      </PopUP>
-    </div>
   </div>
 </template>
 <style>

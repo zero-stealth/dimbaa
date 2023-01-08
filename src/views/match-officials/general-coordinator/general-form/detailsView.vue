@@ -1,3 +1,5 @@
+<script setup>
+</script>
 <template>
   <div class="detail-container">
     <form action="" class="d-form">
@@ -48,8 +50,6 @@
     </div>
   </div>
 </template>
-<script setup>
-</script>
 <style>
   @import "@/style/general.css"
 </style>
