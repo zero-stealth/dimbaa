@@ -1,16 +1,12 @@
 <script setup>
-import details from "./detailsView.vue";
 import Upcoming from "./UpcomingView.vue";
 import History from "./historyView.vue";
-import submitPlayers from "./submitView.vue";
-import leaderPlayers from "./leadersPlayers.vue";
+import second from "./teamSecond.vue";
 import { useDrawerStore } from "@/stores/drawer";
-import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
-import startingPlayers from "./startingPlayers.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
+import PopUP from "@/components/drawer/popup.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
-import substitutePlayers from "./substitutePlayers.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
@@ -19,6 +15,7 @@ import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
 const dataPage = shallowRef(Upcoming);
+const secondPage = shallowRef(second);
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
@@ -33,19 +30,12 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-console.log(authStore.userName);
-
-
 
 const openCreate = () => {
   check.value = true;
   drawerStore.togglePop();
 };
 
-const openEdit = () => {
-  check.value = false;
-  drawerStore.togglePop();
-};
 
 const openDrawer = (id) => {
   switch (id) {
@@ -65,12 +55,15 @@ const openDrawer = (id) => {
 
 </script>
 <template>
- <div class="main-container">
+    <div v-if="drawerStore.showSecond == true">
+    <component :is="secondPage" />
+  </div>
+ <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details data-b">
         <h1>{{ authStore.userName }}</h1>
         <span>{{ authStore.userName }}</span>
-        <span>Line up form</span>
+        <span>team Manager</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -96,8 +89,6 @@ const openDrawer = (id) => {
       </div>
     </div>
     <div class="team-b-txt">
-      <h1>Line Up form</h1>
-    <h4>Orodha ya wachezaji</h4>
     </div>  
       <div class="data-content-r">
       <!-- data nav  -->
@@ -115,41 +106,6 @@ const openDrawer = (id) => {
           :class="[dataPage == History ? 'datapage' : '']"
         >
           History
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = details"
-          :class="[dataPage == details ? 'datapage' : '']"
-        >
-          Details
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = startingPlayers"
-          :class="[dataPage == startingPlayers ? 'datapage' : '']"
-        >
-          Starting
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = substitutePlayers"
-          :class="[dataPage == substitutePlayers ? 'datapage' : '']"
-        >
-          Substitute
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = leaderPlayers"
-          :class="[dataPage == leaderPlayers ? 'datapage' : '']"
-        >
-          Leader
-        </button>
-        <button
-          class="data-n-b"
-          @click="dataPage = submitPlayers"
-          :class="[dataPage == submitPlayers ? 'datapage' : '']"
-        >
-          Submit
         </button>
       </div>
     </div>  
@@ -169,30 +125,30 @@ const openDrawer = (id) => {
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">User Role</label>
+              <label for="user-role">Number</label>
               <input
                 type="radio"
                 id="one"
-                value="userRole"
-                v-model="userRole"
+                value="Number"
+                v-model="Number"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">User Name</label>
+              <label for="username">Venue</label>
               <input
                 type="radio"
                 id="one"
-                value="userName"
-                v-model="userName"
+                value="venue"
+                v-model="venue"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">etc</label>
+              <label for="username">City</label>
               <input
                 type="radio"
                 id="one"
-                value="etc"
-                v-model="etc"
+                value="City"
+                v-model="City"
               />
             </div>
           </div>
@@ -206,7 +162,7 @@ const openDrawer = (id) => {
                 type="radio"
                 id="one"
                 value="Ascending"
-                v-model="userRole"
+                v-model="Ascending"
               />
             </div>
             <div class="sort-label-i">
@@ -215,7 +171,7 @@ const openDrawer = (id) => {
                 type="radio"
                 id="one"
                 value="Descending"
-                v-model="userRole"
+                v-model="descending"
               />
             </div>
           </div>

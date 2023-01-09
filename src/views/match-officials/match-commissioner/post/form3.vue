@@ -5,70 +5,81 @@
       <div class="match-wp1">
         <h2>Team A</h2>
         <div class="match-sd">
-          <table>
-            <tr>
-              <th>Je#</th>
-              <th>Full name</th>
-              <th>OG</th>
-              <th>P</th>
-              <th>Mnt</th>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>    <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
+        <div class="match-in">
+        <label for="">Je#</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">Full name</label>
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        </div>
+        <div class="match-in">
+        <label for="">OG</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">P</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">Mnt</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
         </div>
       </div>
       <div class="match-wp1">
         <h2>Team B</h2>
         <div class="match-sd">
-          <table>
-            <tr>
-              <th>Je#</th>
-              <th>Full name</th>
-              <th>OG</th>
-              <th>P</th>
-              <th>Mnt</th>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-                <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
+        <div class="match-in">
+        <label for="">Je#</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">Full name</label>
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        <input type="text" class="input-match">
+        </div>
+        <div class="match-in">
+        <label for="">OG</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">P</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
+        <div class="match-in">
+        <label for="">Mnt</label>
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        <input type="text" class="input-match  m-short">
+        </div>
         </div>
       </div>
     </div>

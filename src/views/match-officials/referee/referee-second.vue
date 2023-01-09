@@ -17,7 +17,7 @@ import { useDrawerStore } from "@/stores/drawer";
 import { useAuthStore } from "@/stores/auth.js";
 import { shallowRef } from "vue";
 
-import { ref, onMounted, computed, watchEffect } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import axios from "axios";
 
 const drawerStore = useDrawerStore();

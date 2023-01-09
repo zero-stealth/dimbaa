@@ -27,14 +27,6 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-console.log(authStore.userName);
-
-
-const openCreate = () => {
-  check.value = true;
-  drawerStore.togglePop();
-};
-
 
 const openDrawer = (id) => {
   switch (id) {
@@ -52,7 +44,6 @@ const openDrawer = (id) => {
   }
 };
 
-console.log(drawerStore.showSecond)
 </script>
 <template>
   <div v-if="drawerStore.showSecond == true">
