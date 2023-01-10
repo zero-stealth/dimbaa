@@ -1,4 +1,4 @@
-<script setup>
+<script  setup>
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";

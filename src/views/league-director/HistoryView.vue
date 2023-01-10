@@ -8,12 +8,10 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
 const open = ref(null);
 const data = ref([]);
-const search = ref("");
 const check2 = ref(false);
 
 // update on changes
@@ -22,20 +20,11 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-const openEdit2 = () => {
-  check2.value = false;
-  drawerStore.togglePop();
-};
-
-//api
-const seachResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
-});
 
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/users",
+    url: "https://be-tblp.dimbaa.com/api/league-director/list-match-events",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -47,7 +36,7 @@ onMounted(async () => {
   axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.users;
+      data.value = response.data.match;
       console.log(data.value);
     })
     .catch(function (error) {
@@ -58,41 +47,40 @@ onMounted(async () => {
 <template>
   <component :is="activePage" v-if="showPage == true" />
   <div class="upcoming-container-r" v-else>
-      <div class="table-slide">
+      <div class="table-slide">      
         <table>
         <tr>
-          <th>Round</th>
-          <th>Number</th>
-          <th>Date</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
-          <th>Venue</th>
-          <th>City</th>
-          <th>Action</th> 
+            <th>Round</th>
+            <th>Number</th>
+            <th>Date</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Venue</th>
+            <th>City</th>
         </tr>
         <tr
+        v-for="(
+            { round, city, venue, date, id, home_team_id, away_team_id,  }, index
+          ) in data"
+          :key="index"
         >
-        <td>{{ round }}</td>
-          <td>{{ number }}</td>
+          <td>{{ round }}</td>
+          <td>{{ id }}</td>
           <td>{{ date }}</td>
-          <td>{{ home_team }}</td>
-          <td>{{ away_team }}</td>
+          <td>{{ home_team_id }}</td>
+          <td>{{ away_team_id }}</td>
           <td>{{ venue }}</td>
           <td>{{ city }}</td>
-          <td>
+          <!-- <td>
             <div class="table-link-c">
               <div class="table-link">
                 <a href="#" @click="openEdit2">Edit</a>
               </div>
             </div>
-          </td>
-          
+          </td> -->
         </tr>
-        
       </table>
       </div>
-    </div>
-    <div>
     </div>
 </template>
 <style>

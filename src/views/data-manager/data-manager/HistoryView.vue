@@ -1,20 +1,18 @@
 <script setup>
 import axios from "axios";
-import { useRouteStore } from "@/stores/route";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
+import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import PlayerDetails from "@/components/specific/PlayerComponent.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
 const open = ref(null);
 const data = ref([]);
-const search = ref("");
-const check2 = ref(false);
+const check = ref(false);
 
 // update on changes
 watchEffect(() => {
@@ -22,20 +20,18 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-const openEdit2 = () => {
-  check2.value = false;
+
+const openCreate = () => {
+  check.value = true;
   drawerStore.togglePop();
 };
 
-//api
-const seachResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
-});
+
 
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/users",
+    url: "https://be-tblp.dimbaa.com/api/data-manager/list-match-events",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -47,8 +43,8 @@ onMounted(async () => {
   axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.users;
-      console.log(data.value);
+      data.value = response.data.match;
+      console.log(data.value); 
     })
     .catch(function (error) {
       console.error(error);
@@ -72,28 +68,35 @@ onMounted(async () => {
           <th>Action</th> 
         </tr>
         <tr
+        v-for="(
+            { round, city, venue, date, id, home_team_id, away_team_id,  }, index
+          ) in data"
+          :key="index"
         >
-        <td>{{ round }}</td>
-          <td>{{ number }}</td>
+          <td>{{ round }}</td>
+          <td>{{ id }}</td>
           <td>{{ date }}</td>
-          <td>{{ home_team }}</td>
-          <td>{{ away_team }}</td>
+          <td>{{ home_team_id }}</td>
+          <td>{{ away_team_id }}</td>
           <td>{{ venue }}</td>
           <td>{{ city }}</td>
           <td>
             <div class="table-link-c">
               <div class="table-link">
-                <a href="#" @click="openEdit2">Edit</a>
+                <a href="#"  @click="openCreate">Edit</a>
               </div>
             </div>
           </td>
-          
         </tr>
-        
       </table>
       </div>
     </div>
     <div>
+    </div>
+    <div>
+      <PopUP title="Edit match" v-if="check == true">
+      <EditMatch/>  
+      </PopUP>
     </div>
   </div>
 </template>

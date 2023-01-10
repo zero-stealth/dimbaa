@@ -29,9 +29,6 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-console.log(authStore.userName);
-
-
 
 const openCreate = () => {
   check.value = true;
