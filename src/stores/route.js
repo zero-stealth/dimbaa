@@ -7,7 +7,7 @@ const userID = ref(null)
 const playerID = ref(null)
 
 const setUserId = (Id) => {
-    userID =  Id;
+    userID.value =  Id;
 }
 
 const setPlayerId = (Id) => {

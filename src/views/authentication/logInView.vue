@@ -115,9 +115,9 @@ const login = () => {
         </form>
         <div class="footer-login">
           <h1>
-            Download user manuals:<a href=""><span>SW</span></a
+            Download user manuals:<a href="/manual-swahili.pdf" download ><span>SW</span></a
             >|
-            <a href=""><span>EN</span></a>
+            <a href="/English Manual.pdf" download ><span>EN</span></a>
           </h1>
           <h1>
             Powered by:

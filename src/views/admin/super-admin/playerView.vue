@@ -62,6 +62,8 @@ const openDrawer = (id) => {
       break;
   }
 };
+
+
 const searchResult = computed(() => {
   return data.value.filter((d) => d.playing_position.includes(search.value));
 });
@@ -192,7 +194,7 @@ onMounted(async () => {
                 type="radio"
                 id="one"
                 value="Ascending"
-                v-model="userRole"
+                v-model="Ascending"
               />
             </div>
             <div class="sort-label-i">
@@ -201,7 +203,7 @@ onMounted(async () => {
                 type="radio"
                 id="one"
                 value="Descending"
-                v-model="userRole"
+                v-model="Descending"
               />
             </div>
           </div>
