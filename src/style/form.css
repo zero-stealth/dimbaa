@@ -137,7 +137,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) { 
  .form1-container {
-    gap: 10px;
+    gap: 8px;
     justify-content: space-between;
 
 }
@@ -166,7 +166,7 @@
   }
 
   .form1-w {
-    gap: 30px;
+    gap: 20px;
     flex-direction: row;
     align-items: center;
   }
