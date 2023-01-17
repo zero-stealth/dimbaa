@@ -63,9 +63,7 @@ import UserIcon from "@/components/icons/UserIcon.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 // pages
-
-//import Player from "./playerView.vue
-import Player from "./playerView.vue"
+import Player from "./playerV.vue"
 import TeamName from "./teamName.vue"
 import PlayerHistory from "./playerHistory.vue"
 import TeamPlayerList from "./teamPlayerList.vue"
