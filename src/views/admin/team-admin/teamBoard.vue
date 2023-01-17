@@ -26,6 +26,17 @@
         </button>
         <button
           class="inner-component"
+          @click="activePage = Player"
+          :class="[activePage == Player ? 'active' : '']"
+        >
+          <div class="inner-i">
+            <UserIcon class="icon icon-c" />
+            <span>Player</span>
+          </div>
+          <ArrowIcon class="icon icon-c a-icon" />
+        </button>
+        <button
+          class="inner-component"
           @click="activePage = TeamPlayerList"
           :class="[activePage == TeamPlayerList ? 'active' : '']"
         >
@@ -53,6 +64,7 @@ import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 // pages
 
+import Player from "./playerView.vue"
 import TeamName from "./teamName.vue"
 import PlayerHistory from "./playerHistory.vue"
 import TeamPlayerList from "./teamPlayerList.vue"

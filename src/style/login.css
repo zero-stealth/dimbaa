@@ -40,14 +40,14 @@
     .form-container {
         background-color: var(--background-color);
         box-shadow: var(--box-shadow-style);
-        justify-content: space-around;
+        justify-content: space-evenly;
         flex-direction: column;
         border-radius: 20px;
         padding: 30px 20px;
         display: flex;
         height: 100%;
         width: 100%;
-        gap: 12px;
+        
     }
 
     

@@ -60,6 +60,7 @@ const reset = () => {
   userName.value = "";
   mobileNumber.value = "";
 };
+
 </script>
 <template>
   <div class="pop-adduser-form">
@@ -71,7 +72,7 @@ const reset = () => {
       class="userform-wrapper"
     >
       <div class="userform-input">
-        <label for="add-user-select" class="user-label">Use Role</label>
+        <label for="add-user-select" class="user-label">User Role</label>
         <select
           required
           v-model="userRole"

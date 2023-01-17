@@ -26,24 +26,13 @@
         </button>
         <button
           class="inner-component"
-          @click="activePage = Player"
-          :class="[activePage == Player ? 'active' : '']"
-        >
-          <div class="inner-i">
-            <UserIcon class="icon icon-c" />
-            <span>Player</span>
-          </div>
-          <ArrowIcon class="icon icon-c a-icon" />
-        </button>
-        <button
-          class="inner-component"
           @click="activePage = Stadium"
           :class="[activePage == Stadium ? 'active' : '']"
         >
           <div class="inner-i">
             <StadiumIcon class="icon icon-c" />
             <span>Stadium</span>
-          </div>
+            </div>
           <ArrowIcon class="icon icon-c a-icon" />
         </button>
       </div>
@@ -57,7 +46,6 @@
 import { shallowRef } from "vue";
 // icons
 
-import UserIcon from "@/components/icons/UserIcon.vue";
 import TeamIcon from "@/components/icons/TeamIcon.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SecureIcon from "@/components/icons/SecureIcon.vue";
@@ -67,7 +55,6 @@ import StadiumIcon from "@/components/icons/StadiumIcon.vue";
 
 import User from "./userView.vue"
 import Team from "./teamView.vue"
-import Player from "./playerView.vue"
 import Stadium from "./stadiumView.vue";
 
 // used shallow ref to prevent reactivity on the component
