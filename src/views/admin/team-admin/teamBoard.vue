@@ -64,6 +64,7 @@ import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 // pages
 
+//import Player from "./playerView.vue
 import Player from "./playerView.vue"
 import TeamName from "./teamName.vue"
 import PlayerHistory from "./playerHistory.vue"
