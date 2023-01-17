@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 const userName = ref("");
-const userId = ref("");
 const mobileNumber = ref("");
 const email = ref("");
 const userRole = ref("");
@@ -57,7 +56,6 @@ async () => {
 //Reset the form
 const reset = () => {
   email.value = "";
-  userId.value = "";
   userRole.value = "";
   userName.value = "";
   mobileNumber.value = "";
@@ -98,19 +96,9 @@ const reset = () => {
           type="text"
           class="user-input"
           v-model="userName"
-          placeholder="User Name"
-        />
-      </div>
-      <div class="userform-input">
-        <label for="add-user-input" class="user-label">User ID</label>
-        <input
-          required
-          type="text"
-          class="user-input"
-          v-model="userId"
-          placeholder="Your User ID"
-        />
-      </div>
+          placeholder="penguin"
+          />
+          </div>
       <div class="userform-input">
         <label for="add-user-input" class="user-label">Mobile</label>
         <input
