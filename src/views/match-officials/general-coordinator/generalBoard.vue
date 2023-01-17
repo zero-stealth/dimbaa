@@ -20,12 +20,17 @@ const drawerID = ref(null);
 const open = ref(null);
 const search = ref("");
 const check = ref(false);
+const name = ref(null);
+const userFirstName = ref(null);
 
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+//filter name from email
+userFirstName.value = authStore.userName.split('@')[0];
 
 console.log(authStore.userName);
 
@@ -61,8 +66,7 @@ console.log(drawerStore.showSecond)
  <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>{{ authStore.userName }}</h1>
-        <span>{{ authStore.userName }}</span>
+        <h1>{{ userFirstName }}</h1>
         <span>General coordinator</span>
       </div>
       <div class="main-wrapper">

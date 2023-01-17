@@ -22,6 +22,7 @@ const drawerID = ref(null);
 const open = ref(null);
 const search = ref("");
 const check = ref(false);
+const userFirstName = ref(null);
 
 // update on changes
 watchEffect(() => {
@@ -31,6 +32,7 @@ watchEffect(() => {
 
 console.log(authStore.userName);
 
+userFirstName.value = authStore.userName.split('@')[0];
 
 
 const openCreate = () => {
@@ -64,8 +66,8 @@ const openDrawer = (id) => {
  <div class="main-container">
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>{{ authStore.userName }}</h1>
-        <span>{{ authStore.userName }}</span>
+        <h1>{{ userFirstName }}</h1>
+        <span>{{ userFirstName }}</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

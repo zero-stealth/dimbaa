@@ -20,12 +20,16 @@ const drawerID = ref(null);
 const open = ref(null);
 const search = ref("");
 const check = ref(false);
+const userFirstName = ref(null);
+
 
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+userFirstName.value = authStore.userName.split('@')[0];
 
 
 const openDrawer = (id) => {
@@ -52,7 +56,7 @@ const openDrawer = (id) => {
  <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>{{ authStore.userName }}</h1>
+        <h1>{{ userFirstName }}</h1>
         <span>Referee Form</span>
       </div>
       <div class="main-wrapper">
