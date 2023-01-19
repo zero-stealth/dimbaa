@@ -45,6 +45,7 @@ onMounted(async () => {
           <th>Region</th>
           <th>location</th>
           <th>capacity</th>
+          <th>team</th>
           <th>Image</th>
           <th>Owner</th>
         </tr>

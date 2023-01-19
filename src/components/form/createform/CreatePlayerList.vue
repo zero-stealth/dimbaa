@@ -1,8 +1,8 @@
 <script setup>
-// import PicIcon from "@/icons/AddPhoto.vue"
+import AddPhoto from "@/components/icons/AddPhoto.vue";
 import { ref } from "vue";
 const playerName = ref("");
-const jerseyNumber  = ref("");
+const playerposition  = ref("");
 const Team = ref("");
 const Email = ref("");
 const Mobile = ref("");
@@ -11,7 +11,7 @@ const playerPosition = ref("");
 
 const getDetails = () => {
 //   console.log(
-//     jerseyNumber.value,
+//     playerposition.value,
 //     mobile.value,
 //     Team.value,
 //     PlayerNumber.value,
@@ -27,7 +27,7 @@ const reset = () => {
   Email.value = "";
   Mobile.value = "";
   Team.value = "";
-  jerseyNumber.value = "";
+  playerposition.value = "";
   playerName.value = "";
   playerPosition.value = "";
   playerPic.value = "";
@@ -44,7 +44,7 @@ const reset = () => {
       class="userform-wrapper"
     >
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">PlayerName</label>
+        <label for="add-user-input" class="user-label">Player name</label>
         <input
           required
           type="text"
@@ -54,27 +54,15 @@ const reset = () => {
           />
         </div>
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">JerseyNumber</label>
+        <label for="add-user-input" class="user-label">Playing position</label>
         <input
           required
           type="text"
           class="user-input"
-          v-model="jerseyNumber"
-          placeholder="User Name"
+          v-model="playerposition"
+          placeholder="midfielder"
           />
         </div>
-      <div class="userform-input">
-        <label for="add-user-select" class="user-label">Team:</label>
-        <select
-          required
-          v-model="Team"
-          class="user-input"
-          id="add-user-select"
-        >
-          <option>Manchester</option>
-          <option>Chelsea</option>
-        </select>
-      </div>
       <div class="userform-input">
         <label for="add-user-input" class="user-label">Player position</label>
         <input
@@ -82,34 +70,26 @@ const reset = () => {
           type="text"
           class="user-input"
           v-model="playerPosition"
-          placeholder="position number"
+          placeholder="12"
         />
       </div>
       <div class="userform-input">
-        <label for="add-user-input" class="user-label">Email</label>
-        <input
-          required
-          type="email"
-          class="user-input"
-          v-model="Email"
-          placeholder=" Your email"
-        />
+        <label for="add-user-input" class="user-label">Team logo</label>
+       <AddPhoto class="icon-pic-d" @click="openElementImg">
+        <input ref="input" type="file" accept="image/*" @change="uploadImage()" class="upload-input" id="file-input">
+       </AddPhoto>
+        <div id="preview">
+          <img v-if="url" :src="url" />
+        </div>
       </div>
       <div class="userform-input">
-          <label for="add-user-input" class="user-label">Mobile</label>
-          <input
-            required
-            type="text"
-            class="user-input"
-            v-model="Mobile"
-            placeholder="+25438392045"
-          />
-      </div>
-      <div class="userform-input">
-      <label for="profilepic" class="user-label">Add pic</label>
-      <!-- <PicIcon class="icon-pic"> -->
-        <input type="file" :name="playerPic" id="profilepic" class="user-upload">
-      <!-- </PicIcon> -->
+        <label for="add-user-input" class="user-label">Player Picture</label>
+       <AddPhoto class="icon-pic-d" @click="openElementImg">
+        <input ref="input" type="file" accept="image/*" @change="uploadImage()" class="upload-input" id="file-input">
+       </AddPhoto>
+        <div id="preview">
+          <img v-if="url" :src="url" />
+        </div>
       </div>
       <div class="user-btn-f">
         <button type="submit" class="btn-f a-u">Add</button>

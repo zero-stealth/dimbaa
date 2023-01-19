@@ -40,7 +40,18 @@ onMounted(async () => {
           <th> <button class="sp-dbtn" @click="routeStore.togglePage">
               <ArrowIcon class="icon icon-dta" />
             </button></th>
-            <th>Player name</th>
+            <th>Local ID</th>
+            <th>Fifa ID</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>DOB</th>
+            <th>DOP</th>
+            <th>start date</th>
+            <th>end date</th>
+            <th>Team</th>
+            <th>Former Team</th>
+            <th>Nationality</th>
+            <th>Playing position</th>
             <th>Jersey number</th>
             <th>Signature</th>
           </tr>

@@ -153,7 +153,6 @@ onMounted(async () => {
         </tr>
       </table>
       </div>
-   
     </div>
     <!-- side bar component for sorting  -->
     <SideDrawer

@@ -108,7 +108,7 @@ await axios
       </div>
     </div>
     <div>
-      <PopUP title="Add player" v-if="check == true">
+      <PopUP title="Add player list" v-if="check == true">
         <CreatePlaylist />
       </PopUP>
       <PopUP  v-else>

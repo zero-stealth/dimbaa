@@ -12,7 +12,32 @@
     display: flex;
     flex-direction: column;
   }
+  .separator-p {
+    gap: 10px;
+    display: flex;
+    align-items: flex-end;
+  }
 
+  .signature-p {
+    outline: none;
+    border: 2px solid var(--background-color);
+    background-color: var(--background-color);
+  }
+
+  .signature-p:hover {
+    border: 2px solid var(--background-color);
+
+  }
+
+  .sep-r {
+    display: flex;
+    width: 100%;
+  }
+
+  .spe-pe {
+    display: flex;
+    justify-content: space-between;
+  }
   .userform-wrapper span {
     color: rgb(216, 8, 8);
   }
@@ -110,6 +135,16 @@
   .btn-f {
     border-radius: 8px;
     padding: 10px 20px;
+  }
+
+  .signature-p {
+    outline: none;
+    border: 2px solid var(--background-color);
+  }
+
+  .signature-p:hover {
+    border: 2px solid var(--background-color);
+
   }
 
 }

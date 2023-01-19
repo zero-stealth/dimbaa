@@ -8,17 +8,17 @@ import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import TeamNameDetails from "@/components/specific/TeamNameComponent.vue";
-import CreateTeam from "@/components/form/createform/CreateTeam.vue";
-import ChangeStadium from "../../../components/form/updateform/changeStadium.vue";
+import userDetails from "@/components/specific/userComponent.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
+import TeamStaff from "@/components/form/createform/TeamStaff.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
-const activePage = shallowRef(TeamNameDetails);
+const activePage = shallowRef(userDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
+const showall = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
@@ -31,13 +31,16 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
+const toggle = () => {
+  showall.value = true;
+};
+
 //we use this id to determin which drawer opens
 //show page based
 const showSpecific = (id) => {
   routeStore.setPlayerId(id);
-  routeStore.togglePage();
+  showPage.value = !showPage.value;
 };
-
 
 const openCreate = () => {
   check.value = true;
@@ -72,7 +75,7 @@ const searchResult = computed(() => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/teams",
+    url: "https://be-tblp.dimbaa.com/api/teammanager/players",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -84,7 +87,7 @@ onMounted(async () => {
   axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.teams;
+      data.value = response.data.players;
     })
     .catch(function (error) {
       console.error(error);
@@ -95,8 +98,8 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Team</h1>
-        <span>Team name</span>
+        <h1>Welcome</h1>
+        <span>User</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -105,7 +108,7 @@ onMounted(async () => {
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search Team"
+            placeholder="Search"
           />
         </form>
         <div class="circle-wrapper">
@@ -121,38 +124,26 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <component :is="activePage" v-if="routeStore.showPage  == true" />
+    <component :is="activePage" v-if="showPage == true" />
     <div class="user-content" v-else>
-      <h2>Team Name</h2>
-      <div class="team-c-r">
-        <span>Home Stadium: </span>
-        <span>Stadium Name: </span>
-        <a href="#"  @click="openEdit">Change</a>
-      </div>
+      <h2>Team Staff</h2>
       <div class="table-slide">
         <table>
-        <tr>
-          <th>Team name</th>
-          <th>Region</th>
-          <!-- <th>Stadium</th> -->
-          <th>action</th>
-        </tr>
-        <tr
-          v-for="({ id, name, region, stadium_id }, index) in searchResult"
-          :key="index"
-        >
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
-
-          <td>
-            <div class="table-link-c">
-              <div class="table-link">
-                <a href="#" @click="showSpecific(id)">View</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+          <tr>
+            <th>ID</th>
+            <th>Team name</th>
+            <th>official signature</th>
+            <th>Job description</th>
+       
+          </tr>
+          <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
+          <tr>
+          <td>tst</td>
+          <td>tst</td>
+          <td>tst</td>
+          <td>tst</td>
+          </tr>
+        </table>
       </div>
     </div>
     <!-- side bar component for sorting  -->
@@ -164,20 +155,21 @@ onMounted(async () => {
     >
       <div class="sort-user-c">
         <div class="sort-wrapper">
-          <h1>Sort team list using</h1>
+          <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">Team Name</label>
+              <label for="user-role">Coach</label>
               <input
                 type="radio"
-                id="one"
-                value="TeamName"
-                v-model="TeamName"
+                v-bind:value="false"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">Region</label>
-              <input type="radio" id="one" value="Region" v-model="Region" />
+              <label for="username">Medic</label>
+              <input
+                type="radio"
+                v-bind:value="false"
+              />
             </div>
           </div>
         </div>
@@ -189,8 +181,7 @@ onMounted(async () => {
               <input
                 type="radio"
                 id="one"
-                value="Ascending"
-                v-model="userRole"
+                v-bind:value="Ascending"
               />
             </div>
             <div class="sort-label-i">
@@ -198,16 +189,15 @@ onMounted(async () => {
               <input
                 type="radio"
                 id="one"
-                value="Descending"
-                v-model="userRole"
+                v-bind:value="Descending"
               />
             </div>
           </div>
         </div>
       </div>
     </SideDrawer>
-   <!-- side bar component for filter  -->
-   <SideDrawer
+    <!-- side bar component for filter  -->
+    <SideDrawer
       v-else
       title="Filter by"
       class="sort-drawer"
@@ -217,12 +207,12 @@ onMounted(async () => {
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
           <!-- show component  -->
+          <h2>Medic</h2>
           <div class="filter-list">
-            <h2>Team Name</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="TeamName"  />
+                <input type="checkbox" v-model="name" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -230,26 +220,22 @@ onMounted(async () => {
           </div>
           <!-- show component  -->
           <div class="filter-list">
-            <h2>Region</h2>
+            <h2>Coach</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="region"  />
+                <input type="checkbox" v-model="position" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
-          <!-- show component  -->
         </div>
       </div>
     </SideDrawer>
     <div>
-      <PopUP title="Add Team" v-if="check == true">
-        <CreateTeam />
-      </PopUP>
-      <PopUP title="Change Stadium" v-else>
-        <ChangeStadium />
+      <PopUP title="Add Staff" v-if="check == true">
+        <TeamStaff />
       </PopUP>
     </div>
   </div>

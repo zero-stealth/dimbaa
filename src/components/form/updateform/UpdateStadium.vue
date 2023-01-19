@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import AddPhoto from "@/components/icons/AddPhoto.vue";
 
 const StadiumName = ref("");
@@ -7,26 +7,26 @@ const City = ref("");
 const Team = ref("");
 const Region = ref("");
 const url = ref(null)
-const uploadLabel = ref(null);
+const input = ref(null);
 
 const getDetails = () => {
   reset();
 };
 
-watchEffect(() => {
- const onImgChange  = (() => {
+
+ const onFileChange  = (() => {
     const file = e.target.files[0];
     url.value = URL.createObjectURL(file);
   })
-})
+
 
 onMounted(() => {
-  console.log(uploadLabel.value)
+  console.log(input.value)
 });
 
 
 const openElementImg = () => {
-  
+  console.log(input)
 };
 
 //Reset the form
@@ -77,7 +77,7 @@ const reset = () => {
       <div class="userform-input">
         <label for="add-user-input" class="user-label">Stadium picture</label>
        <AddPhoto class="icon-pic-d" @click="openElementImg">
-        <input ref="uploadLabel" type="file" @change="onFileChange" class="upload-input" >
+        <input ref="input" type="file" accept="image/*" @change="uploadImage()" class="upload-input" id="file-input">
        </AddPhoto>
         <div id="preview">
           <img v-if="url" :src="url" />

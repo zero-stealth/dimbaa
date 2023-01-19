@@ -35,13 +35,8 @@ const showSpecific = (id) => {
   showPage.value = !showPage.value;
 };
 
-const openCreate = () => {
-  check.value = true;
-  drawerStore.togglePop();
-};
-
 const openEdit = () => {
-  check.value = false;
+  check.value = true;
   drawerStore.togglePop();
 };
 
@@ -104,9 +99,7 @@ onMounted(async () => {
           <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
-          </CircleDraw>
+
         </div>
       </div>
     </div>
@@ -237,9 +230,6 @@ onMounted(async () => {
     <div>
       <PopUP title="Add Player" v-if="check == true">
         <CreatePlayer />
-      </PopUP>
-      <PopUP title="Details" v-else>
-        <CreateDetails />
       </PopUP>
     </div>
   </div>

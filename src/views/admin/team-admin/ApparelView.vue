@@ -6,15 +6,14 @@ import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
-import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import TeamNameDetails from "@/components/specific/TeamNameComponent.vue";
-import CreateTeam from "@/components/form/createform/CreateTeam.vue";
-import ChangeStadium from "../../../components/form/updateform/changeStadium.vue";
+import PlayerDetails from "@/components/specific/PlayerComponent.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
+import AddApparel from "@/components/form/updateform/AddApparel.vue";
+
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
-const activePage = shallowRef(TeamNameDetails);
+const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerStatus = ref(null);
@@ -45,7 +44,7 @@ const openCreate = () => {
 };
 
 const openEdit = () => {
-  check.value = false;
+  check.value = true;
   drawerStore.togglePop();
 };
 
@@ -64,15 +63,16 @@ const openDrawer = (id) => {
       break;
   }
 };
-//api
+
+
 const searchResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
+  return data.value.filter((d) => d.playing_position.includes(search.value));
 });
 
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/teams",
+    url: "https://be-tblp.dimbaa.com/api/teammanager/players",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -84,7 +84,7 @@ onMounted(async () => {
   axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.teams;
+      data.value = response.data.players;
     })
     .catch(function (error) {
       console.error(error);
@@ -95,8 +95,8 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Team</h1>
-        <span>Team name</span>
+        <h1>Team Apparel</h1>
+        <span>Team apparel</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -105,15 +105,12 @@ onMounted(async () => {
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search Team"
+            placeholder="Search  Player"
           />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-c" @click="openDrawer(2)">
-            <FilterIcon class="icon icon-menu" />
           </CircleDraw>
           <CircleDraw class="circle-a" @click="openCreate">
             <AddIcon class="icon icon-menu" />
@@ -123,31 +120,38 @@ onMounted(async () => {
     </div>
     <component :is="activePage" v-if="routeStore.showPage  == true" />
     <div class="user-content" v-else>
-      <h2>Team Name</h2>
-      <div class="team-c-r">
-        <span>Home Stadium: </span>
-        <span>Stadium Name: </span>
-        <a href="#"  @click="openEdit">Change</a>
-      </div>
+      <h2></h2>
       <div class="table-slide">
         <table>
         <tr>
-          <th>Team name</th>
-          <th>Region</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Color of outfit</th>
+          <th>Picture of outfit</th>
+          <th>Home games</th>
+          <th>Away games</th>
+          <th>Picture of outfit</th>
           <!-- <th>Stadium</th> -->
           <th>action</th>
         </tr>
         <tr
-          v-for="({ id, name, region, stadium_id }, index) in searchResult"
+          v-for="(
+            { first_name, middle_name, jersey_number, signature }, index
+          ) in searchResult"
           :key="index"
         >
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+          <td></td>
 
           <td>
             <div class="table-link-c">
               <div class="table-link">
-                <a href="#" @click="showSpecific(id)">View</a>
+                <a href="#" @click="openEdit">Edit</a>
               </div>
             </div>
           </td>
@@ -164,20 +168,25 @@ onMounted(async () => {
     >
       <div class="sort-user-c">
         <div class="sort-wrapper">
-          <h1>Sort team list using</h1>
+          <h1>Sort player list using</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">Team Name</label>
+              <label for="user-role">Player Name</label>
               <input
                 type="radio"
                 id="one"
-                value="TeamName"
-                v-model="TeamName"
+                value="PlayerName"
+                v-model="PlayerName"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">Region</label>
-              <input type="radio" id="one" value="Region" v-model="Region" />
+              <label for="username">JerseyNumber</label>
+              <input
+                type="radio"
+                id="one"
+                value="JerseyNumber"
+                v-model="jerseyNumber"
+              />
             </div>
           </div>
         </div>
@@ -190,7 +199,7 @@ onMounted(async () => {
                 type="radio"
                 id="one"
                 value="Ascending"
-                v-model="userRole"
+                v-model="Ascending"
               />
             </div>
             <div class="sort-label-i">
@@ -199,57 +208,16 @@ onMounted(async () => {
                 type="radio"
                 id="one"
                 value="Descending"
-                v-model="userRole"
+                v-model="Descending"
               />
             </div>
           </div>
         </div>
       </div>
     </SideDrawer>
-   <!-- side bar component for filter  -->
-   <SideDrawer
-      v-else
-      title="Filter by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
-      <div class="filter-c">
-        <h1>Enable switch to show in list</h1>
-        <div class="filter-wrapper">
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>Team Name</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="TeamName"  />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>Region</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="region"  />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
-        </div>
-      </div>
-    </SideDrawer>
     <div>
-      <PopUP title="Add Team" v-if="check == true">
-        <CreateTeam />
-      </PopUP>
-      <PopUP title="Change Stadium" v-else>
-        <ChangeStadium />
+      <PopUP title="Add Apparel" v-if="check == true">
+        <AddApparel />
       </PopUP>
     </div>
   </div>
