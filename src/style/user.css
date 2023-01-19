@@ -89,6 +89,12 @@
   .feed-c p {
     color: rgb(4, 107, 4);
   }
+
+  .icon-pic-d {
+    border: 2px dotted var(--dark-color);
+    color: var(--dark-color);
+    height: 100px;
+  }
 }
 
 /* using it as global style for larger devices  */

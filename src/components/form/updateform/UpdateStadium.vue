@@ -75,7 +75,7 @@ const reset = () => {
         <input required type="date" class="user-input" v-model="InDate" placeholder="owner's name" />
       </div>
       <div class="userform-input">
-        <label for="add-user-input" class="user-label">Stadium owner</label>
+        <label for="add-user-input" class="user-label">Stadium picture</label>
        <AddPhoto class="icon-pic-d" @click="openElementImg">
         <input ref="uploadLabel" type="file" @change="onFileChange" class="upload-input" >
        </AddPhoto>
