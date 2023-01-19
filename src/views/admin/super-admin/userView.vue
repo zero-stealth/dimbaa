@@ -176,18 +176,14 @@ onMounted(async () => {
               <label for="user-role">User Role</label>
               <input
                 type="radio"
-                id="one"
-                value="userRole"
-                v-model="userRole"
+                v-bind:value="true"
               />
             </div>
             <div class="sort-label-i">
               <label for="username">User Name</label>
               <input
                 type="radio"
-                id="one"
-                value="userName"
-                v-model="userRole"
+                v-bind:value="false"
               />
             </div>
           </div>

@@ -21,6 +21,27 @@
         align-items: center;
         justify-content: center;
     }
+
+    .sp-dbtn {
+        background-color: var(--primary-color);
+    }
+
+    .icon-dta {
+        height: 30px;
+        width: 40px;
+        transform: scaleX(-1);
+        color: var(--background-color);
+
+    }
+
+    .img-stdium {
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+    }
     
     .user-c-s h1 {
         font-size: 1rem;

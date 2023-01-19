@@ -1,11 +1,12 @@
 <script setup>
 import axios from "axios";
-import { onMounted , ref  } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouteStore } from "@/stores/route";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 
 const routeStore = useRouteStore();
-const showPage = ref(false);
+
 
 const data = ref([]);
 
@@ -37,24 +38,29 @@ onMounted(async () => {
     <div class="table-slide">
       <table class="tb-specific">
         <tr>
-            <th>Stadium name</th>
-            <th>Region</th>
-            <th>location</th>
-            <th>capacity</th>
-            <th>action</th>
-          </tr>
-          <tr
-            v-for="({ name, region, location, capacity }, index) in searchResult"
-            :key="index"
-          >
-            <td>{{ name }}</td>
-            <td>{{ region }}</td>
-            <td>{{ location }}</td>
-            <td>{{ capacity }}</td>
+          <th> <button class="sp-dbtn" @click="routeStore.togglePage">
+              <ArrowIcon class="icon icon-dta" />
+            </button></th>
+          <th>Name</th>
+          <th>Region</th>
+          <th>location</th>
+          <th>capacity</th>
+          <th>Image</th>
+          <th>Owner</th>
+        </tr>
+        <tr v-for="({ name, region, location, capacity }, index) in searchResult" :key="index">
+          <td>{{ name }}</td>
+          <td>{{ region }}</td>
+          <td>{{ location }}</td>
+          <td>{{ capacity }}</td>
+          <td class="img-stdium">{{ image }}</td>
+          <td>
+
+          </td>
         </tr>
       </table>
     </div>
-    </div>
+  </div>
 </template>
 <style>
 @import "@/style/main.css";

@@ -40,7 +40,7 @@
     font-weight: 300;
     color: var(--secondary-color);
     font-family: "icomoon", sans-serif;
-    background-color: var(--light-color);
+    background-color: var(--background-color);
   }
 
   a,

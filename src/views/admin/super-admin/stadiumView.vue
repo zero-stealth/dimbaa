@@ -16,7 +16,6 @@ const activePage = shallowRef(StadiumDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerStatus = ref(null);
-const showPage = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
@@ -33,7 +32,7 @@ watchEffect(() => {
 //show page based
 const showSpecific = (id) => {
   routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
+  routeStore.togglePage();
 };
 
 const openCreate = () => {
@@ -116,7 +115,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <component :is="activePage" v-if="showPage == true" />
+    <component :is="activePage" v-if=" routeStore.showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
       <div class="table-slide">

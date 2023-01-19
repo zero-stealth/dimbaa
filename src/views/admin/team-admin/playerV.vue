@@ -34,8 +34,9 @@ watchEffect(() => {
 //show page based
 const showSpecific = (id) => {
   routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
+  routeStore.togglePage();
 };
+
 
 const openCreate = () => {
   check.value = true;
@@ -117,7 +118,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <component :is="activePage" v-if="showPage == true" />
+    <component :is="activePage" v-if="routeStore.showPage  == true" />
     <div class="user-content" v-else>
       <h2></h2>
       <div class="table-slide">

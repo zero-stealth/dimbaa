@@ -2,10 +2,10 @@
 import axios from "axios";
 import { onMounted , ref  } from "vue";
 import { useRouteStore } from "@/stores/route";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 
 const routeStore = useRouteStore();
-const showPage = ref(false);
 
 const data = ref([]);
 
@@ -37,6 +37,9 @@ onMounted(async () => {
     <div class="table-slide">
       <table class="tb-specific">
         <tr>
+          <th> <button class="sp-dbtn" @click="routeStore.togglePage">
+              <ArrowIcon class="icon icon-dta" />
+            </button></th>
             <th>Player name</th>
             <th>Jersey number</th>
             <th>Signature</th>

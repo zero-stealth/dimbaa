@@ -63,7 +63,6 @@ const activePage = shallowRef(Security);
             <LogOutIcon class="icon icon-c" />
             <span>LogOut</span>
           </div>
-          <ArrowIcon class="icon icon-c a-icon" />
         </button>
       </div>
     </div>

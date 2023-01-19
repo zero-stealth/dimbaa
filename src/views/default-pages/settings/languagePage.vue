@@ -29,7 +29,7 @@ const reset = () => {
       @submit.prevent="getUser"
       class="languageform-wrapper"
     >
-    <h1>choose a language</h1>
+    <h1>Choose a language</h1>
       <div class="languageform-input">
         <select
           required

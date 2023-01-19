@@ -67,16 +67,16 @@
 @media only screen and (min-width: 48em) {
     
       .security-password-form h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
     
       .securityform-wrapper {
-        width: 60%;
-        height: 65%;
+        width: 30%;
+        height: 50%;
       }
     
       .secure-input {
-        padding: 20px 30px;
+        padding: 15px 20px;
       }
         
       .secure-btn-f {
@@ -86,8 +86,7 @@
     
       .btn-s {
         width: 40%;
-        padding: 13px;
-        font-size: 1.1rem;
+        font-size: .8rem;
         border-radius: 8px;
       }
         
