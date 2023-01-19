@@ -12,20 +12,10 @@
               <option>1</option>
               <option>2</option>
               <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -35,10 +25,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -48,10 +37,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -61,10 +49,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -74,10 +61,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -87,10 +73,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -100,10 +85,9 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
         <div class="form1-wrapper r-f">
@@ -113,10 +97,21 @@
               <option>2</option>
               <option>3</option>
             </select>
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)">
-            <input type="text" class="form1-input short-i" placeholder="Nafasi(Position)">
-            <input type="text" class="form1-input short-i" placeholder="Saini(Signature)">
-
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
+          </div>
+        </div>
+        <div class="form1-wrapper r-f">
+          <div class="form1-i">
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <input type="text" class="form1-input short-i" placeholder="Number">
+            <input type="text" class="form1-input short-i" placeholder="Player role">
+            <input type="text" class="form1-input short-i" placeholder="Position">
           </div>
         </div>
       </div>

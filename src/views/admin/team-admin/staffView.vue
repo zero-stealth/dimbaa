@@ -98,7 +98,7 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Welcome</h1>
+        <h1>Team Staff  </h1>
         <span>User</span>
       </div>
       <div class="main-wrapper">
@@ -158,14 +158,14 @@ onMounted(async () => {
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">Coach</label>
+              <label for="user-role">Team name</label>
               <input
                 type="radio"
                 v-bind:value="false"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">Medic</label>
+              <label for="username">ID</label>
               <input
                 type="radio"
                 v-bind:value="false"
@@ -207,12 +207,12 @@ onMounted(async () => {
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
           <!-- show component  -->
-          <h2>Medic</h2>
           <div class="filter-list">
+            <h2>Medic</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="name" />
+                <input type="checkbox" v-model="position" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

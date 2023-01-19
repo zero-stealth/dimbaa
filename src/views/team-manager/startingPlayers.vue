@@ -7,277 +7,145 @@
       <div class="r-divider">
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="GK" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="2" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="3" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="4" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="5" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="6" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="7" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="8" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="9" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="10" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-            <input type="text" class="form1-input short-r" placeholder="11" />
-            <input
-              type="text"
-              class="form1-input short-i"
-              placeholder="Jina(Name)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Jezi No(Jersey No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="License(Laseni No)"
-            />
-            <input
-              type="text"
-              class="form1-input short-r"
-              placeholder="Signature(Saini)"
-            />
+            <select v-model="selected" class="selected-ps selected-psr">
+              <option>Gk1</option>
+              <option>Gk2</option>
+              <option>Gk3</option>
+            </select>
+            <input type="text" class="form1-input short-r" placeholder="Jezi No(Jersey No)" />
+            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
+            <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
           </div>
         </div>
       </div>
@@ -295,3 +163,4 @@
 @import "@/style/form.css";
 @import "@/style/report.css";
 </style>
+

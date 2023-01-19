@@ -81,6 +81,17 @@
     background-color: var(--background-color);
 }
 
+.selected-ps {
+    width: 100%;
+    border: none;
+    display:flex ;
+    padding: 10px;
+    background-color: var(--light-color);
+    
+}
+
+
+
 
 }
 
@@ -115,6 +126,12 @@
     padding: 70px;
     justify-content: space-evenly;
 }
+
+.selected-ps {
+    width: 50%;
+    
+}
+
 
 
 }

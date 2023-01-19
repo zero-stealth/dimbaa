@@ -56,7 +56,10 @@ onMounted(async () => {
           <td>
               <div class="table-link-c">
                 <div class="table-link">
-                  <a href="#" @click="drawerStore.toggleSecond()">View</a>
+                  <a href="#" @click="drawerStore.toggleSecond()">Upload</a>
+                </div>
+                <div class="table-link">
+                  <a href="#">View</a>
                 </div>
               </div>
             </td>

@@ -1,5 +1,6 @@
 <script setup>
 import details from "./detailsView.vue";
+import formation from "./fomationView.vue";
 import submitPlayers from "./submitView.vue";
 import leaderPlayers from "./leadersPlayers.vue";
 import startingPlayers from "./startingPlayers.vue";
@@ -67,7 +68,14 @@ watchEffect(() => {
           @click="teamPage = leaderPlayers"
           :class="[teamPage == leaderPlayers ? 'datapage'  : '']"
         >
-          Leader
+          Official
+        </button>
+        <button
+          class="data-n-b"
+          @click="teamPage = formation"
+          :class="[teamPage == formation ? 'datapage'  : '']"
+        >
+        Formation
         </button>
         <button
           class="data-n-b"
