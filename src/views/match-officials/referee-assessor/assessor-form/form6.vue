@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <div class="assess-container">
-    <h2>Evaluation of the Assistant Referee 1</h2>
+    <h2>Evaluation of the Assistant Referee 2</h2>
     <div class="assess-inner">
       <div class="assess-wrapper">
         <div class="assess-i">

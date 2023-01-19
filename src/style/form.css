@@ -24,9 +24,10 @@
     border-bottom:4px solid var(--light-color) ;
   }
 
-
-
-
+  .icon-out {
+    color: var(--primary-color);
+  }
+  
   /* style change for form2  */
 
   .f2-w {
@@ -90,6 +91,7 @@
   .form1-i {
     gap: 10px;
     display: flex;
+    width: 100%;
   }
 
   .form1-input::placeholder {
@@ -104,6 +106,12 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+  }
+
+  .pl-fd8 {
+    gap: 10px;
+    display: flex;
+    align-items: center;
   }
 
   .btn1-center {
@@ -138,6 +146,11 @@
     width: 10%;
     
 }
+
+.selected-psf {
+  width: 300px;
+}
+
 
 
 }
@@ -198,5 +211,9 @@
     display: flex;
   }
 
+  .selected-psf {
+    width: 140px;
+  }
+
   
-} 
+}

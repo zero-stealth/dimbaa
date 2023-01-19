@@ -8,18 +8,111 @@
   <div class="r-conquer">
     <div class="form1-wrapper r-f">
     <div class="form1-i r-form-i">
+      <div class="r-input">
+      <label for="">Team</label>
+      <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+                <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Team1</option>
+              <option>Team2</option>
+              <option>Team3</option>
+            </select>
+    </div>
     <div class="r-input">
-      <label for="">Dakika</label>
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
+      <label for="">J/No</label>
+      <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>No1</option>
+              <option>No2</option>
+              <option>No3</option>
+            </select>
     </div>
     <div class="r-input">
       <label for="">Mchezaji/Player</label>
@@ -35,30 +128,57 @@
       <input type="text" class="form1-input">
     </div>
     <div class="r-input">
-      <label for="">J/No</label>
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-    </div>
-    <div class="r-input">
-      <label for="">Team</label>
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
-      <input type="text" class="form1-input r-short">
+      <label for="">Dakika</label>
+      <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
+            <select v-model="selected" class="form1-input selected-psf">
+              <option>Mnt1</option>
+              <option>Mnt2</option>
+              <option>Mnt3</option>
+            </select>
     </div>
     <div class="r-input">
       <label for="">Sababu/Reasons</label>

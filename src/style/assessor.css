@@ -65,7 +65,7 @@
   /* pop css  */
 
   .info-detail-r {
-    gap: 8px;
+    gap: 12px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -162,6 +162,9 @@
   }
 
   /* pop css  */
+    .info-detail-r p {
+    font-size: 1rem;
+  }
 
   .info-add-r {
     display: flex;

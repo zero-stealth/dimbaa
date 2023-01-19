@@ -11,7 +11,6 @@ import form8 from "./referee-form/form8.vue";
 import form9 from "./referee-form/form9.vue";
 import form10 from "./referee-form/form10.vue";
 import form11 from "./referee-form/form11.vue";
-import form12 from "./referee-form/form12.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import { useAuthStore } from "@/stores/auth.js";
@@ -153,13 +152,6 @@ onMounted(async () => {
           :class="[refereePage == form11 ? 'datapage' : '']"
         >
           11
-        </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form12"
-          :class="[refereePage == form12 ? 'datapage' : '']"
-        >
-          12
         </button>
       </div>
     </div>

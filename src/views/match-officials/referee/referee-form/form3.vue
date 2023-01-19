@@ -2,7 +2,7 @@
 </script>
 <template>
   <div class="form1-container r1">
-  <h1>Starting PLAYERS/wanaoanza </h1>
+  <h1>Starting squad/wanaoanza </h1>
   <!-- input container  -->
   <div class="r-conquer">
   <div class="r-divider">
