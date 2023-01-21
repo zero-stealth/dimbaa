@@ -1,45 +1,18 @@
 <script setup>
 import axios from "axios";
-import { useDrawerStore } from "@/stores/drawer";
+import { onMounted , ref  } from "vue";
 import { useRouteStore } from "@/stores/route";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
-const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
-const drawerStatus = ref(null);
-const drawerID = ref(null);
+
 const data = ref([]);
-const check = ref(false);
-
-
-// update on changes
-watchEffect(() => {
-  drawerStatus.value = drawerStore.IsDrawerOpen;
-  open.value = drawerStore.popDrawer;
-});
-
-const openDrawer = (id) => {
-  switch (id) {
-    case 1:
-      drawerID.value = 1;
-      drawerStore.toggleDrawer();
-      break;
-    case 2:
-      drawerID.value = 2;
-      drawerStore.toggleDrawer();
-      break;
-    default:
-      drawerID.value = null;
-      break;
-  }
-};
 
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: `https://be-tblp.dimbaa.com/api/admin/stadia/${routeStore.playerID}`,
+    url: `https://be-tblp.dimbaa.com/api/admin/users/${routeStore.playerID}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -60,27 +33,6 @@ onMounted(async () => {
 });
 </script>
 <template>
-    <div class="main-container">
-    <div class="nav-top">
-      <div class="main-details">
-        <span>Stadium details</span>
-      </div>
-
-    </div>
-    <div class="team-player-x">
-        <div class="team-d-x">
-          <br>
-          <h3> stadium name </h3>
-          <h4> stadium owner</h4>
-          <h4> stadium capacity</h4>
-          <h4> location</h4>
-        </div>
-          <img
-          src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
-          alt="player-pic"
-          class="player-pic"
-        />
-      </div>
   <div class="specific-content">
     <div class="table-slide">
       <table class="tb-specific">
@@ -88,32 +40,34 @@ onMounted(async () => {
           <th> <button class="sp-dbtn" @click="routeStore.togglePage">
               <ArrowIcon class="icon icon-dta" />
             </button></th>
-          <th>Name</th>
-          <th>Region</th>
-          <th>location</th>
-          <th>team</th>
-        </tr>
-        <tr v-for="({ name, region, location }, index) in searchResult" :key="index">
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
-          <td>{{ location }}</td>
-          <td>{{  }}</td>
-          <td class="img-stdium">{{ image }}</td>
-          <td>
-
-          </td>
+            <th>Local ID</th>
+            <th>Fifa ID</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>DOB</th>
+            <th>DOP</th>
+            <th>start date</th>
+            <th>end date</th>
+            <th>Team</th>
+            <th>Former Team</th>
+            <th>Nationality</th>
+            <th>Playing position</th>
+            <th>Jersey number</th>
+            <th>Signature</th>
+          </tr>
+          <tr
+            v-for="({ first_name, middle_name,  jersey_number, signature }, index) in searchResult"
+            :key="index"
+          >
+            <td>{{ `${first_name} ${middle_name}` }}</td>
+            <td>{{ jersey_number }}</td>
+            <td>{{ signature }}</td>
         </tr>
       </table>
     </div>
-  </div>
-    <div>
-      <PopUP title="Add Player" v-if="check == true">
-        <CreatePlayer />
-      </PopUP>
     </div>
-  </div>
 </template>
 <style>
 @import "@/style/main.css";
-@import "../../style/userspecific.css";
+@import "../../style/userspecific.css"
 </style>

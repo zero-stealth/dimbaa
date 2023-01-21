@@ -7,6 +7,7 @@ import AboutIcon from "../icons/AboutIcon.vue";
 import { useRoleStore } from "../../stores/roles";
 import SettingsIcon from "../icons/SettingIcon.vue";
 import DashBoardIcon from "../icons/DashBoardIcon.vue";
+import LogOutIcon from "@/components/icons/LogOutIcon.vue";
 import NotificationIcon from "../icons/NotificationIcon.vue";
 
 const roleStore = useRoleStore();
@@ -60,10 +61,15 @@ watchEffect(() => {
         <span>About</span>
       </RouterLink>
     </div>
+ 
     <div class="end-component">
       <RouterLink :to="{ name: 'Settings' }" class="side-link">
         <SettingsIcon class="icon settings-icon" />
         <span>Settings</span>
+      </RouterLink>
+      <RouterLink :to="{ name: 'Login' }" class="side-link">
+        <LogOutIcon class="icon settings-icon" />
+        <span>Logout</span>
       </RouterLink>
     </div>
   </div>

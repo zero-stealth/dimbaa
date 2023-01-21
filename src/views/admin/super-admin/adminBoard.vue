@@ -37,17 +37,6 @@
         </button>
         <button
           class="inner-component"
-          @click="activePage = Staff"
-          :class="[activePage == Staff ? 'active' : '']"
-        >
-          <div class="inner-i">
-            <StaffIcon class="icon icon-c" />
-            <span>Team staff</span>
-            </div>
-          <ArrowIcon class="icon icon-c a-icon" />
-        </button>
-        <button
-          class="inner-component"
           @click="activePage = Soccer"
           :class="[activePage == Soccer ? 'active' : '']"
         >
@@ -69,7 +58,6 @@ import { shallowRef } from "vue";
 // icons
 
 import TeamIcon from "@/components/icons/TeamIcon.vue";
-import StaffIcon from "@/components/icons/StaffIcon.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import SecureIcon from "@/components/icons/SecureIcon.vue";
 import SoccerIcon from "@/components/icons/SoccerIcon.vue";
@@ -79,7 +67,6 @@ import StadiumIcon from "@/components/icons/StadiumIcon.vue";
 
 import User from "./userView.vue"
 import Team from "./teamView.vue"
-import Staff from "./staffView.vue";
 import Soccer from "./soccerView.vue";
 import Stadium from "./stadiumView.vue";
 

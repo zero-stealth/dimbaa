@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from "vue";
-const medic = ref("");
-const coach  = ref("");
-const assistantCoach = ref("");
+const name = ref("");
+const number  = ref("");
+const role = ref("");
+
 
 
 const getDetails = () => {
@@ -11,9 +12,9 @@ const getDetails = () => {
 
 //Reset the form
 const reset = () => {
-  coach.value = "";
-  medic.value = "";
-  assistantCoach.value = "";
+  number.value = "";
+  name.value = "";
+  role.value = "";
 };
 </script>
 <template>
@@ -26,34 +27,35 @@ const reset = () => {
       class="userform-wrapper"
     >
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">Medic</label>
+        <label for="add-user-input" class="user-label">name</label>
         <input
           required
           type="text"
           class="user-input"
-          v-model="medic"
+          v-model="name"
           placeholder="name"
           />
         </div>
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">Coach</label>
+        <label for="add-user-input" class="user-label">number</label>
         <input
           required
           type="text"
           class="user-input"
-          v-model="coach"
-          placeholder="coach"
+          v-model="number"
+          placeholder="number"
           />
         </div>
       <div class="userform-input">
-        <label for="add-user-input" class="user-label">Assistant coach</label>
-        <input
+        <label for="add-user-input" class="user-label">role</label>
+        <select
           required
-          type="email"
+          v-model="role"
           class="user-input"
-          v-model="assistantCoach"
-          placeholder="name"
-        />
+        >
+          <option>lines man</option>
+          <option>referee</option>
+        </select>
       </div>
       <div class="user-btn-f">
         <button type="submit" class="btn-f a-u">Add</button>

@@ -31,6 +31,7 @@
         font-weight: 100;
     }
     
+    
     .match-input {
         width: 50%;
         border: none;
@@ -38,6 +39,12 @@
         padding: 5px 10px;
         color: var(--secondary-color);
     }
+
+    
+  .labl-tans h3 {
+    background-color: var(--background-color);
+  }
+
 
     .btn-f {
         outline: none;

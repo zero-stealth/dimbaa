@@ -26,28 +26,6 @@
         </button>
         <button
           class="inner-component"
-          @click="activePage = PlayerHistory"
-          :class="[activePage == PlayerHistory ? 'active' : '']"
-        >
-          <div class="inner-i">
-            <HistoryIcon class="icon icon-c" />
-            <span>Player History</span>
-          </div>
-          <ArrowIcon class="icon icon-c a-icon" />
-        </button>
-        <button
-          class="inner-component"
-          @click="activePage = TeamPlayerList"
-          :class="[activePage == TeamPlayerList ? 'active' : '']"
-        >
-          <div class="inner-i">
-            <ListIcon class="icon icon-c" />
-            <span>Player List</span>
-          </div>
-          <ArrowIcon class="icon icon-c a-icon" />
-        </button>
-        <button
-          class="inner-component"
           @click="activePage = Apparel"
           :class="[activePage == Apparel ? 'active' : '']"
         >

@@ -203,6 +203,32 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 
+  .stad-cd {
+    gap: 10px;
+    display: flex;
+    font-size: .6rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stad-cd-a {
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 4px;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  
+  .stad-cd-d {
+    cursor: pointer;
+    padding: 4px 15px;
+    border-radius: 4px;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
+
+
   .team-d-x {
     display: flex;
     flex-direction: column;
@@ -266,6 +292,11 @@
 
   tr:nth-child(even) {
     background-color: var(--light-color);
+
+  }
+
+  tr:nth-child(odd) {
+    background-color: var(--dark-color);
 
   }
 
@@ -592,6 +623,18 @@ input:checked + .slider:before {
     position: relative;
     background-color: var(--background-color);
   }
+
+  
+  .stad-cd-a {
+    font-size: 1rem;
+  }
+
+  
+  .stad-cd-d {
+    font-size: 1rem;
+
+  }
+
 
   .circle-a .icon {
     color: var(--primary-color);

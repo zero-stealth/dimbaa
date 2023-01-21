@@ -2,9 +2,9 @@
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
-import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 import EditMatch from "@/components/form/updateform/EditMatch.vue";
+import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
@@ -68,42 +68,78 @@ const openDrawer = (id) => {
     </div>
     <div class="inner-view-content">
       <h1>ScoreBoard</h1>
-        </div>
+    </div>
     <!-- inner data content -->
-      <div class="user-content">
+    <div class="user-content">
       <div class="table-slide">
         <table>
           <tr>
-            <th>Team</th>
-            <th>Played</th>
-            <th>Won</th>
-            <th>Drawn</th>
-            <th>Lost</th>
-            <th>GF</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Points</th>
+            <div class="first-s">
+              <th></th>
+              <th>Position</th>
+              <th>Team</th>
+            </div>
+            <div class="second-s">
+              <th>Points</th>
+              <th>Points</th>
+              <th>Pld</th>
+              <th>W</th>
+              <th>D</th>
+              <th>L</th>
+              <th>GF</th>
+              <th>GA</th>
+              <th>GD</th>
+            </div>
+
           </tr>
           <tr>
-            <td>Team 1</td>
-            <td>12</td>
-            <td>5</td>
-            <td>4</td>
-            <td>3</td>
-            <td>7</td>
-            <td>1</td>
-            <td>8</td>
-            <td>13</td>
+            <div class="first-s">
+              <td>
+              <div>
+                
+              </div>  
+              </td>
+              <td>1</td>
+              <td>Team 1</td>
+            </div>
+            <div class="second-s">
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>7</td>
+              <td>1</td>
+              <td>8</td>
+              <td>8</td>
+              <td>8</td>
+              <td></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="first-s">
+              <td>1</td>
+              <td>Team 1</td>
+            </div>
+            <div class="second-s">
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>7</td>
+              <td>1</td>
+              <td>8</td>
+              <td>8</td>
+              <td>8</td>
+              <td>13</td>
+            </div>
           </tr>
         </table>
       </div>
     </div>
-    </div>
-    <div>
-      <PopUP title="Edit match" v-if="check == true">
-        <EditMatch />
-      </PopUP>
-    </div>
+  </div>
+  <div>
+    <PopUP title="Edit match" v-if="check == true">
+      <EditMatch />
+    </PopUP>
+  </div>
 </template>
 <style>
 @import "@/style/main.css";

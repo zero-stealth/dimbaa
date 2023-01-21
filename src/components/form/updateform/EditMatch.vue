@@ -66,6 +66,14 @@ const reset = () => {
         </select>
       </div>
       <div class="match-container">
+        <label for="match-select" class="match-label labl-tans">Match</label>
+        <div
+          class="match-input"
+        >
+          <h4>match Id</h4>
+      </div>
+      </div>
+      <div class="match-container">
         <label for="match-select" class="match-label">City</label>
         <select
           required

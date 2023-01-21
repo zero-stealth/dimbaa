@@ -1,26 +1,30 @@
 <script setup>
-import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
-import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import StadiumDetails from "@/components/specific/StadiumComponent.vue";
-import EditStadium from "@/components/form/updateform/UpdateStadium.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
+import Stadium from "../../../components/specific/StadiumComponent.vue";
+import UpdateStadium from "@/components/form/updateform/UpdateStadium.vue";
+import SideDrawer from "@/components/drawer/SideDrawer.vue";
+import DeletePlayerlist from "../../../components/form/deleteForm/DeletePlayerList.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import axios from "axios";
 
-const activePage = shallowRef(StadiumDetails);
+const url= "https://be-tblp.dimbaa.com/api/teammanager/players"
+const showPage = shallowRef(Stadium);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
-const drawerStatus = ref(null);
 const drawerID = ref(null);
+
+const playerId = ref(null);
+const playerName = ref(null);
+const drawerStatus = ref(null);
+const check = ref(false);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
-const check = ref(false);
 
 // update on changes
 watchEffect(() => {
@@ -28,47 +32,27 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-//we use this id to determin which drawer opens
-//show page based
-const showSpecific = (id) => {
-  routeStore.setPlayerId(id);
-  routeStore.togglePage();
-};
-
-const openCreate = () => {
+const openAdd = () => {
   check.value = true;
   drawerStore.togglePop();
 };
 
-const openEdit = () => {
+
+const openDelete = () => {
   check.value = false;
   drawerStore.togglePop();
 };
 
-const openDrawer = (id) => {
-  switch (id) {
-    case 1:
-      drawerID.value = 1;
-      drawerStore.toggleDrawer();
-      break;
-    case 2:
-      drawerID.value = 2;
-      drawerStore.toggleDrawer();
-      break;
-    default:
-      drawerID.value = null;
-      break;
-  }
-};
 //api
 const searchResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
+  return data.value.filter((d) => d.playing_position.includes(search.value));
 });
+
 
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/stadia",
+    url: `${url}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -76,12 +60,11 @@ onMounted(async () => {
         "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNWZhMGRiODY3YTM0NTg3MTg2ZDk3MDdiMDBmYzliYWM4M2QyZjAzOWM2ZjhjZjVlMTRlMWUwY2UxZGYxYmRhNDdiYWYxNWEyMjJhMDhkMmIiLCJpYXQiOjE2NzExOTM1MzguNTU0MTM0LCJuYmYiOjE2NzExOTM1MzguNTU0MTM2LCJleHAiOjE2ODY5MTgzMzguNTQ4NTAxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.kYBwzo9ZoKTL9GG_j9iMpswww1UriiHYPufljSVJo_5QyLiJrI4Wb2k0sPD7iDb0SmlrFQnUdSI8knqLUZBe2Sd2bC4r4c_otOdYLnQAyxmM-0fJh_jVIGYgCjFF7msWOWsTcyl8fg7-Uj3yrsAxoxOdQW-L28dx4-hFAZUR9eOs2XCwU0cf9TUnGdqxvUm_wFBBou509NtZec1bmaAgUbG9GSpAfk7mfmuUOU1u7ElrOTFyvvN4bAI_70DpK3XUDJ0Nw81YsCO0_kp_Nr1hAZ2fmcIPXe-xKvwSPfp_7cMmT6HqV9MdQwPK7-ISoJq_eTy2fGvfHDQrWyKLDyKp8W0Fs5z6PURwT2hFZ6tV3jxCMH-sAzgTY72xXdb3EjG4etbbyc-wAWXmPQ9WB5SeOms2Xqm4M41XQbNeyK-qy2jYcDQLnYVnRZihWdBTLcBf64_DFuMWzRhvu4hTL8_fVu94whAWW-Oi9-s7BKRftDf3paExjJtEaT6-kUDnzRpe_Yfw9nfWDxA8LYUUsukYDDqvSshVRk5eG6kp3K169pppD7gAKakpORggebMgEHn4DGX7ieowJk3XCfDrIxZ5EVoX3HGZjamaRPmnl-bX2lvBTjBm3uFSGrLnMbckzS4fdpYK3YnNmyBESm9-sOCQ-5M3Nf6jsFQH6FdeWnGoo0E",
     },
   };
-  
-  axios
+
+await axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.stadia;
-      console.log(data.value);
+      data.value = response.data.players;
     })
     .catch(function (error) {
       console.error(error);
@@ -89,11 +72,12 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="main-container">
+    <component :is="showPage"  v-if="routeStore.showPage  == true " />
+  <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details">
-        <h1>Stadium</h1>
-        <span>Stadium</span>
+        <h1>Stadium list</h1>
+        <span>Stadium list</span>      
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -102,58 +86,53 @@ onMounted(async () => {
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search Stadium"
+            placeholder="Search by Name"
           />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
-          </CircleDraw>
         </div>
       </div>
     </div>
-    <component :is="activePage" v-if=" routeStore.showPage == true" />
-    <div class="user-content" v-else>
-      <h2></h2>
-      <div class="table-slide">
-        <table>
-        <tr>
-          <th>Stadium name</th>
-          <th>Region</th>
-          <th>location</th>
-          <th>capacity</th>
-          <!-- <th>Stadium</th> -->
-          <th>action</th>
-        </tr>
-        <tr
-          v-for="(
-            { id, name, region, location, capacity }, index
+    <div class="team-list-c">
+      <h3>Total Stadium : {{ searchResult.length }}</h3>
+      </div>
+    <div class="user-content">
+      <!-- <div class="team-player-x" v-for="(
+            { id,  first_name, middle_name, last_name, playing_position },
           ) in searchResult"
-          :key="index"
-        >
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
-          <td>{{ location }}</td>
-          <td>{{ capacity }}</td>
-          <td>
-            <div class="table-link-c">
-              <div class="table-link">
-                <a href="#" @click="showSpecific(id)">View</a>
-              </div>
-              <!-- <div class="table-link">
-                <a href="#" @click="openEdit">Edit</a>
-              </div> -->
-            </div>
-          </td>
-        </tr>
-      </table>
+          :key="`${searchResult}`"> -->
+       <div class="team-player-x">
+        <div class="team-d-x">
+          <h3> stadium name </h3>
+          <h4> stadium owner</h4>
+          <h4> stadium capacity</h4>
+          <h4> location</h4>
+          <div class="stad-cd">
+            <a @click="openAdd" class="stad-cd-a" >Add</a>
+            <a  @click="openDelete" class="stad-cd-d" >Delete</a>
+            <a  @click="routeStore.togglePage()"  class="stad-cd-d">View</a>
+          </div>
+        </div>
+          <img
+          src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+          alt="player-pic"
+          class="player-pic"
+        />
       </div>
     </div>
-    <!-- side bar component for sorting  -->
-    <SideDrawer
+    <div>
+      <PopUP title="Add stadium" v-if="check == true">
+        <UpdateStadium />
+      </PopUP>
+      <PopUP  v-else>
+        <DeletePlayerlist :Id="playerId" :text="playerName" :url="url" />
+      </PopUP>
+    </div>
+        <!-- side bar component for sorting  -->
+        <SideDrawer
       v-if="drawerID == 1"
       title="Sort by"
       class="sort-drawer"
@@ -161,24 +140,25 @@ onMounted(async () => {
     >
       <div class="sort-user-c">
         <div class="sort-wrapper">
-          <h1>Sort Stadium list using</h1>
+          <h1>Sort player list using</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">Stadium Name</label>
+              <label for="user-role">name</label>
               <input
                 type="radio"
                 id="one"
-                value="StadiumName"
-                v-model="StadiumName"
+                value="PlayerName"
+                v-model="name"
               />
             </div>
             <div class="sort-label-i">
-              <label for="username">Team</label>
-              <input type="radio" id="one" value="Tean" v-model="Team" />
-            </div>
-            <div class="sort-label-i">
-              <label for="username">City</label>
-              <input type="radio" id="one" value="City" v-model="City" />
+              <label for="username">region</label>
+              <input
+                type="radio"
+                id="one"
+                value="JerseyNumber"
+                v-model="region"
+              />
             </div>
           </div>
         </div>
@@ -207,16 +187,9 @@ onMounted(async () => {
         </div>
       </div>
     </SideDrawer>
-    <div>
-      <PopUP title="Stadium" v-if="check == true">
-        <EditStadium />
-      </PopUP>
-      <PopUP title="Stadium" v-else>
-        <EditStadium />
-      </PopUP>
-    </div>
   </div>
 </template>
 <style>
 @import "@/style/main.css";
 </style>
+

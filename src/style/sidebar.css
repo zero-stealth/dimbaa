@@ -34,7 +34,8 @@
     
     
     .end-component {
-        width: 25%;
+        width: 50%;
+        display: flex;
     }
     
     
@@ -78,6 +79,8 @@
     
     .end-component {
         width: 100%;
+        flex-direction: column;
+
     }
     
     
