@@ -60,7 +60,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-    <div class="main-container">
+    <div class="main-container Sc-p">
     <div class="nav-top">
       <div class="main-details">
         <span>Stadium details</span>

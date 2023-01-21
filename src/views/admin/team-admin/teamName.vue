@@ -1,5 +1,6 @@
 <script setup>
 import axios from "axios";
+import { useAuthStore } from "@/stores/auth.js";
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
@@ -10,14 +11,16 @@ import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import TeamNameDetails from "@/components/specific/TeamNameComponent.vue";
 import CreateTeam from "@/components/form/createform/CreateTeam.vue";
-import ChangeStadium from "../../../components/form/updateform/changeStadium.vue";
+import ChangeStadium from "@/components/form/updateform/changeStadium.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(TeamNameDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
+const authStore = useAuthStore();
 const drawerStatus = ref(null);
+const userFirstName =ref(null);
 const showPage = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
@@ -30,6 +33,8 @@ watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+userFirstName.value = authStore.userName.split('@')[0];
 
 //we use this id to determin which drawer opens
 //show page based
@@ -95,8 +100,9 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Team</h1>
-        <span>Team name</span>
+        <h1>Welcome {{ userFirstName }}</h1>
+        <span>Welcome {{ userFirstName }}</span>
+        <h4>Team admin</h4>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -123,7 +129,7 @@ onMounted(async () => {
     </div>
     <component :is="activePage" v-if="routeStore.showPage  == true" />
     <div class="user-content" v-else>
-      <h2>Team Name</h2>
+      <h2></h2>
       <div class="team-c-r">
         <span>Home Stadium: </span>
         <span>Stadium Name: </span>

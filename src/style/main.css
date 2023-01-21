@@ -60,6 +60,13 @@
     font-size: 1rem;
   }
 
+  .main-details h4 {
+    text-align: center;
+    font-weight: 300;
+    
+  }
+
+
 
   .team-list-c {
     display: flex;
@@ -241,13 +248,12 @@
   }
 
   .team-d-x h3 {
-    font-size: .8rem;
+    font-size: .9rem;
   }
   
   .team-d-x h4 {
     font-weight: 100;
-    font-size: .8rem;
-    color: var(--dark-color);
+    font-size: .9rem;
   }
 
     
@@ -506,11 +512,17 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
   }
+  
+  .main-details { }
+  
+
+
 
   .general-re span {
     display: none;
   }
 
+  
 
   .main-details h1 {
     display: flex;
@@ -524,6 +536,10 @@ input:checked + .slider:before {
 
   .main-details span {
     display: none;
+  }
+
+  .main-details h4 {
+    text-align: start;
   }
 
   .team-list-c {

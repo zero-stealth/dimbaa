@@ -2,13 +2,11 @@
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
-import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
-import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import Stadium from "../../../components/specific/StadiumComponent.vue";
+import Stadium from "@/components/specific/StadiumComponent.vue";
 import UpdateStadium from "@/components/form/updateform/UpdateStadium.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
-import DeletePlayerlist from "../../../components/form/deleteForm/DeletePlayerList.vue";
+import DeletePlayerlist from "@/components/form/deleteForm/DeletePlayer.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 import axios from "axios";
 
@@ -86,14 +84,9 @@ await axios
             type="text"
             v-model="search"
             class="main-search"
-            placeholder="Search by Name"
+            placeholder="Search by stadium"
           />
         </form>
-        <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="openDrawer(1)">
-            <MenuIcon class="icon icon-menu" />
-          </CircleDraw>
-        </div>
       </div>
     </div>
     <div class="team-list-c">

@@ -92,7 +92,7 @@ onMounted(async () => {
 </script>
 <template>
   
-  <div class="specific-content">
+  <div class="specific-content Sc-p">
     <div class="team-player-x">
         <div class="team-d-x">
           <img
@@ -111,10 +111,10 @@ onMounted(async () => {
         />
       </div>
    
-    <div class="table-slide">
-      <table class="tb-specific">
+    <div class="table-slide ">
+      <table class="tb-specific p-tb-spcfic">
         <tr>
-          <th> <button class="sp-dbtn" @click="routeStore.togglePage">
+              <th> <button class="sp-dbtn" @click="routeStore.togglePage">
               <ArrowIcon class="icon icon-dta" />
             </button></th>
             <th>Local ID</th>
@@ -123,7 +123,7 @@ onMounted(async () => {
             <th>Weight</th>
             <th>DOB</th>
             <th>DOP</th>
-            <th>start date</th>
+              <th>start date</th>
             <th>end date</th>
             <th>Team</th>
             <th>Former Team</th>
@@ -136,6 +136,13 @@ onMounted(async () => {
             v-for="({ first_name, middle_name,  jersey_number, signature }, index) in searchResult"
             :key="index"
           >
+          <div class="f-di">
+            <td>x</td>
+            <td>ss</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </div>
             <td>{{ `${first_name} ${middle_name}` }}</td>
             <td>{{ jersey_number }}</td>
             <td>{{ signature }}</td>

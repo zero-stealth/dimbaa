@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
+import { useAuthStore } from "@/stores/auth.js";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
@@ -17,6 +18,8 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 const activePage = shallowRef(userDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
+const authStore = useAuthStore();
+const userFirstName =ref(null);
 const drawerStatus = ref(null);
 const showPage = ref(false);
 const showall = ref(false);
@@ -35,6 +38,10 @@ watchEffect(() => {
 const toggle = () => {
   showall.value = true;
 };
+
+userFirstName.value = authStore.userName.split('@')[0];
+
+
 
 //we use this id to determin which drawer opens
 //show page based
@@ -100,7 +107,8 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Welcome</h1>
+        <h1>Welcome {{ userFirstName }}</h1>
+        <h5>Team admin</h5>
         <span>User</span>
       </div>
       <div class="main-wrapper">

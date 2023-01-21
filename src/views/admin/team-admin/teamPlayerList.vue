@@ -2,7 +2,7 @@
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import CreatePlaylist from "../../../components/form/createform/CreatePlayerList.vue";
-import DeletePlayerlist from "../../../components/form/deleteForm/DeletePlayerList.vue";
+import DeletePlayerlist from "../../../components/form/deleteForm/Delete.vue";
 import { ref, onMounted, computed, watchEffect } from "vue";
 import axios from "axios";
 

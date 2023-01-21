@@ -8,9 +8,17 @@
         width: 100%;
         text-align: center;
     }
+
     
     .tb-specific tr {
         text-align: center;
+    }
+
+    .Sc-p {
+        gap: 15px;
+        display: flex;
+        padding: 15px;
+        flex-direction: column;
     }
     
     .user-c-s {

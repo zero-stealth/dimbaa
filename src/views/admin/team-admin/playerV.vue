@@ -10,7 +10,7 @@ import SideDrawer from "@/components/drawer/SideDrawer.vue";
 
 import Player from "../../../components/specific/PlayerComponent.vue";
 import CreatePlayer from "@/components/form/createform/CreatePlayer.vue";
-import DeletePlayerlist from "../../../components/form/deleteForm/DeletePlayerList.vue";
+import DeletePlayerlist from "../../../components/form/deleteForm/Delete.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 import axios from "axios";
 

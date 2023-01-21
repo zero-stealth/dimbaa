@@ -6,7 +6,6 @@ import staff from "./soccerview/teamStaff.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
@@ -99,7 +98,7 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Welcome</h1>
+        <h1>Tactic</h1>
         <span>User</span>
       </div>
       <div class="main-wrapper">
@@ -113,9 +112,6 @@ onMounted(async () => {
           </CircleDraw>
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>
@@ -138,7 +134,7 @@ onMounted(async () => {
     <div class="inner-data-content">
       <component :is="tacticPage" />
     </div>
-    <!-- side bar component for sorting  -->
+    side bar component for sorting 
     <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
       :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
@@ -146,11 +142,15 @@ onMounted(async () => {
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
-              <label for="user-role">User Role</label>
+              <label for="user-role">Formation</label>
               <input type="radio" v-bind:value="true" />
             </div>
             <div class="sort-label-i">
-              <label for="username">User Name</label>
+              <label for="username">Position</label>
+              <input type="radio" v-bind:value="false" />
+            </div>
+            <div class="sort-label-i">
+              <label for="username">Staff</label>
               <input type="radio" v-bind:value="false" />
             </div>
           </div>
@@ -190,11 +190,11 @@ onMounted(async () => {
           </div>
           <!-- show component  -->
           <div class="filter-list">
-            <h2>Super Admin</h2>
+            <h2>Formation</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="superadmin" />
+                <input type="checkbox" v-model="Formation" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -202,11 +202,11 @@ onMounted(async () => {
           </div>
           <!-- show component  -->
           <div class="filter-list">
-            <h2>Team Admin</h2>
+            <h2>Staff</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="teamAdmin" />
+                <input type="checkbox" v-model="Staff" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -214,65 +214,17 @@ onMounted(async () => {
           </div>
           <!-- show component  -->
           <div class="filter-list">
-            <h2>Team manager</h2>
+            <h2>Position</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="teamManager" />
+                <input type="checkbox" v-model="Position" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>General Coordinator</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="general" />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>Referee</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="referee" />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>Match Commissioner</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="match" />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
-          <div class="filter-list">
-            <h2>Referee Assessor</h2>
-            <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="assessor" />
-                <span class="slider round"></span>
-              </label>
-              <!-- Rounded switch -->
-            </div>
-          </div>
-          <!-- show component  -->
+        
         </div>
       </div>
     </SideDrawer>

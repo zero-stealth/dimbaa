@@ -3,17 +3,24 @@ import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import CreateStaff from "@/components/form/createform/CreateStaff.vue";
+import DeleteStaff from "@/components/form/deleteForm/DeleteStaff.vue";
 import { ref, onMounted, computed, watchEffect } from "vue";
 
 const data = ref([]);
 const search = ref("");
-const check = ref(true);
+const check = ref(null);
 const drawerStore = useDrawerStore();
 
 const openStaff = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const deleteStaff = () => {
   check.value = false;
   drawerStore.togglePop();
 };
+
 
 
 //api
@@ -63,7 +70,10 @@ onMounted(async () => {
             <td>
               <div class="table-link-c">
                 <div class="table-link">
-                  <a href="#" @click="openStaff">Add</a>
+                  <a href="#" @click="openStaff">Edit</a>
+                </div>
+                <div class="table-link">
+                  <a href="#" @click="deleteStaff">Delete</a>
                 </div>
               </div>
             </td>
@@ -73,8 +83,11 @@ onMounted(async () => {
     </div>
     <!-- side bar component for sorting  -->
     <div>
-      <PopUP title="Add Staff" v-show="check == true">
+      <PopUP title="Edit Staff" v-if="check == true">
         <CreateStaff />
+      </PopUP>
+      <PopUP title="Delete Staff" v-else>
+        <DeleteStaff />
       </PopUP>
     </div>
   </div>

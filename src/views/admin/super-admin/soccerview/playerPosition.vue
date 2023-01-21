@@ -1,15 +1,22 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
+import PopUP from "@/components/drawer/popup.vue";
 import { ref, onMounted, computed, watchEffect } from "vue";
 import CreatePosition from "@/components/form/createform/CreatePosition.vue";
+import DeleteStaff from "@/components/form/deleteForm/DeleteStaff.vue";
 
 const data = ref([]);
 const search = ref("");
-const check = ref(true);
+const check = ref(null);
 const drawerStore = useDrawerStore();
 
 const openPos = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+const deletePos = () => {
   check.value = false;
   drawerStore.togglePop();
 };
@@ -61,7 +68,10 @@ onMounted(async () => {
             <td>
               <div class="table-link-c">
                 <div class="table-link">
-                  <a href="#" @click="openPos">Add</a>
+                  <a href="#" @click="openPos">Edit</a>
+                </div>
+                <div class="table-link">
+                  <a href="#" @click="deletePos">Delete</a>
                 </div>
               </div>
             </td>
@@ -69,9 +79,12 @@ onMounted(async () => {
         </table>
       </div>
     </div>
-    <PopUP title="Add position" v-show="check == false">
+    <PopUP title="Add position" v-if="check == true">
       <CreatePosition />
     </PopUP>
+    <PopUP title="Delete position" v-else>
+        <DeleteStaff />
+      </PopUP>
   </div>
 </template>
 <style>

@@ -35,6 +35,7 @@ const reset = () => {
   Team.value = "";
   StadiumName.value = "";
 };
+
 </script>
 <template>
   <div class="pop-adduser-form">
