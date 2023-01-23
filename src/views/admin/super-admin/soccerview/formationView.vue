@@ -40,7 +40,7 @@ const show = () => {
     case "4-3-3 Defensive-midfield":
       break;
     case "4-4-2 Diamond-midfield":
-      break;
+      break;  
     case "4-4-2 Flat-midfield":
       break;
     default:

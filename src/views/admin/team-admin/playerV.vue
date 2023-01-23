@@ -1,8 +1,8 @@
 <script setup>
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
+import { useAuthStore } from "@/stores/auth.js";
 import PopUP from "@/components/drawer/popup.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
@@ -18,6 +18,8 @@ const url= "https://be-tblp.dimbaa.com/api/teammanager/players"
 const showPage = shallowRef(Player);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
+const authStore = useAuthStore();
+const userFirstName =ref(null);
 const playerId = ref(null);
 const playerName = ref(null);
 const drawerStatus = ref(null);
@@ -37,6 +39,7 @@ const openAdd = () => {
   drawerStore.togglePop();
 };
 
+userFirstName.value = authStore.userName.split('@')[0];
 
 const openDelete = () => {
   check.value = false;
@@ -62,7 +65,7 @@ onMounted(async () => {
   };
 
 await axios
-    .request(options)
+    .request(options)   
     .then(function (response) {
       data.value = response.data.players;
     })
@@ -76,8 +79,9 @@ await axios
   <div class="main-container" v-else>
     <div class="nav-top">
       <div class="main-details">
-        <h1>Player list</h1>
-        <span>Player list</span>      
+        <h1>Welcome {{ userFirstName }}</h1>
+        <span>Welcome {{ userFirstName }}</span>
+        <h4>Team admin</h4>  
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
@@ -87,9 +91,6 @@ await axios
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
             <MenuIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
@@ -113,9 +112,6 @@ onMounted(async () => {
           </CircleDraw>
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>

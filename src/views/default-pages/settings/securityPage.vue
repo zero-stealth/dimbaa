@@ -1,73 +1,40 @@
 <script setup>
-import { ref } from "vue";
-const userId = ref("");
-const oldPassword = ref("");
-const newPassword = ref("");
-const confirmPassword = ref("");
+import theme from "./themePage.vue";
+import language from "./languagePage.vue";
+import password from "./passwordPage.vue";
+import { shallowRef } from "vue";
 
-const getCredentials = () => {
-//   console.log(
-//     userName.value,
-//     userId.value,
-//     userRole.value,
-//     mobileNumber.value,
-//     email.value,
-//     userRole.value
-//   );
 
-  reset();
-};
+const securityP = shallowRef(password);
 
-//Reset the form
-const reset = () => {
-  oldPassword.value = "";
-  newPassword.value = "";
-  confirmPassword.value = "";
-};
+
 </script>
 <template>
-  <div class="security-password-form">
-    <form
-      action=""
-      method="post"
-      @submit.prevent="getUser"
-      class="securityform-wrapper"
-    >
-    <h1>Change Password</h1>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="oldPassword"
-          placeholder="Old Password"
-        />
+  <div class="main-container">
+    <div class="st-ncp">
+      <!-- data nav  -->
+      <div class="data-nav security-ncp">
+        <button class="data-n-b sed-ncp" @click="securityP = password" :class="[securityP == password ? 'security-py' : '']">
+          Password
+        </button>
+        <button class="data-n-b sed-ncp" @click="securityP = language" :class="[securityP == language ? 'security-py' : '']">
+          Language
+        </button>
+        <button class="data-n-b sed-ncp" @click="securityP = theme" :class="[securityP == theme ? 'security-py' : '']">
+          Theme
+        </button>
       </div>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="newPassword"
-          placeholder="New Password"
-        />
-      </div>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="confirmPassword"
-          placeholder="confirm password"
-        />
-      </div>
-      <div class="secure-btn-f">
-        <button type="submit" class="btn-s s-u">Add</button>
-        <button type="submit" @click="reset" class="btn-s s-f">Reset</button>
-      </div>
-    </form>
+    </div>
+    <!-- inner data content -->
+    <div class="inner-data-content">
+      <component :is="securityP" />
+    </div>
+    <div>
+    </div>
   </div>
 </template>
 <style>
-@import "@/style/security.css";
+@import "@/style/main.css";
+@import "@/style/data.css";
+@import "@/style/securityp.css";
 </style>

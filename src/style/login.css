@@ -15,8 +15,12 @@
     
     }
     
-    .login-c , .login-adv {
-        flex: 50%;
+    .login-c {
+        flex: var(--auth-width);
+    }
+
+    .login-adv {
+        flex: calc(100% var(--auth-width));
     }
 
     

@@ -5,6 +5,7 @@ import AddPhoto from "@/components/icons/AddPhoto.vue";
 const StadiumName = ref("");
 const City = ref("");
 const Team = ref("");
+const Team2 = ref("");
 const Region = ref("");
 const url = ref(null)
 const input = ref(null);
@@ -46,6 +47,13 @@ const reset = () => {
       </div>
       <div class="userform-input">
         <label for="add-user-input" class="user-label">Team</label>
+        <select required v-model="Team" class="user-input" id="add-user-select">
+          <option>Manchester</option>
+          <option>Chelsea</option>
+        </select>
+      </div>
+      <div class="userform-input">
+        <label for="add-user-input" class="user-label">Other Team</label>
         <select required v-model="Team" class="user-input" id="add-user-select">
           <option>Manchester</option>
           <option>Chelsea</option>

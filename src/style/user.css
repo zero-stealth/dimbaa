@@ -45,6 +45,7 @@
   .userform-input {
     gap: 10px;
     display: flex;
+    padding: 10px;
     flex-direction: column;
   }
 

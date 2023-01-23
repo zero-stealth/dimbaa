@@ -1,79 +1,95 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import AddPhoto from "@/components/icons/AddPhoto.vue";
 
-const startDate = ref("");
-const endDate = ref("");
-const color = ref("");
-const homegame = ref("");
-const awaygame = ref("");
-const picture = ref("");
-const url = ref(null)
-const input = ref(null);
 
-const getDetails = () => {
+const Region = ref("");
+const StaffName = ref("");
+const inputImg =  ref(null);
+
+const getStaff = () => {
+
   reset();
 };
 
 
- const onFileChange  = (() => {
+const addImg = () => {
+  inputImg.value.click;
+}
+
+
+const getImage = (e) => {
+  inputImg.value = e.target.files[0]; 
+  console.log(e)
+}
+
+const onFileChange  = (() => {
     const file = e.target.files[0];
     url.value = URL.createObjectURL(file);
   })
 
-
-onMounted(() => {
-  console.log(input.value)
-});
-
-
-const openElementImg = () => {
+  const openElementImg = () => {
   console.log(input)
 };
 
+
 //Reset the form
 const reset = () => {
-  endDate.value = "";
-  color.value = "";
-  startDate.value = "";
+  Region.value = "";
+  StaffName.value = "";
+  Stadium.value = "";
 };
 </script>
 <template>
   <div class="pop-adduser-form">
-    <form action="" method="post" @submit.prevent="getDetails" class="userform-wrapper">
-      <div class="separator-p spe-pe">
-      <div class="userform-input">
-        <label for="add-user-input" class="user-label">Outfit usage</label>
-        <input required type="text" class="user-input" v-model="homegame" placeholder="home game " />
+ 
+    <form
+      action=""
+      method="post"
+      @submit.prevent="getUser"
+      class="userform-wrapper"
+    >
+    <div class="userform-input">
+        <label for="add-user-input" class="user-label">Staff ID</label>
+        <input
+          required
+          type="text"
+          class="user-input"
+          v-model="Id"
+          placeholder="Staff id"
+        />
       </div>
       <div class="userform-input">
-        <input required type="text" class="user-input" v-model="awaygame" placeholder="away game" />
-      </div>
-      </div>
-      <div class="userform-input">
-        <label for="add-user-input" class="user-label">Color of outfit</label>
-        <input required type="text" class="user-input" v-model="color" placeholder="color" />
-      </div>
-      <div class="separator-p spe-pe">
-      <div class="userform-input">
-        <label for="add-user-input" class="user-label">Start date</label>
-        <input required type="date" class="user-input" v-model="startDate" placeholder="Start date  " />
+        <label for="add-user-input" class="user-label">Staff Name</label>
+        <input
+          required
+          type="text"
+          class="user-input"
+          v-model="StaffName"
+          placeholder="Staff name"
+        />
       </div>
       <div class="userform-input">
-        <label for="add-user-input" class="user-label">End date</label>
-        <input required type="date" class="user-input" v-model="endDate" placeholder="End date" />
+        <label for="add-user-select" class="user-label">Job descrption</label>
+        <select
+          required
+          v-model="job"
+          class="user-input"
+        >
+          <option>Medic</option>
+          <option>Coach</option>
+        </select>
       </div>
-      </div>
+    
       <div class="userform-input">
-        <label for="add-user-input" class="user-label">Outfit picture</label>
-       <AddPhoto class="icon-pic-d" @click="openElementImg">
-        <input ref="input" type="file" accept="image/*" @change="uploadImage()" class="upload-input" id="file-input">
+        <label for="add-user-input" class="user-label">Staff logo</label>
+       <AddPhoto class="icon-pic-d" @click="addImg" v-if="inputImg == null">
        </AddPhoto>
-        <div id="preview">
-          <img v-if="url" :src="url" />
+       <div class="f-f-a" v-else>
+          <img :src="inputImg" class="input-f-img" />
         </div>
+       <input class="formation-btn" type="file" accept="image/*" v-on:change="getImage(e)">
       </div>
-
       <div class="user-btn-f">
         <button type="submit" class="btn-f a-u">Add</button>
         <button type="submit" @click="reset" class="btn-f r-u">Reset</button>
@@ -83,4 +99,5 @@ const reset = () => {
 </template>
 <style>
 @import "@/style/user.css";
+@import "@/style/formation.css";
 </style>

@@ -22,6 +22,7 @@
     }
 
     .r9 {
+      
         border-bottom:none ;
     }
 
@@ -197,11 +198,14 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) { 
     .r1 {
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: flex-start;
     }
 
 
+    .r9 {
+        width: 50%;
+     }
     .r-conquer {
         flex-wrap: nowrap;
     }
@@ -222,6 +226,7 @@
     }
     
     .f12-contain {
+        
         width: fit-content;
         flex-direction: row;
     }
@@ -254,8 +259,9 @@
     /* css for Form A  */
 
     .form9-r {
-        width: 50%;
+        width: 100%;
         flex-direction: row;
+        justify-content: space-between;
     }
 
     .i-r8 {

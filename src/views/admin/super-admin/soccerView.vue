@@ -97,7 +97,7 @@ onMounted(async () => {
 <template>
   <div class="main-container">
     <div class="nav-top">
-      <div class="main-details">
+      <div class="main-details">  
         <h1>Tactic</h1>
         <span>User</span>
       </div>

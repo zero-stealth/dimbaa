@@ -1,73 +1,38 @@
 <script setup>
-import { ref } from "vue";
-const cardNumber = ref("");
-const numberOfRepeats = ref("");
-const noOfBans = ref("");
+import coming from "./coming.vue";
+import soon from "./soon.vue";
+import cardrule from "./CardRule.vue";
+import { shallowRef } from "vue";
 
-const getCredentials = () => {
-//   console.log(
-//     userName.value,
-//     userId.value,
-//     userRole.value,
-//     mobileNumber.value,
-//     email.value,
-//     userRole.value
-//   );
 
-  reset();
-};
+const cardruleP = shallowRef(cardrule);
 
-//Reset the form
-const cancel = () => {
-  cardNumber.value = "";
-  numberOfRepeats.value = "";
-  noOfBans.value = "";
-};
 
 </script>
 <template>
-  <div class="security-password-form">
-    <form
-      action=""
-      method="post"
-      @submit.prevent="getUser"
-      class="securityform-wrapper"
-    >
-    <h1>Add Match Rule</h1>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="cardNumber"
-          placeholder="Card number"
-        />
+  <div class="main-container">
+    <div class="data-content-r">
+      <!-- data nav  -->
+      <div class="data-nav">
+        <button class="data-n-b" @click="cardruleP = cardrule" :class="[cardruleP == cardrule ? 'security-py' : '']">
+          CardRule
+        </button>
+        <button class="data-n-b" @click="cardruleP = coming" :class="[cardruleP == coming ? 'security-py' : '']">
+          upcoming
+        </button>
+        <button class="data-n-b" @click="cardruleP = soon" :class="[cardruleP == soon ? 'security-py' : '']">
+         upcoming
+        </button>
       </div>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="numberOfRepeats"
-          placeholder="Number of repeats"
-        />
-      </div>
-      <div class="secureform-input">
-        <input
-          required
-          type="text"
-          class="secure-input"
-          v-model="noOfBans"
-          placeholder="Number of bans per match"
-        />
-      </div>
-      <div class="secure-btn-f">
-        <button type="submit" class="btn-s s-u">Add</button>
-        <button type="submit" @click="cancel" class="btn-s s-f">Cancel</button>
-      </div>
-    </form>
+    </div>
+    <!-- inner data content -->
+    <div class="inner-data-content">
+      <component :is="cardruleP" />
+    </div>
+    <div>
+    </div>
   </div>
 </template>
 <style>
-@import "@/style/security.css";
+@import "@/style/securityp.css";
 </style>

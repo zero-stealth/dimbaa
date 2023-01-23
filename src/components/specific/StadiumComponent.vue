@@ -76,7 +76,7 @@ onMounted(async () => {
           <h4> location</h4>
         </div>
           <img
-          src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+          src="@/assets/stadium.jpg"  
           alt="player-pic"
           class="player-pic"
         />

@@ -1,13 +1,37 @@
 <script setup>
 import { ref } from "vue";
+import AddPhoto from "@/components/icons/AddPhoto.vue";
+
+
 const Region = ref("");
 const TeamName = ref("");
-const Stadium = ref("");
+const inputImg =  ref(null);
 
 const getTeam = () => {
 
   reset();
 };
+
+
+const addImg = () => {
+  inputImg.value.click;
+}
+
+
+const getImage = (e) => {
+  inputImg.value = e.target.files[0]; 
+  console.log(e)
+}
+
+const onFileChange  = (() => {
+    const file = e.target.files[0];
+    url.value = URL.createObjectURL(file);
+  })
+
+  const openElementImg = () => {
+  console.log(input)
+};
+
 
 //Reset the form
 const reset = () => {
@@ -48,16 +72,13 @@ const reset = () => {
         />
       </div>
       <div class="userform-input">
-        <label for="add-user-select" class="user-label">Staduim</label>
-        <select
-          required
-          v-model="Stadium"
-          class="user-input"
-          id="add-user-select"
-        >
-          <option>Stadium 1</option>
-          <option>Stadium 2</option>
-        </select>
+        <label for="add-user-input" class="user-label">Team logo</label>
+       <AddPhoto class="icon-pic-d" @click="addImg" v-if="inputImg == null">
+       </AddPhoto>
+       <div class="f-f-a" v-else>
+          <img :src="inputImg" class="input-f-img" />
+        </div>
+       <input class="formation-btn" type="file" accept="image/*" v-on:change="getImage(e)">
       </div>
       <div class="user-btn-f">
         <button type="submit" class="btn-f a-u">Add</button>
@@ -68,4 +89,5 @@ const reset = () => {
 </template>
 <style>
 @import "@/style/user.css";
+@import "@/style/formation.css";
 </style>

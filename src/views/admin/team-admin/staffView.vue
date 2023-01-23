@@ -131,9 +131,11 @@ onMounted(async () => {
         <table>
           <tr>
             <th>ID</th>
-            <th>Team name</th>
+            <th>name</th>
             <th>official signature</th>
             <th>Job description</th>
+            <th>Staff Image</th>
+
        
           </tr>
           <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
@@ -142,6 +144,11 @@ onMounted(async () => {
           <td>tst</td>
           <td>tst</td>
           <td>tst</td>
+          <td>
+              <div class="tbl-formation">
+      <img src="/assets/formation/433Attack-minded-midfield.jpg" alt="staff" class="tbl-img-formation">
+    </div>
+            </td>
           </tr>
         </table>
       </div>

@@ -4,15 +4,14 @@ import { shallowRef, watchEffect } from "vue";
 import { useRoleStore } from "@/stores/roles.js";
 
 // icons
-import LanguageIcon from "@/components/icons/LanguageIcon.vue";
 import SecureIcon from "@/components/icons/KeyIcon.vue";
 import MatchRuleIcon from "@/components/icons/LawIcon.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 // pages
 import Security from "./settings/securityPage.vue"
-import Language from "./settings/languagePage.vue"
 import MatchRule from "./settings/MatchRule.vue"
+import Policy from "./settings/policyPage.vue"
 
 // used shallow ref to prevent reactivity on the component
 const activePage = shallowRef(Security);
@@ -35,15 +34,15 @@ watchEffect(() => {
           :class="[activePage == Security ? 'active' : '']">
           <div class="inner-i">
             <SecureIcon class="icon icon-c" />
-            <span>Security</span>
+            <span>Account</span>
           </div>
           <ArrowIcon class="icon icon-c a-icon" />
         </button>
-        <button class="inner-component" @click="activePage = Language"
-          :class="[activePage == Language ? 'active' : '']">
+        <button class="inner-component" @click="activePage = Policy"
+          :class="[activePage == Policy ? 'active' : '']">
           <div class="inner-i">
-            <LanguageIcon class="icon icon-c" />
-            <span>Language</span>
+            <MatchRuleIcon class="icon icon-c" />
+            <span>Policy</span>
           </div>
           <ArrowIcon class="icon icon-c a-icon" />
         </button>
@@ -63,5 +62,5 @@ watchEffect(() => {
   </div>
 </template>
 <style>
-@import "../../style/board.css";
+@import "@/style/board.css";
 </style>

@@ -11,7 +11,7 @@ import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
+import MatchT from "@/components/form/updateform/MatchT.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
 const dataPage = shallowRef(Upcoming);
@@ -85,9 +85,9 @@ const openDrawer = (id) => {
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
+          <!-- <CircleDraw class="circle-a" @click="openCreate">
             <AddIcon class="icon icon-menu" />
-          </CircleDraw>
+          </CircleDraw> -->
         </div>
       </div>
     </div>
@@ -220,7 +220,7 @@ const openDrawer = (id) => {
     </SideDrawer>
     <div>
       <PopUP title="Edit match" v-if="check == true">
-      <EditMatch/>  
+      <MatchT/>  
       </PopUP>
     </div>
   </div>

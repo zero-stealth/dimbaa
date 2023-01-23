@@ -8,33 +8,37 @@ const selected = ref()
     <form action="" class="d-form">
       <div class="d-container1">
         <div class="d-wrapper">
-          <label for="" class="d-label">Competition</label>
-          <select v-model="selected" class="selected-ps">
-            <option>competition1</option>
-            <option>competition2</option>
-            <option>competition3</option>
-          </select>
-        </div>
-        <div class="d-wrapper">
-          <label for="" class="d-label">Team</label>
-          <select v-model="selected" class="selected-ps">
-            <option>Team1</option>
-            <option>Team2</option>
-            <option>Team3</option>
-          </select>
+          <label for="" class="d-label">Team A</label>
+          <input type="text" placeholder="predefined" class="d-input">
         </div>
         <div class="d-wrapper">
           <label for="" class="d-label">Date</label>
-          <select v-model="selected" class="selected-ps">
-            <option>date1</option>
-            <option>date2</option>
-            <option>date3</option>
-          </select>
+          <input type="text" placeholder="predefined" class="d-input">
+        </div>
+        <div class="d-wrapper">
+          <label for="" class="d-label">Time</label>
+          <input type="text" placeholder="predefined" class="d-input">
+        </div>
+        <div class="d-wrapper">
+          <label for="" class="d-label">Venue</label>
+          <input type="text" placeholder="predefined" class="d-input">
         </div>
       </div>
       <div class="d-container1">
         <div class="d-wrapper">
-          <label for="" class="d-label">Playing With</label>
+          <label for="" class="d-label">Team B</label>
+          <input type="text" placeholder="predefined" class="d-input">
+        </div>
+        <div class="d-wrapper">
+          <label for="" class="d-label">Date</label>
+          <input type="text" placeholder="predefined" class="d-input">
+        </div>
+        <div class="d-wrapper">
+          <label for="" class="d-label">Time</label>
+          <input type="text" placeholder="predefined" class="d-input">
+        </div>
+        <div class="d-wrapper">
+          <label for="" class="d-label">Venue</label>
           <input type="text" placeholder="predefined" class="d-input">
         </div>
       </div>

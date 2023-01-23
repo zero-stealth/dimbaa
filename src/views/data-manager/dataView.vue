@@ -4,14 +4,18 @@ import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
 import { ref, watchEffect, shallowRef } from "vue";
 import EditMatch from "@/components/form/updateform/EditMatch.vue";
+import tableData from "./data-form/tblInfo.vue";
+
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
 const drawerStore = useDrawerStore();
+const tablePage = shallowRef(tableData);
 const authStore = useAuthStore();
 const drawerStatus = ref(null);
 const drawerID = ref(null);
 const open = ref(null);
 const search = ref("");
+const isTableOpen = ref(false);
 const check = ref(false);
 
 // update on changes
@@ -19,6 +23,10 @@ watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const openTable = () => {
+ isTableOpen.value = !isTableOpen.value
+}
 
 console.log(authStore.userName);
 
@@ -74,12 +82,9 @@ const openDrawer = (id) => {
       <div class="table-slide">
         <table>
           <tr>
-            <div class="first-s">
               <th></th>
               <th>Position</th>
               <th>Team</th>
-            </div>
-            <div class="second-s">
               <th>Points</th>
               <th>Points</th>
               <th>Pld</th>
@@ -89,20 +94,18 @@ const openDrawer = (id) => {
               <th>GF</th>
               <th>GA</th>
               <th>GD</th>
-            </div>
 
           </tr>
           <tr>
-            <div class="first-s">
               <td>
-              <div>
-                
-              </div>  
+              <div class="controller-tb">
+                <ArrowIcon class="icon" @click="openTable">
+                </ArrowIcon>
+              </div>
+              <component :is="tablePage" v-show="isTableOpen == true" />
               </td>
               <td>1</td>
               <td>Team 1</td>
-            </div>
-            <div class="second-s">
               <td>5</td>
               <td>4</td>
               <td>3</td>
@@ -111,25 +114,7 @@ const openDrawer = (id) => {
               <td>8</td>
               <td>8</td>
               <td>8</td>
-              <td></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="first-s">
-              <td>1</td>
-              <td>Team 1</td>
-            </div>
-            <div class="second-s">
-              <td>5</td>
-              <td>4</td>
-              <td>3</td>
-              <td>7</td>
-              <td>1</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>13</td>
-            </div>
+              <td>2</td>
           </tr>
         </table>
       </div>

@@ -3,7 +3,7 @@
     <h1>Confirmation</h1>
     <p>Are you sure you want to delete {{ props.text }} from the server</p>
     <div class="btn-player">
-    <button type="submit" @click="deletePlayer" class="btn-f a-u">Yes</button>
+    <button type="submit" @click="drawerStore.togglePop" class="btn-f a-u">Yes</button>
         <button type="reset" @click="exit" class="btn-f r-u">Cancel</button>
     </div>
     </div>
@@ -41,10 +41,12 @@ await axios
       console.error(error);
     });
 };
+
+exit(); 
 }
 
 const exit  = () => {
-    drawerStore.popDrawer()
+    drawerStore.togglePop()
 }
 
 
