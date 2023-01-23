@@ -146,7 +146,7 @@ onMounted(async () => {
           <td>tst</td>
           <td>
               <div class="tbl-formation">
-      <img src="/assets/formation/433Attack-minded-midfield.jpg" alt="staff" class="tbl-img-formation">
+      <img src="@/assets/formation/433Attack-minded-midfield.jpg" alt="staff" class="tbl-img-formation">
     </div>
             </td>
           </tr>
