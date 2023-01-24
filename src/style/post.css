@@ -147,6 +147,18 @@
     width: 100%;
 }
 
+.post-cp1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-1 h1 {
+  font-size: .8rem;
+}
+
+
+
   /* form 7  */
 }
 /* using it as global style for larger devices  */

@@ -152,7 +152,9 @@
 }
 
 .filling {
-  background-color: yellow;
+  background-color: #FFBF00;
+  border: #FFBF00;
+  color: var(--background-color);
 }
 
 
