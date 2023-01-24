@@ -13,6 +13,21 @@
         padding-bottom:15px ;
     }
 
+    button[disabled]{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+      }     
+
+    .form-ark {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .form9-r span {
+        font-size: .8rem;
+    }
     .r-8 {
         gap: 20px;
     }
@@ -61,7 +76,7 @@
     }
 
     .short-r {
-        width: 15%;
+        width: 50%;
     }
 
     .r-form-i {
@@ -147,6 +162,12 @@
         flex-direction: column;
     }
 
+    .f13-f {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+
     .f12-r {
         gap: 10px;
         display: flex;
@@ -191,6 +212,10 @@
         visibility: hidden;
     }
 
+    .player-picacho {
+        height: 50px;
+    }
+
     /* css for Form 10  */
 
 
@@ -200,6 +225,12 @@
     .r1 {
         align-items: flex-start;
         text-align: flex-start;
+    }
+
+    .r12 {
+        gap: 40px;
+        display: flex;
+        align-items: flex-start;
     }
 
 
@@ -218,11 +249,11 @@
 
     .f13-f {
         width: 50%;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .i-r13 {
-        width: 60%;
+        width: 30%;
     }
     
     .f12-contain {
@@ -270,6 +301,13 @@
         align-items: center;;
     }
 
+        
+    .referee-inner-x {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+
     /* css for Form A  */
 
     
@@ -277,9 +315,9 @@
         gap: 40px;
         width: 100%;
         display: flex;
-        padding: 10px;
-        align-items: center;
-        justify-content: center;
+        padding-left: 350px;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 
 

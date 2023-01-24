@@ -1,0 +1,13 @@
+@media screen {
+    .table-if {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        border: 2px solid red;
+    }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+}

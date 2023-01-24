@@ -1,5 +1,13 @@
 @media screen {
-   
+    .data-alignT {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .daT {
+        background-color: var(  --light-color);
+    }
       
 }
 

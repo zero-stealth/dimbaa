@@ -1,9 +1,10 @@
 <script setup>
 </script>
 <template>
-<div>
+<div class="table-if">
     <h1>table data</h1>
 </div>
 </template>
-<script>
-</script>
+<style>
+@import '@/style/table.css';
+</style>

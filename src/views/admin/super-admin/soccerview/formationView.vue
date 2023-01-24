@@ -122,4 +122,4 @@ const show = () => {
 </template>
 <style>
 @import "@/style/formation.css";
-</style>
+</style>  

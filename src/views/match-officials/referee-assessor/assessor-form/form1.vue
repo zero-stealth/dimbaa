@@ -34,7 +34,7 @@ watchEffect(() => {
             <label for="">Name</label>
             <div class="report-12 short-1ra">
               <label for="">Full Name</label>
-              <input type="text" class="form1-input short12ra" />
+              <input type="text" class="form1-input short12ra"  placeholder="predefined"/>
             </div>
             <div class="report-12 short-1ra">
               <label for="">Referee Reg No </label>

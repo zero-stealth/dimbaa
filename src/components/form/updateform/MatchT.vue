@@ -24,18 +24,18 @@ userFirstName.value = authStore.userName.split('@')[0];
 </script>
 <template>
  <div class="main-container"> 
-      <div class="data-content-r">
+      <div class="data-content-r data-alignT">
       <!-- data nav  -->
-      <div class="data-nav">
+      <div class="data-nav ">
         <button
-          class="data-n-b"
+          class="data-n-b daT"
           @click="dataPage = EditMatch"
-          :class="[dataPage == EditMatch ? 'datapage' : '']"
+          :class="[dataPage == EditMatch ? 'datapage ' : '']"
         >
           EditMatch
         </button>
         <button
-          class="data-n-b"
+          class="data-n-b daT"
           @click="dataPage = EditTournament"
           :class="[dataPage == EditTournament ? 'datapage' : '']"
         >

@@ -72,6 +72,18 @@
   select {
     outline: none;
   }
+
+  html.coffee {
+    filter: sepia(0.9) hue-rotate(315deg) brightness(0.9);
+  }
+
+  html.contrast {
+    filter: contrast(2);
+  }
+
+  html.dark {
+    filter: invert(80%) hue-rotate(180deg);
+  }
 }
 
 /* using it as global style for larger devices  */

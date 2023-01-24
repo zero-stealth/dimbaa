@@ -11,7 +11,7 @@ import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
+import MatchT from "@/components/form/updateform/MatchT.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
 const dataPage = shallowRef(upcoming);
@@ -36,11 +36,6 @@ userFirstName.value = authStore.userName.split('@')[0];
 
 const openCreate = () => {
   check.value = true;
-  drawerStore.togglePop();
-};
-
-const openEdit = () => {
-  check.value = false;
   drawerStore.togglePop();
 };
 
@@ -274,8 +269,8 @@ const openDrawer = (id) => {
       </div>
     </SideDrawer>
     <div>
-      <PopUP title="Edit match" v-if="check == true">
-      <EditMatch/>  
+      <PopUP title="" v-if="check == true">
+      <MatchT/>  
       </PopUP>
     </div>
   </div>

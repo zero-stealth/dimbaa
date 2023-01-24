@@ -1,4 +1,4 @@
- <script></script>
+<script></script>
 <template>
   <div class="form1-container r1">
     <h1></h1>
@@ -7,145 +7,222 @@
       <div class="r-divider">
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
         <div class="form1-wrapper r-f">
           <div class="form1-i">
-        <select v-model="selected" class="selected-ps selected-psr">
+            <select v-model="position" class="selected-ps ">
+              <option>Gk</option>
+              <option>Forward</option>
+            </select>
+            <select v-model="Jerseynumber" class="selected-ps ">
               <option>1</option>
               <option>2</option>
-              <option>3</option>
             </select>
-            <input type="text" class="form1-input short-r" placeholder="Gk" />
-            <input type="text" class="form1-input short-i" placeholder="Jina(Name)" />
+            <select v-model="Name" class="selected-ps ">
+              <option>Messi</option>
+              <option>Ronaldo</option>
+            </select>
             <input type="text" class="form1-input short-r" placeholder="Fifa ID" />
             <input type="text" class="form1-input short-r" placeholder="Signature(Saini)" />
+            <img src="https://pluspng.com/img-png/ronaldo-png-cristiano-ronaldo-png-high-quality-image-682.png"
+              alt="player-pic" class="player-picacho" />
           </div>
         </div>
       </div>

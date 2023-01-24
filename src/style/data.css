@@ -147,7 +147,12 @@
 .e-a {
     background-color: var(--background-color);
 }
+  /* databoard */
 
+  .turnOn {
+    transform: rotate(90deg);
+    animation: 2s ease-out;
+  }
 
 }
 

@@ -54,7 +54,7 @@ watchEffect(() => {
           @click="teamPage = startingPlayers"
           :class="[teamPage == startingPlayers ? 'datapage'  : '']"
         >
-          Starting XI
+          StartingXI
         </button>
         <button
           class="data-n-b"

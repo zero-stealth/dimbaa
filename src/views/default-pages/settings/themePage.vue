@@ -1,7 +1,40 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+
+import { useColorMode } from '@vueuse/core'
 
 const colorChoice = ref("");
+
+const mode = useColorMode({
+  emitAuto: true,
+  //custom 
+  modes: {
+    contrast:'dark contrast',
+    cafe:'coffee',
+    // note that dark & light use the system preference 
+  }
+})
+
+watchEffect(() => {
+  switch (colorChoice.value) {
+    case 'light':
+      mode.value = 'light';
+      break;
+      case 'dark':
+      mode.value = 'dark';
+      break;
+      case 'coffee':
+      mode.value = 'coffee';
+      break;
+      case 'contrast':
+      mode.value = 'contrast';
+      break;
+  
+    default:
+      break;
+  }
+})
+
 
 const getUser = () => {
 //   console.log(
@@ -36,8 +69,10 @@ const reset = () => {
           v-model="colorChoice"
           class="languageinput"
         >
-          <option>Light</option>
+          <option>light</option>
           <option>dark</option>
+          <option>coffee</option>
+          <option>contrast</option>
         </select>
       </div>
     </form>

@@ -1,4 +1,4 @@
-<script setup>
+  <script setup>
 import { ref } from "vue";
 
 const selected = ref()
@@ -9,7 +9,7 @@ const selected = ref()
       <div class="d-container1">
         <div class="d-wrapper">
           <label for="" class="d-label">Team A</label>
-          <input type="text" placeholder="predefined" class="d-input">
+          <input type="text" placeholder="predefined" class="d-input" disabled>
         </div>
         <div class="d-wrapper">
           <label for="" class="d-label">Date</label>
@@ -24,21 +24,10 @@ const selected = ref()
           <input type="text" placeholder="predefined" class="d-input">
         </div>
       </div>
+      <h4> vs</h4>
       <div class="d-container1">
         <div class="d-wrapper">
           <label for="" class="d-label">Team B</label>
-          <input type="text" placeholder="predefined" class="d-input">
-        </div>
-        <div class="d-wrapper">
-          <label for="" class="d-label">Date</label>
-          <input type="text" placeholder="predefined" class="d-input">
-        </div>
-        <div class="d-wrapper">
-          <label for="" class="d-label">Time</label>
-          <input type="text" placeholder="predefined" class="d-input">
-        </div>
-        <div class="d-wrapper">
-          <label for="" class="d-label">Venue</label>
           <input type="text" placeholder="predefined" class="d-input">
         </div>
       </div>

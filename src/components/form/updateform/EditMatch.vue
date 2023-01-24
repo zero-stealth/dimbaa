@@ -67,11 +67,7 @@ const reset = () => {
       </div>
       <div class="match-container">
         <label for="match-select" class="match-label labl-tans">Match</label>
-        <div
-          class="match-input"
-        >
-          <h4>match Id</h4>
-      </div>
+       <input type="text"    class="match-input" placeholder="Tournament83746" disabled>
       </div>
       <div class="match-container">
         <label for="match-select" class="match-label">City</label>
@@ -83,30 +79,6 @@ const reset = () => {
         >
           <option>City1</option>
           <option>City2</option>
-        </select>
-      </div>
-      <div class="match-container">
-        <label for="match-select" class="match-label">Referee1</label>
-        <select
-          required
-          v-model="Referee"
-          class="match-input"
-          id="match-select"
-        >
-          <option>Referee1</option>
-          <option>Referee2</option>
-        </select>
-      </div>
-      <div class="match-container">
-        <label for="match-select" class="match-label">Official</label>
-        <select
-          required
-          v-model="Official"
-          class="match-input"
-          id="match-select"
-        >
-          <option>Official1</option>
-          <option>Official2</option>
         </select>
       </div>
     </div>
@@ -145,30 +117,6 @@ const reset = () => {
         >
           <option>Stadium1</option>
           <option>Stadium2</option>
-        </select>
-      </div>
-      <div class="match-container">
-        <label for="match-select" class="match-label">Referee2</label>
-        <select
-          required
-          v-model="Referee2"
-          class="match-input"
-          id="match-select"
-        >
-          <option>Referee1</option>
-          <option>Referee2</option>
-        </select>
-      </div>
-      <div class="match-container">
-        <label for="match-select" class="match-label">Commissioner</label>
-        <select
-          required
-          v-model="commissioner"
-          class="match-input"
-          id="match-select"
-        >
-          <option>Commissioner1</option>
-          <option>Commissioner2</option>
         </select>
       </div>
     </div>

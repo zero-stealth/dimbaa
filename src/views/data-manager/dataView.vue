@@ -99,10 +99,9 @@ const openDrawer = (id) => {
           <tr>
               <td>
               <div class="controller-tb">
-                <ArrowIcon class="icon" @click="openTable">
+                <ArrowIcon class="icon" @click="openTable" :class="isTableOpen == true ? 'turnOn' : '' ">
                 </ArrowIcon>
               </div>
-              <component :is="tablePage" v-show="isTableOpen == true" />
               </td>
               <td>1</td>
               <td>Team 1</td>
@@ -116,6 +115,7 @@ const openDrawer = (id) => {
               <td>8</td>
               <td>2</td>
           </tr>
+          <component :is="tablePage" v-show="isTableOpen == true" />
         </table>
       </div>
     </div>

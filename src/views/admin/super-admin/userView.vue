@@ -109,7 +109,7 @@ onMounted(async () => {
       <div class="main-details">
         <h1>Welcome {{ userFirstName }}</h1>
         <h5>Team admin</h5>
-        <span>User</span>
+        <span>{{ userFirstName }}</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

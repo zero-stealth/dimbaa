@@ -1,4 +1,4 @@
-<script setup>
+  <script setup>
 import history from "./historyView.vue";
 import second from "./referee-second.vue";
 import upcoming from "./upcomingView.vue";
@@ -55,8 +55,9 @@ const openDrawer = (id) => {
   </div>
  <div class="main-container" v-else>
     <div class="nav-top">
-      <div class="main-details data-b">
-        <h1>{{ userFirstName }}</h1>
+      <div class="main-details">
+        <h1>Welcome {{ userFirstName }}</h1>
+        <h5>Referee admin</h5>
         <span>Referee Form</span>
       </div>
       <div class="main-wrapper">
