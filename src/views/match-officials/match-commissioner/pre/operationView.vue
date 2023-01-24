@@ -9,7 +9,7 @@
           <input
             type="text"
             class="form1-input short-i"
-            placeholder="Full name"
+            placeholder="predetermined"
           />
           <input type="text" class="form1-input short-i" placeholder="Email" />
           <input type="text" class="form1-input short-i" placeholder="Mobile" />
@@ -69,7 +69,7 @@
           <input
             type="text"
             class="form1-input short-i"
-            placeholder="Full name"
+            placeholder="predetermined"
           />
           <input type="text" class="form1-input short-i" placeholder="Email" />
           <input type="text" class="form1-input short-i" placeholder="Mobile" />

@@ -65,9 +65,10 @@ console.log(drawerStore.showSecond)
   </div>
  <div class="main-container" v-else>
     <div class="nav-top">
-      <div class="main-details data-b">
-        <h1>{{ userFirstName }}</h1>
-        <span>General coordinator</span>
+      <div class="main-details">
+        <h1>Welcome {{ userFirstName }}</h1>
+        <h5>General coordinator </h5>
+        <span>Welcome {{ userFirstName }} </span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

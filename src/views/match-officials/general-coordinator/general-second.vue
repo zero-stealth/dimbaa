@@ -4,14 +4,6 @@ import form2 from "./general-form/form2.vue";
 import form3 from "./general-form/form3.vue";
 import form4 from "./general-form/form4.vue";
 import form5 from "./general-form/form5.vue";
-import form6 from "./general-form/form6.vue";
-import form7 from "./general-form/form7.vue";
-import form8 from "./general-form/form8.vue";
-import form9 from "./general-form/form9.vue";
-import form10 from "./general-form/form10.vue";
-import form11 from "./general-form/form11.vue";
-import form12 from "./general-form/form12.vue";
-import form13 from "./general-form/form13.vue";
 import detail from "./general-form/detailsView.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import { useDrawerStore } from "@/stores/drawer";
@@ -63,7 +55,7 @@ onMounted(async () => {
           <ArrowIcon class="icon icon-s" />
         </button>
         <div class="general-re">
-          <h2>General Coordinator Form</h2>
+          <h2>General Coordinator report</h2>
         <span>{{ authStore.userName }}</span>
         </div>
       </div>
@@ -112,62 +104,6 @@ onMounted(async () => {
           :class="[generalPage == form5 ? 'datapage' : '']"
         >
           5
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form6"
-          :class="[generalPage == form6 ? 'datapage' : '']"
-        >
-          6
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form7"
-          :class="[generalPage == form7 ? 'datapage' : '']"
-        >
-          7
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form8"
-          :class="[generalPage == form8 ? 'datapage' : '']"
-        >
-          8
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form9"
-          :class="[generalPage == form9 ? 'datapage' : '']"
-        >
-          9
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form10"
-          :class="[generalPage == form10 ? 'datapage' : '']"
-        >
-          10
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form11"
-          :class="[generalPage == form11 ? 'datapage' : '']"
-        >
-          11
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form12"
-          :class="[generalPage == form12 ? 'datapage' : '']"
-        >
-          12
-        </button>
-        <button
-          class="data-n-b"
-          @click="generalPage = form13"
-          :class="[generalPage == form13 ? 'datapage' : '']"
-        >
-          13
         </button>
       </div>
     </div>

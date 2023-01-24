@@ -14,7 +14,7 @@
     <!-- form input container  -->
       <div class="form9-r pre-r9">
     <label for="">Referees</label>
-    <input type="text" class="form1-input pre-i" placeholder="Type here" >
+    <input type="text" class="form1-input pre-i" placeholder="predetermined" >
     </div>
     <div class="form9-r pre-r9">
     <label for="">Operation Team</label>
