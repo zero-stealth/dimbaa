@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import axios from "axios";
+
 const userName = ref("");
 const mobileNumber = ref("");
 const email = ref("");
@@ -8,7 +10,9 @@ const password = ref("");
 const error = ref("");
 const confirmPassword = ref("");
 
-const getUser = () => {
+// //Stored in session
+// userRole.value 
+const createUser = () => {
 
 if (password.value != confirmPassword.value) {
   error.value = "Password's don't match"
@@ -40,7 +44,7 @@ async () => {
  await axios
     .request(options)
     .then(function (response) {
-      data.value = response.data;
+      data.value = JSON.stringify(response.data);
       console.log(data.value);
     })
     .catch(function (error) {
@@ -68,7 +72,7 @@ const reset = () => {
     <form
       action=""
       method="post"
-      @submit.prevent="getUser"
+      @submit.prevent
       class="userform-wrapper"
     >
       <div class="userform-input">
@@ -142,7 +146,7 @@ const reset = () => {
       </div>
      <span>{{ error }}</span> 
       <div class="user-btn-f">
-        <button type="submit" class="btn-f a-u">Add</button>
+        <button type="submit" class="btn-f a-u"  @click="createUser">Add</button>
         <button type="submit" @click="reset" class="btn-f r-u">Reset</button>
       </div>
     </form>

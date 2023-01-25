@@ -5,6 +5,7 @@ import { defineStore } from "pinia";
 export const useRouteStore = defineStore("route", () => {
 const userID = ref(null)
 const playerID = ref(null)
+const stadiumName = ref('');
 const showPage = ref(false)
 
 const setUserId = (Id) => {
@@ -19,5 +20,9 @@ const togglePage = () => {
   showPage.value = !showPage.value;
 }
 
-  return { playerID, userID, setUserId , setPlayerId, showPage, togglePage};
+function setStadium(name) {
+  stadiumName.value =  name;
+}
+
+  return { playerID, userID, setStadium, stadiumName, setUserId , setPlayerId, showPage, togglePage};
 });

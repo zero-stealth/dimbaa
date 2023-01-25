@@ -10,12 +10,11 @@ import DeletePlayerlist from "@/components/form/deleteForm/DeletePlayer.vue";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 import axios from "axios";
 
-const url= "https://be-tblp.dimbaa.com/api/teammanager/players"
+const url= "https://be-tblp.dimbaa.com/api/admin/stadia"
 const showPage = shallowRef(Stadium);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerID = ref(null);
-
 const playerId = ref(null);
 const playerName = ref(null);
 const drawerStatus = ref(null);
@@ -35,6 +34,12 @@ const openAdd = () => {
   drawerStore.togglePop();
 };
 
+const stadiumSpecific = (name) => {
+  routeStore.setStadium('collins');
+  routeStore.togglePage();
+};
+
+
 
 const openDelete = () => {
   check.value = false;
@@ -43,7 +48,7 @@ const openDelete = () => {
 
 //api
 const searchResult = computed(() => {
-  return data.value.filter((d) => d.playing_position.includes(search.value));
+  return data.value.filter((d) => d.name.includes(search.value));
 });
 
 
@@ -62,7 +67,7 @@ onMounted(async () => {
 await axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.players;
+      data.value = response.data.stadia;
     })
     .catch(function (error) {
       console.error(error);
@@ -93,24 +98,24 @@ await axios
       <h3>Total Stadium : {{ searchResult.length }}</h3>
       </div>
     <div class="user-content">
-      <!-- <div class="team-player-x" v-for="(
-            { id,  first_name, middle_name, last_name, playing_position },
+      <div class="team-player-x" v-for="(
+            { id, name, location, capacity, stadium_owner, stadium_picture},
           ) in searchResult"
-          :key="`${searchResult}`"> -->
-       <div class="team-player-x">
+          :key="`${searchResult}`">
         <div class="team-d-x">
-          <h3> stadium name </h3>
-          <h4> stadium owner</h4>
-          <h4> stadium capacity</h4>
-          <h4> location</h4>
+          <h3>  {{ name }} </h3>
+          <h4> {{stadium_owner}}</h4>
+          <h4> {{capacity}}</h4>
+          <h4> {{location}}</h4>
           <div class="stad-cd">
+    
             <a @click="openAdd" class="stad-cd-a" >Add</a>
             <a  @click="openDelete" class="stad-cd-d" >Delete</a>
-            <a  @click="routeStore.togglePage()"  class="stad-cd-d">View</a>
+            <a  @click="stadiumSpecific(id) "  class="stad-cd-d">View</a>
           </div>
         </div>
           <img
-          src="@/assets/stadium.jpg"
+          :src="`${stadium_picture}`"
           alt="player-pic"
           class="player-pic"
         />
@@ -121,7 +126,7 @@ await axios
         <UpdateStadium />
       </PopUP>
       <PopUP  v-else>
-        <DeletePlayerlist :Id="playerId" :text="playerName" :url="url" />
+        <DeletePlayerlist :Id="`${routeStore.stadiumID}`" :text="playerName" :url="url" />
       </PopUP>
     </div>
         <!-- side bar component for sorting  -->

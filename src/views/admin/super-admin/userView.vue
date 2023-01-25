@@ -92,7 +92,7 @@ onMounted(async () => {
     },
   };
 
-  axios
+await axios
     .request(options)
     .then(function (response) {
       data.value = response.data.users;

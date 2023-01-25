@@ -13,6 +13,7 @@ const drawerID = ref(null);
 const data = ref([]);
 const check = ref(false);
 
+const url= "https://be-tblp.dimbaa.com/api/admin/stadia"
 
 // update on changes
 watchEffect(() => {
@@ -36,10 +37,19 @@ const openDrawer = (id) => {
   }
 };
 
+console.log(drawerStore.stadiumName)
+
+
+//api
+const searchResult = computed(() => {
+  return data.value.filter((d) => d.name.includes('Andreanne Mayer'));
+});
+
+console.log(searchResult.value)
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: `https://be-tblp.dimbaa.com/api/admin/stadia/${routeStore.playerID}`,
+    url: `${url}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -48,11 +58,10 @@ onMounted(async () => {
     },
   };
 
-  axios
+  await axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.user;
-      console.log(data.value);
+      data.value = response.data.stadia;
     })
     .catch(function (error) {
       console.error(error);
@@ -67,16 +76,18 @@ onMounted(async () => {
       </div>
 
     </div>
-    <div class="team-player-x">
+    <div class="team-player-x" v-for="(
+            {  name, location, capacity, stadium_owner, stadium_picture},
+          ) in searchResult"
+          :key="`${searchResult}`">
         <div class="team-d-x">
-          <br>
-          <h3> stadium name </h3>
-          <h4> stadium owner</h4>
-          <h4> stadium capacity</h4>
-          <h4> location</h4>
+          <h3>  {{ name }} </h3>
+          <h4> {{stadium_owner}}</h4>
+          <h4> {{capacity}}</h4>
+          <h4> {{location}}</h4>
         </div>
           <img
-          src="@/assets/stadium.jpg"  
+          :src="`${stadium_picture}`"
           alt="player-pic"
           class="player-pic"
         />
@@ -91,17 +102,16 @@ onMounted(async () => {
           <th>Name</th>
           <th>Region</th>
           <th>location</th>
+          <th>date</th>
           <th>team</th>
         </tr>
-        <tr v-for="({ name, region, location }, index) in searchResult" :key="index">
+        <tr v-for="({ name, region, location, inauguration_date, stadium_picture }, index) in searchResult" :key="`${searchResult}`">
+          <td></td>
           <td>{{ name }}</td>
           <td>{{ region }}</td>
           <td>{{ location }}</td>
+          <td>{{ inauguration_date }}</td>
           <td>{{  }}</td>
-          <td class="img-stdium">{{ image }}</td>
-          <td>
-
-          </td>
         </tr>
       </table>
     </div>

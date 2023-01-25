@@ -1,14 +1,16 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
+// import { usePlayerStore } from "@/stores/player";
 import PopUP from "@/components/drawer/popup.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
+import { ref, onMounted, computed } from "vue";
 import CreatePosition from "@/components/form/createform/CreatePosition.vue";
 import DeleteStaff from "@/components/form/deleteForm/DeleteStaff.vue";
 
 const data = ref([]);
 const search = ref("");
 const check = ref(null);
+// const playerStore = usePlayerStore();
 const drawerStore = useDrawerStore();
 
 const openPos = () => {
@@ -38,7 +40,7 @@ onMounted(async () => {
     },
   };
 
-  axios
+ await axios
     .request(options)
     .then(function (response) {
       data.value = response.data.players;
