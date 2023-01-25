@@ -72,7 +72,8 @@ watchEffect(() => {
   <div class="btn1-center">
       <div class="form1-btn">
         <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
-        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''">Update</button>
+        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''" v-show="submitted == false">Update</button>
+        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''" disabled  v-show="submitted == true">Update</button>
         <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''">Next</button>
       </div>
     </div>
