@@ -37,12 +37,12 @@ const openDrawer = (id) => {
   }
 };
 
-console.log(drawerStore.stadiumName)
+console.log( routeStore.stadiumName)
 
 
 //api
 const searchResult = computed(() => {
-  return data.value.filter((d) => d.name.includes('Andreanne Mayer'));
+  return data.value.filter((d) => d.name.includes(routeStore.stadiumName));
 });
 
 console.log(searchResult.value)

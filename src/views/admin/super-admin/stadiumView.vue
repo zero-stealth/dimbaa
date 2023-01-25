@@ -35,7 +35,7 @@ const openAdd = () => {
 };
 
 const stadiumSpecific = (name) => {
-  routeStore.setStadium('collins');
+  routeStore.setStadium(name);
   routeStore.togglePage();
 };
 
@@ -111,7 +111,7 @@ await axios
     
             <a @click="openAdd" class="stad-cd-a" >Add</a>
             <a  @click="openDelete" class="stad-cd-d" >Delete</a>
-            <a  @click="stadiumSpecific(id) "  class="stad-cd-d">View</a>
+            <a  @click="stadiumSpecific(name) "  class="stad-cd-d">View</a>
           </div>
         </div>
           <img
