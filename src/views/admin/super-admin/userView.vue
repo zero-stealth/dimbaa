@@ -1,7 +1,6 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
-import { useRouteStore } from "@/stores/route";
 import { useAuthStore } from "@/stores/auth.js";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
@@ -17,17 +16,31 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(userDetails);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const authStore = useAuthStore();
-const userFirstName =ref(null);
+const userFirstName = ref(null);
 const drawerStatus = ref(null);
 const showPage = ref(false);
-const showall = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
 const check = ref(false);
+// sort input 
+const sortRole = ref(0);
+const sortUser = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
+// filter input
+const showAll = ref(false);
+const superAdmin = ref(false);
+const teamAdmin = ref(false);
+const teamManager = ref(false);
+const generalCoordinator = ref(false);
+const referee = ref(false);
+const matchComissioner = ref(false);
+const refereeAssessor = ref(false);
+// filter input
+
 
 // update on changes
 watchEffect(() => {
@@ -35,20 +48,45 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-const toggle = () => {
-  showall.value = true;
-};
+//sort magic
+
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const toggleUserRole = () => {
+  sortRole.value = !sortRole.value;
+  console.log(sortRole.value)
+}
+
+const toggleUserName = () => {
+  sortUser.value = !sortUser.value;
+  console.log(sortUser.value)
+}
+
+//filter magic 
+
+const showAllFilter = () => {
+  showAll.value = !showAll.value;
+  superAdmin.value = !superAdmin.value;
+  teamAdmin.value = !teamAdmin.value;
+  teamManager.value = !teamManager.value;
+  generalCoordinator.value = !generalCoordinator.value;
+  referee.value = !referee.value;
+  matchComissioner.value = !matchComissioner.value
+  refereeAssessor.value = !refereeAssessor.value
+
+}
+//filter magic 
 
 userFirstName.value = authStore.userName.split('@')[0];
 
-
-
-//we use this id to determin which drawer opens
-//show page based
-const showSpecific = (id) => {
-  routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
-};
 
 const openCreate = () => {
   check.value = true;
@@ -92,7 +130,7 @@ onMounted(async () => {
     },
   };
 
-await axios
+  await axios
     .request(options)
     .then(function (response) {
       data.value = response.data.users;
@@ -108,18 +146,16 @@ await axios
     <div class="nav-top">
       <div class="main-details">
         <h1>Welcome {{ userFirstName }}</h1>
-        <h5>Team admin</h5>
-        <span>{{ userFirstName }}</span>
+        <h1>Team admin</h1>
+        <div class="main-center-da">
+          <span>Welcome {{ userFirstName }}</span>
+          <span>Team admin</span>
+        </div>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search User"
-          />
+          <input type="text" v-model="search" class="main-search" placeholder="Search User" />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
@@ -147,10 +183,7 @@ await axios
             <th>action</th>
           </tr>
           <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-          <tr
-            v-for="({ id, name, email, mobile }, index) in searchResult"
-            :key="index"
-          >
+          <tr v-for="({ id, name, email, mobile }, index) in searchResult" :key="index">
             <td>{{ name }}</td>
             <td>{{ email }}</td>
             <td>{{ mobile }}</td>
@@ -170,29 +203,29 @@ await axios
       </div>
     </div>
     <!-- side bar component for sorting  -->
-    <SideDrawer
-      v-if="drawerID == 1"
-      title="Sort by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
         <div class="sort-wrapper">
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">User Role</label>
-              <input
-                type="radio"
-                v-bind:value="true"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleUserRole">
+                <div class="inner-radio" v-show="sortRole == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">User Name</label>
-              <input
-                type="radio"
-                v-bind:value="false"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleUserName">
+                <div class="inner-radio" v-show="sortUser == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -201,33 +234,29 @@ await axios
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
       </div>
     </SideDrawer>
     <!-- side bar component for filter  -->
-    <SideDrawer
-      v-else
-      title="Filter by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-else title="Filter by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
@@ -237,7 +266,7 @@ await axios
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="showall" />
+                <input type="checkbox" v-model="showAll" @click="showAllFilter" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -249,7 +278,7 @@ await axios
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="superadmin" />
+                <input type="checkbox" v-model="superAdmin" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -285,7 +314,7 @@ await axios
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="general" />
+                <input type="checkbox" v-model="generalCoordinator" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -309,7 +338,7 @@ await axios
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="match" />
+                <input type="checkbox" v-model="matchComissioner" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -321,7 +350,7 @@ await axios
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="assessor" />
+                <input type="checkbox" v-model="refereeAssessor" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

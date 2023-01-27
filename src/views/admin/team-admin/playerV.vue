@@ -96,11 +96,6 @@ onMounted(async () => {
           <SearchIcon class="icon icon-search" />
           <input type="text" v-model="search" class="main-search" placeholder="Search  Player" />
         </form>
-        <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="openDrawer(1)">
-            <MenuIcon class="icon icon-menu" />
-          </CircleDraw>
-        </div>
       </div>
     </div>
     <div class="team-list-c">
@@ -126,38 +121,6 @@ onMounted(async () => {
         <img :src="`${player_image}`" alt="player-pic" class="player-pic" />
       </div>
     </div>
-    <!-- side bar component for sorting  -->
-    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
-      <div class="sort-user-c">
-        <div class="sort-wrapper">
-          <h1>Sort player list using</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="user-role">Player Name</label>
-              <input type="radio" id="one" value="PlayerName" v-model="PlayerName" />
-            </div>
-            <div class="sort-label-i">
-              <label for="username">JerseyNumber</label>
-              <input type="radio" id="one" value="JerseyNumber" v-model="jerseyNumber" />
-            </div>
-          </div>
-        </div>
-        <div class="sort-wrapper">
-          <h1>Order</h1>
-          <div class="sort-user-i">
-            <div class="sort-label-i">
-              <label for="ascending">Ascending</label>
-              <input type="radio" id="one" value="Ascending" v-model="Ascending" />
-            </div>
-            <div class="sort-label-i">
-              <label for="descending">Descending</label>
-              <input type="radio" id="one" value="Descending" v-model="Descending" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </SideDrawer>
     <div>
       <PopUP title="Add Player" v-if="check == true">
         <CreatePlayer />

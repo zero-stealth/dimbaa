@@ -61,6 +61,7 @@ const openDrawer = (id) => {
     <div class="nav-top">
       <div class="main-details data-b">
         <h1>{{ userFirstName }}</h1>
+        <h1>Data manager(organiser)</h1>
         <span>{{ userFirstName }}</span>
         <span>Data manager(organiser)</span>
       </div>

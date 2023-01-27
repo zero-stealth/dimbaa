@@ -1,7 +1,6 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
-import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
@@ -15,7 +14,6 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(TeamDetails);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
 const drawerID = ref(null);
@@ -23,6 +21,16 @@ const open = ref(null);
 const data = ref([]);
 const search = ref("");
 const check = ref(false);
+// sort input 
+const sortTeam = ref(0);
+const region = ref(0);
+const stadium = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
+// filter input
+const showAll = ref(false);
+const notAssignStadium = ref(false)
+// filter input
 
 // update on changes
 watchEffect(() => {
@@ -30,17 +38,42 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-//we use this id to determin which drawer opens
-//show page based
-const showSpecific = (id) => {
-  routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
-};
+//sort magic
 
-const openCreate = () => {
-  check.value = true;
-  drawerStore.togglePop();
-};
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const toggleSortTeam = () => {
+  sortTeam.value = !sortTeam.value;
+  console.log(sortTeam.value)
+}
+
+const toggleRegion = () => {
+  region.value = !region.value;
+  console.log(region.value)
+}
+
+const toggleStadium = () => {
+  stadium.value = !stadium.value;
+  console.log(stadium.value)
+}
+//filter magic 
+
+
+const showAllFilter = () => {
+  showAll.value = !showAll.value;
+  notAssignStadium.value = !notAssignStadium.value;
+
+}
+
+//filter magic 
 
 const openEdit = () => {
   check.value = false;
@@ -99,12 +132,7 @@ onMounted(async () => {
       <div class="main-wrapper">
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search  Team"
-          />
+          <input type="text" v-model="search" class="main-search" placeholder="Search  Team" />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
@@ -121,63 +149,66 @@ onMounted(async () => {
       <h2></h2>
       <div class="table-slide">
         <table>
-        <tr>
-          <th>Team name</th>
-          <th>Region</th>
-          <th>Stadium id</th>
-          <!-- <th>Stadium</th> -->
-          <th>action</th>
-        </tr>
-        <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
-        <tr
-          v-for="({ id, name, region, stadium_id }, index) in searchResult"
-          :key="index"
-        >
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
-          <td>{{ stadium_id }}</td>
+          <tr>
+            <th>Team name</th>
+            <th>Region</th>
+            <th>Stadium id</th>
+            <!-- <th>Stadium</th> -->
+            <th>action</th>
+          </tr>
+          <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
+          <tr v-for="({ id, name, region, stadium_id }, index) in searchResult" :key="index">
+            <td>{{ name }}</td>
+            <td>{{ region }}</td>
+            <td>{{ stadium_id }}</td>
 
-          <td>
-            <div class="table-link-c">
-              <!-- <div class="table-link">
+            <td>
+              <div class="table-link-c">
+                <!-- <div class="table-link">
                 <a href="#" @click="showSpecific(id)">View</a>
               </div> -->
-              <div class="table-link">
-                <a href="#" @click="openEdit">Edit</a>
+                <div class="table-link">
+                  <a href="#" @click="openEdit">Edit</a>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     <!-- side bar component for sorting  -->
-    <SideDrawer
-      v-if="drawerID == 1"
-      title="Sort by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
         <div class="sort-wrapper">
           <h1>Sort team list using</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">Team Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="TeamName"
-                v-model="TeamName"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleSortTeam">
+                <div class="inner-radio" v-show="sortTeam == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">Region</label>
-              <input type="radio" id="one" value="Region" v-model="Region" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleRegion">
+                <div class="inner-radio" v-show="region == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">Stadium</label>
-              <input type="radio" id="one" value="Stadium" v-model="Stadium" />
+             <!-- custom made radio  -->
+             <div class="radio-wrapper" @click="toggleStadium">
+                <div class="inner-radio" v-show="stadium == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -186,33 +217,29 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
       </div>
     </SideDrawer>
     <!-- side bar component for filter  -->
-    <SideDrawer
-      v-else
-      title="Filter by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-else title="Filter by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
@@ -222,7 +249,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="showall" />
+                <input type="checkbox" v-model="showAll" @click="showAllFilter" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -234,7 +261,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="superadmin" />
+                <input type="checkbox" v-model="notAssignStadium" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

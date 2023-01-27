@@ -17,12 +17,38 @@ const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();
 const drawerStatus = ref(null);
-const showPage = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
 const check = ref(false);
+// sort input 
+const playerName = ref(0);
+const JerseyNumber = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
+//sort magic
+
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const togglePlayer = () => {
+  playerName.value = !playerName.value;
+  console.log(playerName.value)
+}
+//sort magic
+
+const toggleJersey = () => {
+  JerseyNumber.value = !JerseyNumber.value;
+  console.log(JerseyNumber.value)
+}
 
 // update on changes
 watchEffect(() => {
@@ -101,12 +127,7 @@ onMounted(async () => {
       <div class="main-wrapper">
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search  Player"
-          />
+          <input type="text" v-model="search" class="main-search" placeholder="Search  Player" />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
@@ -118,75 +139,68 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <component :is="activePage" v-if="routeStore.showPage  == true" />
+    <component :is="activePage" v-if="routeStore.showPage == true" />
     <div class="user-content" v-else>
       <h2></h2>
       <div class="table-slide">
         <table>
-        <tr>
-          <th>Start date</th>
-          <th>End date</th>
-          <th>Color of outfit</th>
-          <th>Picture of outfit</th>
-          <th>Home games</th>
-          <th>Away games</th>
-          <th>Picture of outfit</th>
-          <!-- <th>Stadium</th> -->
-          <th>action</th>
-        </tr>
-        <tr
-          v-for="(
+          <tr>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Color of outfit</th>
+            <th>Picture of outfit</th>
+            <th>Home games</th>
+            <th>Away games</th>
+            <th>Picture of outfit</th>
+            <!-- <th>Stadium</th> -->
+            <th>action</th>
+          </tr>
+          <tr v-for="(
             { first_name, middle_name, jersey_number, signature }, index
-          ) in searchResult"
-          :key="index"
-        >
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-          <td></td>
+          ) in searchResult" :key="index">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
 
-          <td>
-            <div class="table-link-c">
-              <div class="table-link">
-                <a href="#" @click="openEdit">Edit</a>
+            <td>
+              <div class="table-link-c">
+                <div class="table-link">
+                  <a href="#" @click="openEdit">Edit</a>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     <!-- side bar component for sorting  -->
-    <SideDrawer
-      v-if="drawerID == 1"
-      title="Sort by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
         <div class="sort-wrapper">
           <h1>Sort player list using</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">Player Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="PlayerName"
-                v-model="PlayerName"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="togglePlayer">
+                <div class="inner-radio" v-show="playerName == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">JerseyNumber</label>
-              <input
-                type="radio"
-                id="one"
-                value="JerseyNumber"
-                v-model="jerseyNumber"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleJersey">
+                <div class="inner-radio" v-show="JerseyNumber == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -195,21 +209,21 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="Ascending"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="Descending"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>

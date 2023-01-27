@@ -1,7 +1,6 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
-import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
@@ -15,15 +14,54 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(userDetails);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
-const showall = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
 const check = ref(false);
+// sort input 
+const sortTeam = ref(0);
+const sortID = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
+// filter input
+const showAll = ref(false);
+const medic = ref(false);
+const coach = ref(false);
+
+//sort magic
+
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const toggleTeam = () => {
+  sortTeam.value = !sortTeam.value;
+  console.log(sortTeam.value)
+}
+
+const toggleID = () => {
+  sortID.value = !sortID.value;
+  console.log(sortID.value)
+}
+
+//filter magic 
+
+const showAllFilter = () => {
+  showAll.value = !showAll.value;
+  medic.value = !medic.value;
+  coach.value = !coach.value;
+
+}
+//filter magic 
 
 // update on changes
 watchEffect(() => {
@@ -31,26 +69,14 @@ watchEffect(() => {
   open.value = drawerStore.popDrawer;
 });
 
-const toggle = () => {
-  showall.value = true;
-};
 
 //we use this id to determin which drawer opens
-//show page based
-const showSpecific = (id) => {
-  routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
-};
 
 const openCreate = () => {
   check.value = true;
   drawerStore.togglePop();
 };
 
-const openEdit = () => {
-  check.value = false;
-  drawerStore.togglePop();
-};
 
 const openDrawer = (id) => {
   switch (id) {
@@ -98,18 +124,13 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
-        <h1>Team Staff  </h1>
+        <h1>Team Staff </h1>
         <span>User</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search"
-          />
+          <input type="text" v-model="search" class="main-search" placeholder="Search" />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
@@ -136,47 +157,47 @@ onMounted(async () => {
             <th>Job description</th>
             <th>Staff Image</th>
 
-       
+
           </tr>
           <!-- <h1 v-if="data.length <= 0">loading data....................⚽</h1> -->
           <tr>
-          <td>tst</td>
-          <td>tst</td>
-          <td>tst</td>
-          <td>tst</td>
-          <td>
+            <td>tst</td>
+            <td>tst</td>
+            <td>tst</td>
+            <td>tst</td>
+            <td>
               <div class="tbl-formation">
-      <img src="@/assets/formation/433Attack-minded-midfield.jpg" alt="staff" class="tbl-img-formation">
-    </div>
+                <img src="@/assets/formation/433Attack-minded-midfield.jpg" alt="staff" class="tbl-img-formation">
+              </div>
             </td>
           </tr>
         </table>
       </div>
     </div>
     <!-- side bar component for sorting  -->
-    <SideDrawer
-      v-if="drawerID == 1"
-      title="Sort by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
         <div class="sort-wrapper">
           <h1>Parameter</h1>
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">Team name</label>
-              <input
-                type="radio"
-                v-bind:value="false"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleTeam">
+                <div class="inner-radio" v-show="sortTeam == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">ID</label>
-              <input
-                type="radio"
-                v-bind:value="false"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleID">
+                <div class="inner-radio" v-show="sortID == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -185,41 +206,51 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                v-bind:value="Ascending"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                v-bind:value="Descending"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
       </div>
     </SideDrawer>
     <!-- side bar component for filter  -->
-    <SideDrawer
-      v-else
-      title="Filter by"
-      class="sort-drawer"
-      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']"
-    >
+    <SideDrawer v-else title="Filter by" class="sort-drawer"
+      :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="filter-c">
         <h1>Enable switch to show in list</h1>
         <div class="filter-wrapper">
+          <!-- show component  -->
+          <div class="filter-list">
+            <h2>Show All</h2>
+            <div class="filter-b-c">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" v-model="showAll" @click="showAllFilter" />
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
+            </div>
+          </div>
           <!-- show component  -->
           <div class="filter-list">
             <h2>Medic</h2>
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="position" />
+                <input type="checkbox" v-model="medic" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -231,7 +262,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="position" />
+                <input type="checkbox" v-model="coach" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->

@@ -14,12 +14,41 @@ const drawerStatus = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
+// sort input 
+const sortRole = ref(0);
+const sortUser = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
 
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+//sort magic
+
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const toggleUserRole = () => {
+  sortRole.value = !sortRole.value;
+  console.log(sortRole.value)
+}
+
+const toggleUserName = () => {
+  sortUser.value = !sortUser.value;
+  console.log(sortUser.value)
+}
+
+//filter magic 
 
 //api
 const searchResult = computed(() => {
@@ -69,9 +98,6 @@ onMounted(async () => {
           <CircleDraw class="circle-c" @click="drawerStore.toggleDrawer">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
-          <CircleDraw class="circle-c">
-            <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
         </div>
       </div>
     </div>
@@ -100,21 +126,21 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">User Role</label>
-              <input
-                type="radio"
-                id="one"
-                value="userRole"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleUserRole">
+                <div class="inner-radio" v-show="sortRole == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">User Name</label>
-              <input
-                type="radio"
-                id="one"
-                value="userName"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleUserName">
+                <div class="inner-radio" v-show="sortUser == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -123,21 +149,21 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Ascending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input
-                type="radio"
-                id="one"
-                value="Descending"
-                v-model="userRole"
-              />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>

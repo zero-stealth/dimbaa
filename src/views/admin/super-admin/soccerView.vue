@@ -4,7 +4,6 @@ import position from "./soccerview/playerPosition.vue";
 import formation from "./soccerview/formationView.vue";
 import staff from "./soccerview/teamStaff.vue";
 import { useDrawerStore } from "@/stores/drawer";
-import { useRouteStore } from "@/stores/route";
 import PopUP from "@/components/drawer/popup.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
@@ -16,15 +15,63 @@ import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
 
 const tacticPage = shallowRef(formation);
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
 const drawerStatus = ref(null);
-const showPage = ref(false);
-const showall = ref(false);
 const drawerID = ref(null);
 const open = ref(null);
 const data = ref([]);
 const search = ref("");
-const check = ref(false);
+// sort input 
+const sortFormation = ref(0);
+const sortPosition = ref(0);
+const sortStaff = ref(0);
+const Ascending = ref(false);
+const Descending = ref(false);
+// filter input
+const showAll = ref(false);
+const FFormation = ref(false);
+const Fstaff = ref(false);
+const FPosition = ref(false);
+// filter input
+
+
+//sort magic
+
+const toggleA = () => {
+  Ascending.value = !Ascending.value;
+  console.log(Ascending.value)
+}
+
+const toggleB = () => {
+  Descending.value = !Descending.value;
+  console.log(Descending.value)
+}
+
+const toggleFormation = () => {
+  sortFormation.value = !sortFormation.value;
+  console.log(sortFormation.value)
+}
+
+const togglePosition = () => {
+  sortPosition.value = !sortPosition.value;
+  console.log(sortPosition.value)
+}
+
+const toggleStaff = () => {
+  sortStaff.value = !sortStaff.value;
+  console.log(sortStaff.value)
+}
+
+
+//filter magic 
+
+const showAllFilter = () => {
+  showAll.value = !showAll.value;
+  FFormation.value = !FFormation.value;
+  Fstaff.value = !Fstaff.value;
+  FPosition.value = !FPosition.value;
+
+}
+//filter magic 
 
 // update on changes
 watchEffect(() => {
@@ -34,22 +81,7 @@ watchEffect(() => {
 
 
 
-//we use this id to determin which drawer opens
-//show page based
-const showSpecific = (id) => {
-  routeStore.setPlayerId(id);
-  showPage.value = !showPage.value;
-};
-
-const openFormation = () => {
-  check.value = true;
-  drawerStore.togglePop();
-};
-
-const openEdit = () => {
-  check.value = false;
-  drawerStore.togglePop();
-};
+//we use this id to determine which drawer opens
 
 const openDrawer = (id) => {
   switch (id) {
@@ -97,7 +129,7 @@ onMounted(async () => {
 <template>
   <div class="main-container">
     <div class="nav-top">
-      <div class="main-details">  
+      <div class="main-details">
         <h1>Tactic</h1>
         <span>User</span>
       </div>
@@ -134,7 +166,7 @@ onMounted(async () => {
     <div class="inner-data-content">
       <component :is="tacticPage" />
     </div>
-    side bar component for sorting 
+    side bar component for sorting
     <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
       :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
@@ -143,15 +175,30 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="user-role">Formation</label>
-              <input type="radio" v-bind:value="true" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleFormation">
+                <div class="inner-radio" v-show="sortFormation == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">Position</label>
-              <input type="radio" v-bind:value="false" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="togglePosition">
+                <div class="inner-radio" v-show="sortPosition == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="username">Staff</label>
-              <input type="radio" v-bind:value="false" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleStaff">
+                <div class="inner-radio" v-show="sortStaff == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -160,11 +207,21 @@ onMounted(async () => {
           <div class="sort-user-i">
             <div class="sort-label-i">
               <label for="ascending">Ascending</label>
-              <input type="radio" id="one" value="Ascending" v-model="userRole" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleA">
+                <div class="inner-radio" v-show="Ascending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <input type="radio" id="one" value="Descending" v-model="userRole" />
+              <!-- custom made radio  -->
+              <div class="radio-wrapper" @click="toggleB">
+                <div class="inner-radio" v-show="Descending == true">
+                </div>
+              </div>
+              <!-- custom made radio  -->
             </div>
           </div>
         </div>
@@ -180,9 +237,9 @@ onMounted(async () => {
           <div class="filter-list">
             <h2>Show All</h2>
             <div class="filter-b-c">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type="checkbox" v-model="showall" />
+             <!-- Rounded switch -->
+             <label class="switch">
+                <input type="checkbox" v-model="showAll" @click="showAllFilter"/>
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -194,7 +251,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="Formation" />
+                <input type="checkbox" v-model="FFormation" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -206,7 +263,7 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="Staff" />
+                <input type="checkbox" v-model="Fstaff" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
@@ -218,19 +275,18 @@ onMounted(async () => {
             <div class="filter-b-c">
               <!-- Rounded switch -->
               <label class="switch">
-                <input type="checkbox" v-model="Position" />
+                <input type="checkbox" v-model="FPosition" />
                 <span class="slider round"></span>
               </label>
               <!-- Rounded switch -->
             </div>
           </div>
-        
+
         </div>
       </div>
     </SideDrawer>
     <div>
-
-      <PopUP title="Add formation" v-if="forma == false">
+      <PopUP title="Add formation" v-if="formation == false">
         <EditUser />
       </PopUP>
     </div>
