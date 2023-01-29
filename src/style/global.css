@@ -69,6 +69,37 @@
     color: var(--secondary-color);
   }
 
+  .icon-home {
+    height:24px;
+    width: 24px;
+  }
+
+  .icon-notification {
+    height:24px;
+    width: 24px;
+  }
+
+  .dashboard-icon {
+    height:24px;
+    width: 24px;
+  }
+
+  .edit-icon {
+    height:24px;
+    width: 24px;
+  }
+
+  
+  .about-icon {
+    height:24px;
+    width: 24px;
+  }
+
+  .settings-icon {
+    height:24px;
+    width: 24px;
+  }
+
   select {
     outline: none;
   }

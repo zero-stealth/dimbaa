@@ -1,11 +1,12 @@
 <script setup>
 import axios from "axios";
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 
 const teamHA = ref("");
 const teamHB = ref("");
 const teamFA = ref("");
 const teamFB = ref("");
+const filling = ref("");
 
 watchEffect(() => {
   if (teamHA.value != '' || teamHB.value != '' || teamFA.value != '' || teamFB.value != '') {

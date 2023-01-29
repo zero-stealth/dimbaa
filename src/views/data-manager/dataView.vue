@@ -1,4 +1,5 @@
 <script  setup>
+import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
@@ -72,7 +73,7 @@ onMounted(async () => {
   axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.match;
+      data.value = response.data.scoreboard;
       console.log(data.value);
     })
     .catch(function (error) {
@@ -85,9 +86,6 @@ onMounted(async () => {
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details data-b">
-        <h1>{{ authStore.userName }}</h1>
-        <span>{{ authStore.userName }}</span>
-        <span>Data manager(organiser)</span>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

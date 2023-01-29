@@ -1,4 +1,19 @@
-<script>
+<script setup>
+import axios from "axios";
+import { ref, onMounted, watchEffect } from "vue";
+
+
+const teamHA = ref("");
+const teamHB = ref("");
+
+watchEffect(() => {
+  if (teamA.value != '' || teamB.value != '') {
+    filling.value = true;
+  } else {
+    filling.value = false;
+  }
+})
+
 </script>
 <template>
   <div class="form1-container r1">
@@ -81,11 +96,12 @@
   </h3>
 </div>
     </div>
-<div class="btn1-center">
+    <div class="btn1-center">
       <div class="form1-btn">
-        <button class="btn1 btn1-a">Reset</button>
-        <button class="btn1 btn1-b hide-m">Save draft</button>
-        <button class="btn1 btn1-b">Next</button>
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''">Save
+          draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''">Next</button>
       </div>
     </div>
 </template>

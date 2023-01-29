@@ -3,10 +3,7 @@ import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import { useAuthStore } from "@/stores/auth.js";
 import PopUP from "@/components/drawer/popup.vue";
-import MenuIcon from "@/components/icons/MenuIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
-import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import SideDrawer from "@/components/drawer/SideDrawer.vue";
 
 import Player from "../../../components/specific/PlayerComponent.vue";
 import CreatePlayer from "@/components/form/createform/CreatePlayer.vue";
@@ -88,8 +85,11 @@ onMounted(async () => {
     <div class="nav-top">
       <div class="main-details">
         <h1>Welcome {{ userFirstName }}</h1>
-        <span>Welcome {{ userFirstName }}</span>
-        <h4>Team admin</h4>
+        <h2>Team admin</h2>
+        <div class="main-center-da">
+          <span>Welcome {{ userFirstName }}</span>
+          <span>Team admin</span>
+        </div>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">

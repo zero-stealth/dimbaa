@@ -27,22 +27,6 @@
     background-color: var(--primary-color);
 }
 
-.data-b {
-    width: 100%;
-    display: flex;
-    padding: 20px 0;
-    align-items: center;
-
-}
-
-.data-b h1 {
-    width: 100%;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-
-}
 
 .team-b-txt {
     gap: 10px;
@@ -174,11 +158,6 @@
         
     }
 
-    .data-b h1 {
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
-    
     
     
 }

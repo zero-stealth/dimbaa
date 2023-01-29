@@ -115,12 +115,15 @@
    
     .login-adv {
         display: none;
-        width: auto;
     }
     
     
     .banner-img {
         height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        
     }
 
     .btn-i {
@@ -151,16 +154,16 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
 
-    .login-c , .login-adv {
+    /* .login-c , .login-adv {
         flex: 50%;
-    }
+    } */
     
     .login-c {
         justify-content: flex-start;
     }
 
     .login-form-container {
-        width: 80%;
+        width: 70%;
         height: 60%;
    
     }

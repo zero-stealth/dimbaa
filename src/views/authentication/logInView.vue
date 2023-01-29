@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import { useAuthStore } from "../../stores/auth.js";
-import { useRoleStore } from "../../stores/roles.js";
+import { useAuthStore } from "@/stores/auth.js";
+import { useRoleStore } from "@/stores/roles.js";
 
 const roleStore = useRoleStore();
 const authState = useAuthStore();
