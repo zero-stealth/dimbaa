@@ -1,11 +1,17 @@
 @media screen {
+    
+    .pop-adduser-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .match-form-wrapper {
         gap: 20px;
         display: flex;
         padding: 0 10px;
         flex-direction: column;
     }
-    
+
     .match-wrapper {
         gap: 50px;
         display: flex;
@@ -54,6 +60,15 @@
         border-radius: 5px;
       
       }
+
+      .btn-Vi {
+        margin: 10px;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: var(--background-color);
+        background-color: #26B3DF;
+      }
       
       .u-a {
         color: var(--background-color);
@@ -69,12 +84,18 @@
     .match-btn-f {
         gap: 20px;
         display: flex;
+        justify-content: space-around;
     }
     
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+
+    .pop-adduser-form {
+        display: flex;
+        flex-direction: column;
+    }
 
     .match-form-wrapper {
         padding: 0 10px;

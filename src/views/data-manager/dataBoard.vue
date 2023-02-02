@@ -4,7 +4,6 @@ import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
 import current from "./data-manager/CurrentView.vue";
 import history from "./data-manager/HistoryView.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import upcoming from "./data-manager/UpcomingView.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
@@ -148,9 +147,6 @@ const openDrawer = (id) => {
           </CircleDraw>
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>

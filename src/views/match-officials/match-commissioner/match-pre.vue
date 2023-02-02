@@ -61,7 +61,6 @@ onMounted(async () => {
         </button>
         <div class="general-re">
         <h2>Pre-Match Report</h2>
-        <span>{{ authStore.userName }}</span>
         </div>
       </div>
     </div>

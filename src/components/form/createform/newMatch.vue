@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-const Team = ref("");
+const  Team = ref("");
 const Tournament  = ref("");
 const City = ref("");
 const Referee = ref("");
@@ -8,7 +8,7 @@ const Referee2 = ref("");
 const Stadium = ref("");
 const Date = ref("");
 const Away = ref("");
-const year = ref("");
+const Official = ref("");
 const commissioner = ref("");
 
 const getDetails = () => {
@@ -26,7 +26,7 @@ const reset = () => {
   Stadium.value = "";
   Date.value = "";
   Away.value = "";
-  year.value = "";
+  Official.value = "";
   commissioner.value = "";
 };
 </script>
@@ -42,7 +42,7 @@ const reset = () => {
     <div class="match-wrapper">
     <div class="match-wrapper1">
       <div class="match-container">
-        <label for="match-select" class="match-label">Name of Tournament</label>
+        <label for="match-select" class="match-label">Select Tournament</label>
         <select
           required
           v-model="Tournament"
@@ -53,35 +53,62 @@ const reset = () => {
           <option>Tournament2</option>
         </select>
       </div>
-      <!-- <div class="match-container">
-        <label for="match-select" class="match-label labl-tans">Match</label>
-       <input type="text"    class="match-input" placeholder="Tournament83746" disabled>
-      </div> -->
-    </div>
-    <div class="match-wrapper2">
         <div class="match-container">
-        <label for="match-select" class="match-label">Select Year</label>
+        <label for="match-select" class="match-label">Home Team</label>
         <select
           required
-          v-model="year"
+          v-model="Team"
           class="match-input"
           id="match-select"
         >
-          <option>2020</option>
-          <option>2021</option>
-          <option>2022</option>
+          <option>Home Team1</option>
+          <option>Home Team2</option>
         </select>
       </div>
       <div class="match-container">
-        <label for="match-select" class="match-label">Date</label>
+        <label for="match-select" class="match-label labl-tans">Match</label>
+       <input type="text"    class="match-input" placeholder="Tournament83746" disabled>
+      </div>
+      <div class="match-container">
+        <label for="match-select" class="match-label">City</label>
         <select
           required
-          v-model="Date"
+          v-model="City"
           class="match-input"
           id="match-select"
         >
-          <option>Date1</option>
-          <option>Date2</option>
+          <option>City1</option>
+          <option>City2</option>
+        </select>
+      </div>
+      <div class="match-container">
+        <label for="match-select" class="match-label">Round</label>
+        <select
+          required
+          v-model="Round"
+          class="match-input"
+          id="match-select"
+        >
+          <option>Round1</option>
+          <option>Round2</option>
+        </select>
+      </div>
+    </div>
+    <div class="match-wrapper2">
+      <div class="match-container">
+        <label for="match-select" class="match-label">Select date & time</label>
+        <input type="date" v-model="Date"  class="match-input" >
+      </div>
+      <div class="match-container">
+        <label for="match-select" class="match-label">Away Team</label>
+        <select
+          required
+          v-model="Away"
+          class="match-input"
+          id="match-select"
+        >
+          <option>Away Team1</option>
+          <option>Away Team2</option>
         </select>
       </div>
       <div class="match-container">

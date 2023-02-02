@@ -62,7 +62,6 @@ onMounted(async () => {
         </button>
         <div class="general-re">
           <h2>Referee Form</h2>
-        <span>{{ authStore.userName }}</span>
         </div>
       </div>
     </div>

@@ -1,25 +1,31 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
-import { useRouteStore } from "@/stores/route";
-import ArrowIcon from "@/components/icons/ArrowIcon.vue";
-
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { useAuthStore } from "@/stores/auth.js";
+import { ref, onMounted, watchEffect } from "vue";
+import PopUP from "@/components/drawer/popup.vue";
+import AssignMatch from "@/components/form/createform/AssignMatch.vue";
 
 const drawerStore = useDrawerStore();
-const routeStore = useRouteStore();
+const authStore = useAuthStore();
 const drawerStatus = ref(null);
 const drawerID = ref(null);
+const open = ref(null);
 const data = ref([]);
 const check = ref(false);
-
-const url= "https://be-tblp.dimbaa.com/api/admin/stadia"
 
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const openCreate = () => {
+  check.value = true;
+  drawerStore.togglePop();
+};
+
+console.log(authStore.userName);
 
 const openDrawer = (id) => {
   switch (id) {
@@ -37,17 +43,10 @@ const openDrawer = (id) => {
   }
 };
 
-
-
-//api
-const searchResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(routeStore.stadiumName));
-});
-
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: `${url}`,
+    url: "https://be-tblp.dimbaa.com/api/data-manager/list-match-events",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -56,10 +55,11 @@ onMounted(async () => {
     },
   };
 
-  await axios
+  axios
     .request(options)
     .then(function (response) {
-      data.value = response.data.stadia;
+      data.value = response.data.match;
+      console.log(data.value);
     })
     .catch(function (error) {
       console.error(error);
@@ -67,61 +67,61 @@ onMounted(async () => {
 });
 </script>
 <template>
-    <div class="main-container Sc-p">
-    <div class="nav-top">
-      <div class="main-details">
-        <span>Stadium details</span>
-      </div>
+  <div class="main-container">
+    <!-- inner data content -->
+    <div class="user-content">
+      <form action="">
+        <div class="user-content">
+        <div class="table-slide">
+          <table>
+            <tr>
+              <th>Round</th>
+              <th>Date</th>
 
-    </div>
-    <div class="team-player-x" v-for="(
-            {  name, location, capacity, stadium_owner, stadium_picture},
-          ) in searchResult"
-          :key="`${searchResult}`">
-        <div class="team-d-x">
-          <h3>  {{ name }} </h3>
-          <h4> {{stadium_owner}}</h4>
-          <h4> {{capacity}}</h4>
-          <h4> {{location}}</h4>
+              <th>Number</th>
+              <th>Home Team</th>
+              <th>Away Team</th>
+              <th>Venue</th>
+              <th>City</th>
+              <th>Actiion</th>
+            </tr>
+            <tr
+              v-for="(
+                { round, city, venue, date, id, home_team_id, away_team_id },
+                index
+              ) in data"
+              :key="index"
+            >
+              <td>{{ round }}</td>
+              <td>{{ id }}</td>
+              <td>{{ date }}</td>
+              <td>{{ home_team_id }}</td>
+              <td>{{ away_team_id }}</td>
+              <td>{{ venue }}</td>
+              <td>{{ city }}</td>
+              <td>
+            <div class="table-link-c">
+              <div class="table-link">
+                <a href="#"  @click="openCreate">Assign</a>
+              </div>
+            </div>
+          </td>
+            </tr>
+          </table>
         </div>
-          <img
-          :src="`${stadium_picture}`"
-          alt="player-pic"
-          class="player-pic"
-        />
       </div>
-  <div class="specific-content">
-    <div class="table-slide">
-      <table class="tb-specific">
-        <tr>
-          <th> <button class="sp-dbtn" @click="routeStore.togglePage">
-              <ArrowIcon class="icon icon-dta" />
-            </button></th>
-          <th>Name</th>
-          <th>Region</th>
-          <th>location</th>
-          <th>date</th>
-          <th>team</th>
-        </tr>
-        <tr v-for="({ name, region, location, inauguration_date, stadium_picture }, index) in searchResult" :key="`${searchResult}`">
-          <td></td>
-          <td>{{ name }}</td>
-          <td>{{ region }}</td>
-          <td>{{ location }}</td>
-          <td>{{ inauguration_date }}</td>
-          <td>{{  }}</td>
-        </tr>
-      </table>
+      </form>
     </div>
-  </div>
     <div>
-      <PopUP title="Add Player" v-if="check == true">
-        <CreatePlayer />
+    </div>
+    <div>
+      <PopUP title="" v-if="check == true">
+        <AssignMatch />
       </PopUP>
     </div>
   </div>
 </template>
 <style>
+@import "@/style/data.css";
 @import "@/style/main.css";
-@import "@/style/userspecific.css";
 </style>

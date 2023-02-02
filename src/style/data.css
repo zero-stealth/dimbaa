@@ -14,7 +14,53 @@
     width: 100%;
     display: flex;
     align-items: center;
+    
 }
+
+.tbl-self-made {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container , .row-container {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header-container {
+    width: fit-content;
+    background-color: var(--primary-color);
+    
+}
+
+.row-inner-t:nth-child(even)  {
+    background-color: var(--light-color); 
+}
+
+
+.header-container div {
+    padding: 10px;
+    font-size: .8rem;
+    font-weight: 100;
+    text-align: start;
+    text-transform: capitalize;
+    color:var(--background-color);
+}
+
+.row-container div {
+    padding: 10px;
+    font-size: .8rem;
+    font-weight: 100;
+}
+
+.inner-spy {
+    display: flex;
+}
+
+
 
 .data-n-b {
     padding: 5px 30px;
@@ -77,7 +123,6 @@
     flex-direction: row;
     justify-content: center;
 }
-
 
 /* edit view  */
 
@@ -143,7 +188,11 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
         
-
+    .header-container {
+        width: 100%;
+        background-color: var(--primary-color);
+        
+    }
     .team-b-txt {
         display: flex;
     }

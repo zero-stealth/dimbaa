@@ -6,6 +6,7 @@
   }
 
   .nav-top {
+    width: 100%;
     display: flex;
     padding-top: 10px;
     align-items: center;
@@ -28,6 +29,7 @@
   }
 
   .second-t {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -212,7 +214,11 @@
     align-items: center;
     flex-direction: column;
   }
-
+  
+  .general-re h2 {
+    font-size: 1rem;
+  }
+  
   /* custom radio */
   .radio-wrapper {
     display: flex;
@@ -540,9 +546,9 @@ input:checked + .slider:before {
     flex-direction: row;
   }
 
-
-  .general-re span {
-    display: none;
+  .general-re {
+    width: 90%;
+    flex-direction: column;
   }
 
   .main-details h1 {
@@ -679,7 +685,7 @@ input:checked + .slider:before {
   }
 
   .icon-s {
-    left: -300px;
+    left: 0;
   }
 
   

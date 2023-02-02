@@ -96,7 +96,7 @@ onMounted(async () => {
           />
         </form>
         <div class="circle-wrapper">
-          <CircleDraw class="circle-c" @click="openDrawer(1)">
+          <CircleDraw class="circle-c" @click="openDrawer(1)  ">
             <MenuIcon class="icon icon-menu" />
           </CircleDraw>
 

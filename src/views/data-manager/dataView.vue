@@ -27,7 +27,7 @@ watchEffect(() => {
 });
 
 const openTable = () => {
- isTableOpen.value = !isTableOpen.value
+  isTableOpen.value = !isTableOpen.value
 }
 
 console.log(authStore.userName);
@@ -61,7 +61,7 @@ const openDrawer = (id) => {
 onMounted(async () => {
   const options = {
     method: "GET",
-    url: "http://be-tblp.dimbaa.com/api/league-director/scoreboard",
+    url: "https://be-tblp.dimbaa.com/api/league-director/scoreboard",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -97,53 +97,50 @@ onMounted(async () => {
         </form>
       </div>
     </div>
+
     <div class="inner-view-content">
       <h1>ScoreBoard</h1>
     </div>
-    <!-- inner data content -->
-    <div class="user-content">
-      <div class="table-slide">
-        <table>
-          <tr>
-              <th></th>
-              <th>Position</th>
-              <th>Team A</th>
-              <th>Team B</th>
-              <th>Points</th>
-              <th>Pld</th>
-              <th>W</th>
-              <th>D</th>
-              <th>L</th>
-              <th>GF</th>
-              <th>GA</th>
-              <th>GD</th>
-
-          </tr>
-          <tr v-for="(
-            {  team1_score, team2_score, point  }, index
-          ) in data"
-          :key="index"
-        >
-              <td>
-              <div class="controller-tb">
-                <ArrowIcon class="icon" @click="openTable" :class="isTableOpen == true ? 'turnOn' : '' ">
-                </ArrowIcon>
-              </div>
-              </td>
-              <td>1</td>
-              <td>{{ team1_score }}</td>
-              <td>{{ team2_score }}</td>
-              <td>{{ point }}</td>
-              <td>4</td>
-              <td>3</td>
-              <td>1</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>2</td>
-          </tr>
-          <component :is="tablePage" v-show="isTableOpen == true" />
-        </table>
+    <div class="tbl-self-made">
+      <div class="header-container">
+        <div></div>
+        <div>Position</div>
+        <div>TeamA</div>
+        <div>Team B</div>
+        <div>Points</div>
+        <div>Pld</div>
+        <div>W</div>
+        <div>D</div>
+        <div>L</div>
+        <div>GF</div>
+        <div>GA</div>
+        <div>GD</div>
+      </div>
+      <div class="row-inner-t" v-for="(
+            { team1_score, team2_score, point }, index
+          ) in data" :key="index">
+        <div>
+          <div class="row-container">
+            <div class="controller-tb">
+            <ArrowIcon class="icon" @click="openTable" :class="isTableOpen == true ? 'turnOn' : ''">
+            </ArrowIcon>
+          </div>
+          <div>1</div>
+        <div>{{ team1_score }}</div>
+        <div>{{ team2_score }}</div>
+        <div>{{ point }}</div>
+        <div>4</div>
+        <div>3</div>
+        <div>1</div>
+        <div>8</div>
+        <div>8</div>
+        <div>8</div>
+        <div>2</div>
+        </div>
+          </div>
+          <div class="inner-spy">
+            <component :is="tablePage" v-show="isTableOpen == true" class="inner-hide" />
+          </div>
       </div>
     </div>
   </div>

@@ -1,25 +1,24 @@
 <script setup>
-import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
-import { useAuthStore } from "../../stores/auth.js";
+import assign from "./data-manager/AssignView.vue";
 import AddIcon from "@/components/icons/AddIcon.vue";
+import unassign from "./data-manager/UnassignView.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
-import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
+import SearchIcon from "@/components/icons/SearchIcon.vue";
+import Match from "@/components/form/updateform/MatchT.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
-import { ref, onMounted, watchEffect } from "vue";
+import { ref, watchEffect, shallowRef } from "vue";
 
+const dataPage = shallowRef(unassign);
 const drawerStore = useDrawerStore();
-const authStore = useAuthStore();
 const drawerStatus = ref(null);
 const drawerID = ref(null);
 const open = ref(null);
 const search = ref("");
-const data = ref([]);
-const check = ref(false);
+const check = ref(null);
 // sort input 
 const sortRound = ref(0);
 const sortMatch = ref(0);
@@ -92,19 +91,17 @@ const showAllFilter = () => {
 }
 //filter magic 
 
-
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
 
+
 const openCreate = () => {
   check.value = true;
   drawerStore.togglePop();
 };
-
-console.log(authStore.userName);
 
 const openDrawer = (id) => {
   switch (id) {
@@ -122,43 +119,20 @@ const openDrawer = (id) => {
   }
 };
 
-onMounted(async () => {
-  const options = {
-    method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/data-manager/list-match-events",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNWZhMGRiODY3YTM0NTg3MTg2ZDk3MDdiMDBmYzliYWM4M2QyZjAzOWM2ZjhjZjVlMTRlMWUwY2UxZGYxYmRhNDdiYWYxNWEyMjJhMDhkMmIiLCJpYXQiOjE2NzExOTM1MzguNTU0MTM0LCJuYmYiOjE2NzExOTM1MzguNTU0MTM2LCJleHAiOjE2ODY5MTgzMzguNTQ4NTAxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.kYBwzo9ZoKTL9GG_j9iMpswww1UriiHYPufljSVJo_5QyLiJrI4Wb2k0sPD7iDb0SmlrFQnUdSI8knqLUZBe2Sd2bC4r4c_otOdYLnQAyxmM-0fJh_jVIGYgCjFF7msWOWsTcyl8fg7-Uj3yrsAxoxOdQW-L28dx4-hFAZUR9eOs2XCwU0cf9TUnGdqxvUm_wFBBou509NtZec1bmaAgUbG9GSpAfk7mfmuUOU1u7ElrOTFyvvN4bAI_70DpK3XUDJ0Nw81YsCO0_kp_Nr1hAZ2fmcIPXe-xKvwSPfp_7cMmT6HqV9MdQwPK7-ISoJq_eTy2fGvfHDQrWyKLDyKp8W0Fs5z6PURwT2hFZ6tV3jxCMH-sAzgTY72xXdb3EjG4etbbyc-wAWXmPQ9WB5SeOms2Xqm4M41XQbNeyK-qy2jYcDQLnYVnRZihWdBTLcBf64_DFuMWzRhvu4hTL8_fVu94whAWW-Oi9-s7BKRftDf3paExjJtEaT6-kUDnzRpe_Yfw9nfWDxA8LYUUsukYDDqvSshVRk5eG6kp3K169pppD7gAKakpORggebMgEHn4DGX7ieowJk3XCfDrIxZ5EVoX3HGZjamaRPmnl-bX2lvBTjBm3uFSGrLnMbckzS4fdpYK3YnNmyBESm9-sOCQ-5M3Nf6jsFQH6FdeWnGoo0E",
-    },
-  };
-
-  axios
-    .request(options)
-    .then(function (response) {
-      data.value = response.data.match;
-      console.log(data.value);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
 </script>
 <template>
   <div class="main-container">
     <div class="nav-top">
       <div class="main-details">
+        <h1>Assign officials</h1>
+        <div class="main-center-da">
+          <span>Assign officials</span>
+        </div>
       </div>
       <div class="main-wrapper">
         <form action="" class="form-main">
           <SearchIcon class="icon icon-search" />
-          <input
-            type="text"
-            v-model="search"
-            class="main-search"
-            placeholder="Search Here"
-          />
+          <input type="text" v-model="search" class="main-search" placeholder="Search Here" />
         </form>
         <div class="circle-wrapper">
           <CircleDraw class="circle-c" @click="openDrawer(1)">
@@ -173,54 +147,23 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <!-- inner data content -->
-    <div class="user-content">
-      <div class="edit-view-f">
-        <button type="submit" @click="assign" class="btn-f u-a e-u">
-          Assign
+    <div class="data-content-r">
+      <!-- data nav  -->
+      <div class="data-nav">
+        <button class="data-n-b" @click="dataPage = unassign" :class="[dataPage == unassign? 'datapage' : '']">
+          Unassigned
         </button>
-        <button type="submit" @click="reset" class="btn-f u-r e-u e-a">
-          Reset
+        <button class="data-n-b" @click="dataPage = assign" :class="[dataPage == assign ? 'datapage' : '']">
+          Assigned
         </button>
       </div>
-      <form action="">
-        <div class="user-content">
-        <div class="table-slide">
-          <table>
-            <tr>
-              <th>Selected</th>
-              <th>Round</th>
-              <th>Date</th>
-
-              <th>Number</th>
-              <th>Home Team</th>
-              <th>Away Team</th>
-              <th>Venue</th>
-              <th>City</th>
-            </tr>
-            <tr
-              v-for="(
-                { round, city, venue, date, id, home_team_id, away_team_id },
-                index
-              ) in data"
-              :key="index"
-            >
-              <td><input type="checkbox" :name="team1" id="" /></td>
-              <td>{{ round }}</td>
-              <td>{{ id }}</td>
-              <td>{{ date }}</td>
-              <td>{{ home_team_id }}</td>
-              <td>{{ away_team_id }}</td>
-              <td>{{ venue }}</td>
-              <td>{{ city }}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      </form>
     </div>
-    <!-- side bar component for sorting  -->
-    <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
+    <!-- inner data content -->
+    <div class="inner-data-content">
+      <component :is="dataPage" />
+    </div>
+       <!-- side bar component for sorting  -->
+       <SideDrawer v-if="drawerID == 1" title="Sort by" class="sort-drawer"
       :class="[drawerStatus != false ? 'open-drawer' : 'close-drawer']">
       <div class="sort-user-c">
         <div class="sort-wrapper">
@@ -363,13 +306,13 @@ onMounted(async () => {
       </div>
     </SideDrawer>
     <div>
-      <PopUP title="Edit match" v-if="check == true">
-        <EditMatch />
+      <PopUP title="" v-if="check == true">
+        <Match />
       </PopUP>
     </div>
   </div>
 </template>
 <style>
-@import "@/style/data.css";
 @import "@/style/main.css";
+@import "@/style/data.css";
 </style>

@@ -6,16 +6,21 @@ import leaderPlayers from "./leadersPlayers.vue";
 import startingPlayers from "./startingPlayers.vue";
 import substitutePlayers from "./substitutePlayers.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
-import { useDrawerStore } from "@/stores/drawer";
-import { useAuthStore } from "../../stores/auth.js";
-import { ref, watchEffect, shallowRef } from "vue";
+import { useDrawerStore } from "@/stores/drawer.js";
+// import { useNextStore } from "@/stores/next.js";
+import { ref, watchEffect, shallowRef, onMounted } from "vue";
 
 const teamPage = shallowRef(details);
 const drawerStore = useDrawerStore();
-const authStore = useAuthStore();
+// const nextStore = useNextStore();
 const drawerStatus = ref(null);
 const open = ref(null);
 
+// onMounted(() => {
+//   watchEffect(() => {
+//     nextStore.updateNext(teamPage.value);
+//   });
+//  })
 
 // update on changes
 watchEffect(() => {
@@ -35,7 +40,6 @@ watchEffect(() => {
         <div class="general-re">
           <h2>Line up Form</h2>
           <h2>Orodha ya wachezaji</h2>
-        <span>{{ authStore.userName }}</span>
         </div>
       </div>  
     </div>  

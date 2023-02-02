@@ -1,13 +1,15 @@
 <script setup>
 import axios from "axios";
+import { useRouteStore } from "@/stores/route";
 import { useDrawerStore } from "@/stores/drawer";
 import PopUP from "@/components/drawer/popup.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
+import ViewMatch  from "@/components/form/updateform/ViewMatch.vue";
 import PlayerDetails from "@/components/specific/PlayerComponent.vue";
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { ref, onMounted , watchEffect, shallowRef } from "vue";
 
 const activePage = shallowRef(PlayerDetails);
 const drawerStore = useDrawerStore();
+const routeStore = useRouteStore();
 const drawerStatus = ref(null);
 const showPage = ref(false);
 const open = ref(null);
@@ -21,7 +23,8 @@ watchEffect(() => {
 });
 
 
-const openCreate = () => {
+const openCreate = (id) => {
+  routeStore.setPlayerId(id);
   check.value = true;
   drawerStore.togglePop();
 };
@@ -83,7 +86,7 @@ onMounted(async () => {
           <td>
             <div class="table-link-c">
               <div class="table-link">
-                <a href="#"  @click="openCreate">Edit</a>
+                <a href="#"  @click="openCreate(id)">View</a>
               </div>
             </div>
           </td>
@@ -94,8 +97,8 @@ onMounted(async () => {
     <div>
     </div>
     <div>
-      <PopUP title="Edit match" v-if="check == true">
-      <EditMatch/>  
+      <PopUP   v-if="check == true">
+      <ViewMatch />  
       </PopUP>
     </div>
   </div>
