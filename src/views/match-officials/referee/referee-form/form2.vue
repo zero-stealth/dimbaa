@@ -1,19 +1,4 @@
 <script setup>
-import axios from "axios";
-import { ref, onMounted, watchEffect } from "vue";
-
-
-const teamHA = ref("");
-const teamHB = ref("");
-
-watchEffect(() => {
-  if (teamA.value != '' || teamB.value != '') {
-    filling.value = true;
-  } else {
-    filling.value = false;
-  }
-})
-
 </script>
 <template>
   <div class="form1-container r1">

@@ -1,3 +1,15 @@
+<script setup>
+import { useNextStore } from "@/stores/next.js";
+import form1 from "./referee-form/form1.vue";
+
+const nextStore = useNextStore();
+console.log(nextStore.nextStore)
+// go to next page
+const goNext = () => {
+  nextStore.updateNext(form1);
+}
+
+</script>
 <template>
   <div class="detail-container">
     <form action="" class="d-form">
@@ -43,7 +55,7 @@
       <div class="form1-btn">
         <button class="btn1 btn1-a">Reset</button>
         <button class="btn1 btn1-b hide-m">Save draft</button>
-        <button class="btn1 btn1-b">Next</button>
+        <button class="btn1 btn1-b"  @click="goNext">Next</button>
       </div>
     </div>
   </div>

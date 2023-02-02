@@ -20,7 +20,7 @@
     }
 
     .login-adv {
-        flex: calc(100% var(--auth-width));
+        flex: calc(100% - var(--auth-width));
     }
 
     
@@ -154,10 +154,6 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
 
-    /* .login-c , .login-adv {
-        flex: 50%;
-    } */
-    
     .login-c {
         justify-content: flex-start;
     }

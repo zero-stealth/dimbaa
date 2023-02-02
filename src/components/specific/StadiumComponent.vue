@@ -4,7 +4,7 @@ import { useDrawerStore } from "@/stores/drawer";
 import { useRouteStore } from "@/stores/route";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { ref, onMounted,  watchEffect, shallowRef } from "vue";
 
 const drawerStore = useDrawerStore();
 const routeStore = useRouteStore();

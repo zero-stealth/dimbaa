@@ -25,7 +25,7 @@
     box-sizing: border-box;
 
     /* global-width */
-    --auth-width:50%;
+    --auth-width:40%;
     --side-bar-width: 6%;
     --dash-board-width: 20%;
     --side-drawer-width: 30%;

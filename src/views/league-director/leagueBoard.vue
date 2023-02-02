@@ -1,17 +1,14 @@
 <script setup>
 import { useDrawerStore } from "@/stores/drawer";
-import PopUP from "@/components/drawer/popup.vue";
 import { useAuthStore } from "../../stores/auth.js";
 import current from "./CurrentView.vue";
 import history from "./HistoryView.vue";
-import AddIcon from "@/components/icons/AddIcon.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import upcoming from "./UpcomingView.vue";
 import FilterIcon from "@/components/icons/FilterIcon.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import SideDrawer from "@/components/drawer/SideDrawer.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
-import EditMatch from "@/components/form/updateform/EditMatch.vue";
 import { ref, watchEffect, shallowRef } from "vue";
 
 const dataPage = shallowRef(upcoming);
@@ -158,9 +155,6 @@ const openDrawer = (id) => {
           </CircleDraw>
           <CircleDraw class="circle-c" @click="openDrawer(2)">
             <FilterIcon class="icon icon-menu" />
-          </CircleDraw>
-          <CircleDraw class="circle-a" @click="openCreate">
-            <AddIcon class="icon icon-menu" />
           </CircleDraw>
         </div>
       </div>
@@ -338,11 +332,6 @@ const openDrawer = (id) => {
         </div>
       </div>
     </SideDrawer>
-    <div>
-      <PopUP title="Edit match" v-if="check == true">
-      <EditMatch/>  
-      </PopUP>
-    </div>
   </div>
 </template>
 <style>

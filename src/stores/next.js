@@ -1,4 +1,4 @@
-import { shallowRef } from "vue";
+import { ref , shallowRef} from "vue";
 import { defineStore } from "pinia";
 
 
@@ -10,12 +10,5 @@ export const useNextStore = defineStore("nextRoute", () => {
     }
 
 
-    // const goNext = (current) => {
-    //     if (current.value == nextRoute) {
-
-    //     }
-    // }
-
-
-    return { updateNext, nextRoute, };
+    return { updateNext, nextRoute };
 });

@@ -13,18 +13,26 @@ import form10 from "./referee-form/form10.vue";
 import form11 from "./referee-form/form11.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import { useDrawerStore } from "@/stores/drawer";
-import { useAuthStore } from "@/stores/auth.js";
-import { shallowRef } from "vue";
-
-import { ref, onMounted, watchEffect } from "vue";
+import { useNextStore } from "@/stores/next.js";
+import { ref, onMounted, watchEffect, shallowRef } from "vue";
 import axios from "axios";
 
-const drawerStore = useDrawerStore();
 const refereePage = shallowRef(detail);
-const authStore = useAuthStore();
+const drawerStore = useDrawerStore();
+const nextStore = useNextStore();
 const drawerStatus = ref(null);
 const open = ref(null);
 const data = ref([]);
+
+// btn next
+
+const btnd = ref();
+
+
+watchEffect(() => {
+  nextStore.updateNext(refereePage.value);
+});
+
 // update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
@@ -68,97 +76,49 @@ onMounted(async () => {
     <div class="data-content-r">
       <!-- data nav  -->
       <div class="data-nav">
-        <button
-          class="data-n-b"
-          @click="refereePage = detail"
-          :class="[refereePage == detail ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = detail" :class="[refereePage == detail ? 'datapage' : '']">
           Details
         </button>
-         <button
-          class="data-n-b"
-          @click="refereePage = form1"
-          :class="[refereePage == form1 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form1" :class="[refereePage == form1 ? 'datapage' : '']">
           1
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form2"
-          :class="[refereePage == form2 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form2" :class="[refereePage == form2 ? 'datapage' : '']">
           2
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form3"
-          :class="[refereePage == form3 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form3" :class="[refereePage == form3 ? 'datapage' : '']">
           3
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form4"
-          :class="[refereePage == form4 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form4" :class="[refereePage == form4 ? 'datapage' : '']">
           4
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form5"
-          :class="[refereePage == form5 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form5" :class="[refereePage == form5 ? 'datapage' : '']">
           5
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form6"
-          :class="[refereePage == form6 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form6" :class="[refereePage == form6 ? 'datapage' : '']">
           6
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form7"
-          :class="[refereePage == form7 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form7" :class="[refereePage == form7 ? 'datapage' : '']">
           7
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form8"
-          :class="[refereePage == form8 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form8" :class="[refereePage == form8 ? 'datapage' : '']">
           8
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form9"
-          :class="[refereePage == form9 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form9" :class="[refereePage == form9 ? 'datapage' : '']">
           9
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form10"
-          :class="[refereePage == form10 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form10" :class="[refereePage == form10 ? 'datapage' : '']">
           10
         </button>
-        <button
-          class="data-n-b"
-          @click="refereePage = form11"
-          :class="[refereePage == form11 ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="refereePage = form11" :class="[refereePage == form11 ? 'datapage' : '']">
           11
         </button>
       </div>
     </div>
     <!-- side bar component for sorting  -->
-     <!-- inner data content -->
-     <div class="inner-data-content">
-        <component :is="refereePage" />
-      </div>
+    <!-- inner data content -->
+    <div class="inner-data-content">
+      <component :is="nextStore.nextRoute" />
+    </div>
     <div>
     </div>
   </div>
