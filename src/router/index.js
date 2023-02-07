@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/admin-board',
       name: 'AdminBoard',
-      component: () => import('@/views/admin/super-admin/adminBoard.vue')
+      component: () => import('@/views/admin/super-admin/adminBoard.vue') 
     },
     {
       path: '/team-board',

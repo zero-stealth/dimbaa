@@ -7,26 +7,138 @@ import startingPlayers from "./startingPlayers.vue";
 import substitutePlayers from "./substitutePlayers.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import { useDrawerStore } from "@/stores/drawer.js";
-// import { useNextStore } from "@/stores/next.js";
-import { ref, watchEffect, shallowRef, onMounted } from "vue";
+import { useNextStore } from "@/stores/next.js";
+import { ref, watchEffect, shallowRef } from "vue";
 
 const teamPage = shallowRef(details);
 const drawerStore = useDrawerStore();
-// const nextStore = useNextStore();
+const nextStore = useNextStore();
 const drawerStatus = ref(null);
 const open = ref(null);
 
-// onMounted(() => {
-//   watchEffect(() => {
-//     nextStore.updateNext(teamPage.value);
-//   });
-//  })
-
-// update on changes
 watchEffect(() => {
   drawerStatus.value = drawerStore.IsDrawerOpen;
   open.value = drawerStore.popDrawer;
 });
+
+const detailM = () => {
+  teamPage.value = details;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const startingM = () => {
+  teamPage.value = startingPlayers;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+
+const substituteM = () => {
+  teamPage.value = substitutePlayers;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+
+const leaderM = () => {
+  teamPage.value = leaderPlayers;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const formationM = () => {
+  teamPage.value = formation;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const submitM = () => {
+  teamPage.value = submitPlayers;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+
+// checks the active button and sets the next button
+watchEffect(() => {
+    switch (teamPage.value) {
+    case details:
+      if(nextStore.nextRouteState != false ) {
+        startingM();
+        console.log(nextStore.nextRouteState)
+      };
+      break; 
+      case startingPlayers:
+      if(nextStore.nextRouteState != false ) {
+        substituteM()
+        console.log(teamPage.value)
+      };
+      break;
+      case substitutePlayers:
+      if(nextStore.nextRouteState != false ) {
+        leaderM()
+        console.log(teamPage.value)
+      };
+      break;
+      case leaderPlayers:
+      if(nextStore.nextRouteState != false ) {
+        formationM()
+        console.log(nextStore.nextRouteState)
+      };
+      break;
+      case formation:
+      if(nextStore.nextRouteState != false ) {
+        submitM()
+        console.log(nextStore.nextRouteState)
+      };
+      break;
+    default:
+      break;
+  }
+});
+
+// checks the active button and sets the previous button
+  watchEffect(() => {
+    switch (teamPage.value) {
+      case startingPlayers:
+      if(nextStore.previousRouteState != false ) {
+        detailM();
+        console.log(nextStore.previousRouteState)
+      };
+      break;
+      case substitutePlayers:
+      if(nextStore.previousRouteState != false ) {
+        startingM();
+      };
+      break;
+      case leaderPlayers:
+      if(nextStore.previousRouteState != false ) {
+        substituteM();
+      };
+      break;
+      case formation:
+      if(nextStore.previousRouteState != false ) {
+        leaderM();
+      };
+      break;
+      case submitPlayers:
+      if(nextStore.previousRouteState != false ) {
+        formationM();
+      };
+      break;
+    default:
+      break;
+  }
+});
+
+
 
 
 </script>
@@ -48,42 +160,42 @@ watchEffect(() => {
       <div class="data-nav">
         <button
           class="data-n-b"
-          @click="teamPage = details"
+          @click="detailM"
           :class="[teamPage == details ? 'datapage'  : '']"
         >
           Details
         </button>
         <button
           class="data-n-b"
-          @click="teamPage = startingPlayers"
+          @click="startingM"
           :class="[teamPage == startingPlayers ? 'datapage'  : '']"
         >
           StartingXI
         </button>
         <button
           class="data-n-b"
-          @click="teamPage = substitutePlayers"
+          @click="substituteM"
           :class="[teamPage == substitutePlayers ? 'datapage'  : '']"
         >
           Substitute
         </button>
         <button
           class="data-n-b"
-          @click="teamPage = leaderPlayers"
+          @click="leaderM"
           :class="[teamPage == leaderPlayers ? 'datapage'  : '']"
         >
           Official
         </button>
         <button
           class="data-n-b"
-          @click="teamPage = formation"
+          @click="formationM"
           :class="[teamPage == formation ? 'datapage'  : '']"
         >
         Formation
         </button>
         <button
           class="data-n-b"
-          @click="teamPage = submitPlayers"
+          @click="submitM"
           :class="[teamPage == submitPlayers ? 'datapage'  : '']"
         >
           Submit

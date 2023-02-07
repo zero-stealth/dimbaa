@@ -1,7 +1,9 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { useNextStore } from "@/stores/next.js";
 
+const nextStore = useNextStore();
 const filling = ref(false);
 const submitted = ref(false);
 const performance = ref("");
@@ -146,12 +148,13 @@ reset();
     </div>
   </div>
   <div class="btn1-center">
-      <div class="form1-btn">
-        <button class="btn1 btn1-a" @click="reset" :class="filling == true ? 'filling' : ''">Reset</button>
-        <button class="btn1 btn1-b hide-m" :class="filling == true ? 'filling' : ''">Save draft</button>
-        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''"  @click="isSubmitted">Next</button>
+    <div class="form1-btn">
+        <button class="btn1 btn1-a" @click="reset"  :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
       </div>
-    </div>
+  </div>
 </template>
 <style>
 @import "@/style/referee-asss.css";

@@ -1,14 +1,20 @@
-import { ref , shallowRef} from "vue";
+import { ref} from "vue";
 import { defineStore } from "pinia";
 
 
 export const useNextStore = defineStore("nextRoute", () => {
-    const nextRoute = shallowRef();
+    const nextRouteState = ref(false);
+    const previousRouteState = ref(false);
 
-    const updateNext = (current) => {
-        nextRoute.value = current;
+    const updateNextState = () => {
+        nextRouteState.value = true;
+    }
+
+    
+    const updatePreviousState = () => {
+        previousRouteState.value = true;
     }
 
 
-    return { updateNext, nextRoute };
+    return { updateNextState, nextRouteState, updatePreviousState, previousRouteState  };
 });

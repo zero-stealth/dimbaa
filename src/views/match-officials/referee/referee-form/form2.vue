@@ -1,4 +1,7 @@
 <script setup>
+import { useNextStore } from "@/stores/next.js";
+
+const nextStore = useNextStore();
 </script>
 <template>
   <div class="form1-container r1">
@@ -81,14 +84,14 @@
   </h3>
 </div>
     </div>
-    <div class="btn1-center">
-      <div class="form1-btn">
+  <div class="btn1-center">
+    <div class="form1-btn">
         <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
-        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''">Save
-          draft</button>
-        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''">Next</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
       </div>
-    </div>
+  </div>
 </template>
 <style>
 @import "@/style/form.css";

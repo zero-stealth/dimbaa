@@ -10,7 +10,9 @@ import PopUP from "@/components/drawer/popup.vue";
 import Info from "@/components/icons/InfoIcon.vue";
 import CircleDraw from "@/components/drawer/CircleDrawer.vue";
 import { shallowRef, ref } from "vue";
+import { useNextStore } from "@/stores/next.js";
 
+const nextStore = useNextStore();
 const drawerStore = useDrawerStore();
 const postStore = usePostStore();
 const check = ref(false);
@@ -94,13 +96,13 @@ const postPage = shallowRef(personality);
       <h1>Place value between 0-10 for each question</h1>
     </div>
   </PopUP>
-  <!-- input container  -->
-  <div class="btn1-center m-rp">
+  <div class="btn1-center">
     <div class="form1-btn">
-      <button class="btn1 btn1-a">Reset</button>
-      <button class="btn1 btn1-b hide-m">Update</button>
-      <button class="btn1 btn1-b">Next</button>
-    </div>
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
+      </div>
   </div>
 </template>
 <style>

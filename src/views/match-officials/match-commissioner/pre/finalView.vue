@@ -1,4 +1,8 @@
-<script>
+<script setup>
+import {ref, watchEffect} from 'vue'
+import { useNextStore } from "@/stores/next.js";
+
+const nextStore = useNextStore();
 </script>
 <template>
   <div class="form1-container pre-o-form">
@@ -33,11 +37,12 @@
     </div>
     </form>
   </div>
-    <div class="btn1-center">
+  <div class="btn1-center">
       <div class="form1-btn">
-        <button class="btn1 btn1-a">Reset</button>
-        <button class="btn1 btn1-b hide-m">Save draft</button>
-        <button class="btn1 btn1-b">Next</button>
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" >Submit</button>
       </div>
     </div>
   </div>

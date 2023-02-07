@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from "vue";
+import { useNextStore } from "@/stores/next.js";
 import { useDrawerStore } from "@/stores/drawer";
 import AddPhoto from "@/components/icons/AddPhoto.vue";
 
 
 const check = ref(null);
 const inputImg =  ref(null);
+const nextStore = useNextStore();
 const drawerStore = useDrawerStore();
 const inputF = ref("4-3-3 Attack-minded-midfield");
 
@@ -75,9 +77,16 @@ const show = () => {
       <img src="@/assets/formation/442Flat-midfield.jpg" alt="formation" class="img-formation"
         v-show="inputF == '4-4-2 Flat-midfield'">
     </div>
-
   </div>
   </div>
+  <div class="btn1-center">
+      <div class="form1-btn">
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
+      </div>
+    </div>
 </template>
 <style>
 @import "@/style/formation.css";

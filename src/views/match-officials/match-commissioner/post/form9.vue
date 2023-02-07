@@ -1,4 +1,9 @@
-<script></script>
+<script setup>
+import {ref, watchEffect} from 'vue'
+import { useNextStore } from "@/stores/next.js";
+
+const nextStore = useNextStore();
+</script>
 <template>
   <div class="match-fr">
     <h1>Uendeshaji mchezo</h1>
@@ -58,14 +63,14 @@
         <input type="text" class="w1-input" />
       </div>
     </div>
-    <!-- input container  -->
-    <div class="btn1-center m-rp">
-      <div class="form1-btn">
-        <button class="btn1 btn1-a">Reset</button>
-        <button class="btn1 btn1-b hide-m">Save draft</button>
-        <button class="btn1 btn1-b">Next</button>
+  </div>
+  <div class="btn1-center">
+    <div class="form1-btn">
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
       </div>
-    </div>
   </div>
 </template>
 <style>

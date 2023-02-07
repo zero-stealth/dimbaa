@@ -9,6 +9,7 @@ import operations from "./pre/operationView.vue";
 import cooperation from "./pre/cooperationView.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 
+import { useNextStore } from "@/stores/next.js";
 import { useDrawerStore } from "@/stores/drawer";
 import { useAuthStore } from "@/stores/auth.js";
 import { shallowRef } from "vue";
@@ -19,6 +20,7 @@ import axios from "axios";
 const prePage = shallowRef(match)
 const drawerStore = useDrawerStore();
 const authStore = useAuthStore();
+const nextStore = useNextStore();
 const drawerStatus = ref(null);
 const open = ref(null);
 const data = ref([]);
@@ -51,6 +53,159 @@ onMounted(async () => {
       console.error(error);
     });
 });
+
+
+const matchF = () => {
+  prePage.value = match;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const conditionF = () => {
+  prePage.value = condition;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+
+}
+
+const operationsF = () => {
+  prePage.value = operations;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+
+}
+
+const cooperationF = () => {
+  prePage.value = cooperation;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+
+}
+
+const colorF = () => {
+  prePage.value = color;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+
+}
+
+const issueF = () => {
+  prePage.value = issue;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const challengeF = () => {
+  prePage.value = challenge;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const finalF = () => {
+  prePage.value = final;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+// checks the active button and sets the next button
+watchEffect(() => {
+  switch (prePage.value) {
+    case match:
+      if (nextStore.nextRouteState != false) {
+        conditionF();
+      };
+      break;
+    case condition:
+      if (nextStore.nextRouteState != false) {
+        operationsF()
+        console.log(prePage.value)
+      };
+      break;
+    case operations:
+      if (nextStore.nextRouteState != false) {
+        cooperationF()
+      };
+      break;
+    case cooperation:
+      if (nextStore.nextRouteState != false) {
+        colorF()
+      };
+      break;
+    case color:
+      if (nextStore.nextRouteState != false) {
+        issueF()
+      };
+      break;
+    case issue:
+      if (nextStore.nextRouteState != false) {
+        challengeF()
+      };
+      break;
+    case challenge:
+      if (nextStore.nextRouteState != false) {
+        finalF()
+      };
+      break;
+    default:
+      break;
+  }
+});
+
+// checks the active button and sets the previous button
+watchEffect(() => {
+  switch (prePage.value) {
+    case condition:
+      if (nextStore.previousRouteState != false) {
+        matchF();
+        console.log(nextStore.previousRouteState)
+      };
+      break;
+    case operations:
+      if (nextStore.previousRouteState != false) {
+        conditionF();
+      };
+      break;
+    case cooperation:
+      if (nextStore.previousRouteState != false) {
+        operationsF();
+      };
+      break;
+    case color:
+      if (nextStore.previousRouteState != false) {
+        cooperationF();
+      };
+      break;
+    case issue:
+      if (nextStore.previousRouteState != false) {
+        colorF();
+      };
+      break;
+    case challenge:
+      if (nextStore.previousRouteState != false) {
+        issueF();
+      };
+      break;
+    case final:
+      if (nextStore.previousRouteState != false) {
+        challengeF();
+      };
+      break;
+    default:
+      break;
+  }
+});
+
+
+
+
 </script>
 <template>
   <div class="main-container">
@@ -60,67 +215,35 @@ onMounted(async () => {
           <ArrowIcon class="icon icon-s" />
         </button>
         <div class="general-re">
-        <h2>Pre-Match Report</h2>
+          <h2>Pre-Match Report</h2>
         </div>
       </div>
     </div>
     <div class="data-content-r">
       <!-- data nav  -->
       <div class="data-nav">
-        <button
-          class="data-n-b"
-          @click="prePage = match"
-          :class="[prePage == match ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="matchF" :class="[prePage == match ? 'datapage' : '']">
           Match
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = condition"
-          :class="[prePage == condition ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="conditionF" :class="[prePage == condition ? 'datapage' : '']">
           Conditions
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = operations"
-          :class="[prePage == operations ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="operationsF" :class="[prePage == operations ? 'datapage' : '']">
           Operations
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = cooperation"
-          :class="[prePage == cooperation ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="cooperationF" :class="[prePage == cooperation ? 'datapage' : '']">
           Cooperations
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = color"
-          :class="[prePage == color ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="colorF" :class="[prePage == color ? 'datapage' : '']">
           Color
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = issue"
-          :class="[prePage == issue ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="issueF" :class="[prePage == issue ? 'datapage' : '']">
           Issue
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = challenge"
-          :class="[prePage == challenge ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="challengeF" :class="[prePage == challenge ? 'datapage' : '']">
           Challenges
         </button>
-        <button
-          class="data-n-b"
-          @click="prePage = final"
-          :class="[prePage == final ? 'datapage' : '']"
-        >
+        <button class="data-n-b" @click="finalF" :class="[prePage == final ? 'datapage' : '']">
           Final
         </button>
       </div>

@@ -1,7 +1,9 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted, watchEffect } from "vue";
+import { useNextStore } from "@/stores/next.js";
 
+const nextStore = useNextStore();
 const teamHA = ref("");
 const teamHB = ref("");
 const teamFA = ref("");
@@ -97,13 +99,13 @@ const reset = () => {
       </div>
     </div>
     <div class="btn1-center">
-      <div class="form1-btn">
+    <div class="form1-btn">
         <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
-        <button class="btn1 btn1-b hide-m" @click="isSubmitted" :class="filling == true ? 'filling' : ''">Save
-          draft</button>
-        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''">Next</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
       </div>
-    </div>
+  </div>
   </div>
 </template>
 <style>

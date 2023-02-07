@@ -2,9 +2,10 @@
 import FormA from "./9Form/formA.vue";
 import FormB from "./9Form/formB.vue";
 import FormC from "./9Form/formC.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
 import { shallowRef } from "vue";
+import { useNextStore } from "@/stores/next.js";
 
+const nextStore = useNextStore();
 const refereePage = shallowRef(FormA);
 </script>
 <template>
@@ -40,10 +41,11 @@ const refereePage = shallowRef(FormA);
   </div>
   <div class="btn1-center">
     <div class="form1-btn">
-      <button class="btn1 btn1-a">Reset</button>
-      <button class="btn1 btn1-b hide-m">Save draft</button>
-      <button class="btn1 btn1-b">Next</button>
-    </div>
+        <button class="btn1 btn1-a" :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updatePreviousState()">Previous</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
+      </div>
   </div>
 </template>
 <style>

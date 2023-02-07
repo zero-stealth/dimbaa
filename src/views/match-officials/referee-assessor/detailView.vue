@@ -1,7 +1,9 @@
 <script setup>
 import axios from "axios";
-import { ref, onMounted, computed, watchEffect, shallowRef } from "vue";
+import { useNextStore } from "@/stores/next.js";
+import { onMounted } from "vue";
 
+const nextStore = useNextStore();
 // endpoint not working
 onMounted(async () => {
   const options = {
@@ -98,14 +100,13 @@ onMounted(async () => {
       </div>
     </form>
   </div>
-      <!-- input container  -->
-    <div class="btn1-center">
-      <div class="form1-btn">
-        <button class="btn1 btn1-a">Reset</button>
-        <button class="btn1 btn1-b hide-m">Update</button>
-        <button class="btn1 btn1-b">Next</button>
+  <div class="btn1-center">
+    <div class="form1-btn">
+        <button class="btn1 btn1-a" @click="reset"  :class="filling == true ? 'filling' : ''">Reset</button>
+        <button class="btn1 btn1-b hide-m" @click="submitted" :class="filling == true ? 'filling' : ''">Save draft</button>
+        <button class="btn1 btn1-b" :class="filling == true ? 'filling' : ''" @click="nextStore.updateNextState()">Next</button>
       </div>
-    </div>
+  </div>
 </template>
 <style>
 @import "@/style/general.css";

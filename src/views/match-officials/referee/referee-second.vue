@@ -14,52 +14,232 @@ import form11 from "./referee-form/form11.vue";
 import ArrowIcon from "@/components/icons/ArrowIcon.vue";
 import { useDrawerStore } from "@/stores/drawer";
 import { useNextStore } from "@/stores/next.js";
-import { ref, onMounted, watchEffect, shallowRef } from "vue";
-import axios from "axios";
+import {shallowRef, watchEffect } from "vue";
 
+
+const nextStore = useNextStore();
 const refereePage = shallowRef(detail);
 const drawerStore = useDrawerStore();
-const nextStore = useNextStore();
-const drawerStatus = ref(null);
-const open = ref(null);
-const data = ref([]);
-
-// btn next
-
-const btnd = ref();
 
 
+const refereP = () => {
+  refereePage.value = detail;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const F1 = () => {
+  refereePage.value = form1;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+const F2 = () => {
+  refereePage.value = form2;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F3 = () => {
+  refereePage.value = form3;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F4 = () => {
+  refereePage.value = form4;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F5 = () => {
+  refereePage.value = form5;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F6 = () => {
+  refereePage.value = form6;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F7 = () => {
+  refereePage.value = form7;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F8 = () => {
+  refereePage.value = form8;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F9 = () => {
+  refereePage.value = form9;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F10 = () => {
+  refereePage.value = form10;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+const F11 = () => {
+  refereePage.value = form11;
+  nextStore.nextRouteState = false;
+  nextStore.previousRouteState = false;
+
+}
+
+
+
+// checks the active button and sets the next button
 watchEffect(() => {
-  nextStore.updateNext(refereePage.value);
+  switch (refereePage.value) {
+    case detail:
+      if (nextStore.nextRouteState != false) {
+        F1();
+        console.log(nextStore.nextRouteState)
+      };
+      break;
+    case form1:
+      if (nextStore.nextRouteState != false) {
+        F2()
+        console.log(refereePage.value)
+      };
+      break;
+    case form2:
+      if (nextStore.nextRouteState != false) {
+        F3()
+        console.log(refereePage.value)
+      };
+      break;
+    case form3:
+      if (nextStore.nextRouteState != false) {
+        F4()
+        console.log(refereePage.value)
+      };
+      break;
+    case form4:
+      if (nextStore.nextRouteState != false) {
+        F5()
+        console.log(refereePage.value)
+      };
+      break;
+    case form5:
+      if (nextStore.nextRouteState != false) {
+        F6()
+        console.log(refereePage.value)
+      };
+      break;
+    case form6:
+      if (nextStore.nextRouteState != false) {
+        F7()
+        console.log(refereePage.value)
+      };
+      break;
+    case form7:
+      if (nextStore.nextRouteState != false) {
+        F8()
+        console.log(refereePage.value)
+      };
+      break;
+    case form8:
+      if (nextStore.nextRouteState != false) {
+        F9()
+        console.log(refereePage.value)
+      };
+      break;
+    case form9:
+      if (nextStore.nextRouteState != false) {
+        F10()
+        console.log(refereePage.value)
+      };
+      break;
+    case form10:
+      if (nextStore.nextRouteState != false) {
+        F11()
+        console.log(refereePage.value)
+      };
+      break;
+    default:
+      break;
+  }
 });
 
-// update on changes
+
+// checks the active button and sets the previous button
 watchEffect(() => {
-  drawerStatus.value = drawerStore.IsDrawerOpen;
-  open.value = drawerStore.popDrawer;
+  switch (refereePage.value) {
+    case form1:
+      if (nextStore.previousRouteState != false) {
+        refereP();
+      };
+      break;
+    case form2:
+      if (nextStore.previousRouteState != false) {
+        F1();
+      };
+      break;
+    case form3:
+      if (nextStore.previousRouteState != false) {
+        F2();
+      };
+      break;
+    case form4:
+      if (nextStore.previousRouteState != false) {
+        F3();
+      };
+      break;
+    case form5:
+      if (nextStore.previousRouteState != false) {
+        F4();
+      };
+      break;
+    case form6:
+      if (nextStore.previousRouteState != false) {
+        F5();
+      };
+      break;
+    case form7:
+      if (nextStore.previousRouteState != false) {
+        F6();
+      };
+      break;
+    case form8:
+      if (nextStore.previousRouteState != false) {
+        F7();
+      };
+      break;
+    case form9:
+      if (nextStore.previousRouteState != false) {
+        F8();
+      };
+      break;
+    case form10:
+      if (nextStore.previousRouteState != false) {
+        F9();
+      };
+      break;
+    case form11:
+      if (nextStore.previousRouteState != false) {
+        F10();
+      };
+      break;
+    default:
+      break;
+  }
 });
 
-onMounted(async () => {
-  const options = {
-    method: "GET",
-    url: "https://be-tblp.dimbaa.com/api/admin/users",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNWZhMGRiODY3YTM0NTg3MTg2ZDk3MDdiMDBmYzliYWM4M2QyZjAzOWM2ZjhjZjVlMTRlMWUwY2UxZGYxYmRhNDdiYWYxNWEyMjJhMDhkMmIiLCJpYXQiOjE2NzExOTM1MzguNTU0MTM0LCJuYmYiOjE2NzExOTM1MzguNTU0MTM2LCJleHAiOjE2ODY5MTgzMzguNTQ4NTAxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.kYBwzo9ZoKTL9GG_j9iMpswww1UriiHYPufljSVJo_5QyLiJrI4Wb2k0sPD7iDb0SmlrFQnUdSI8knqLUZBe2Sd2bC4r4c_otOdYLnQAyxmM-0fJh_jVIGYgCjFF7msWOWsTcyl8fg7-Uj3yrsAxoxOdQW-L28dx4-hFAZUR9eOs2XCwU0cf9TUnGdqxvUm_wFBBou509NtZec1bmaAgUbG9GSpAfk7mfmuUOU1u7ElrOTFyvvN4bAI_70DpK3XUDJ0Nw81YsCO0_kp_Nr1hAZ2fmcIPXe-xKvwSPfp_7cMmT6HqV9MdQwPK7-ISoJq_eTy2fGvfHDQrWyKLDyKp8W0Fs5z6PURwT2hFZ6tV3jxCMH-sAzgTY72xXdb3EjG4etbbyc-wAWXmPQ9WB5SeOms2Xqm4M41XQbNeyK-qy2jYcDQLnYVnRZihWdBTLcBf64_DFuMWzRhvu4hTL8_fVu94whAWW-Oi9-s7BKRftDf3paExjJtEaT6-kUDnzRpe_Yfw9nfWDxA8LYUUsukYDDqvSshVRk5eG6kp3K169pppD7gAKakpORggebMgEHn4DGX7ieowJk3XCfDrIxZ5EVoX3HGZjamaRPmnl-bX2lvBTjBm3uFSGrLnMbckzS4fdpYK3YnNmyBESm9-sOCQ-5M3Nf6jsFQH6FdeWnGoo0E",
-    },
-  };
 
-  axios
-    .request(options)
-    .then(function (response) {
-      data.value = response.data.users;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
+
+
 </script>
 <template>
   <div class="main-container">
@@ -79,45 +259,88 @@ onMounted(async () => {
         <button class="data-n-b" @click="refereePage = detail" :class="[refereePage == detail ? 'datapage' : '']">
           Details
         </button>
-        <button class="data-n-b" @click="refereePage = form1" :class="[refereePage == form1 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F1"
+          :class="[refereePage == form1 ? 'datapage' : '']"
+        >
           1
         </button>
-        <button class="data-n-b" @click="refereePage = form2" :class="[refereePage == form2 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F2"
+          :class="[refereePage == form2 ? 'datapage' : '']"
+        >
           2
         </button>
-        <button class="data-n-b" @click="refereePage = form3" :class="[refereePage == form3 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F3"
+          :class="[refereePage == form3 ? 'datapage' : '']"
+        >
           3
         </button>
-        <button class="data-n-b" @click="refereePage = form4" :class="[refereePage == form4 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F4"
+          :class="[refereePage == form4 ? 'datapage' : '']"
+        >
           4
         </button>
-        <button class="data-n-b" @click="refereePage = form5" :class="[refereePage == form5 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F5"
+          :class="[refereePage == form5 ? 'datapage' : '']"
+        >
           5
         </button>
-        <button class="data-n-b" @click="refereePage = form6" :class="[refereePage == form6 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F6"
+          :class="[refereePage == form6 ? 'datapage' : '']"
+        >
           6
         </button>
-        <button class="data-n-b" @click="refereePage = form7" :class="[refereePage == form7 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F7"
+          :class="[refereePage == form7 ? 'datapage' : '']"
+        >
           7
         </button>
-        <button class="data-n-b" @click="refereePage = form8" :class="[refereePage == form8 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F8"
+          :class="[refereePage == form8 ? 'datapage' : '']"
+        >
           8
         </button>
-        <button class="data-n-b" @click="refereePage = form9" :class="[refereePage == form9 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F9"
+          :class="[refereePage == form9 ? 'datapage' : '']"
+        >
           9
         </button>
-        <button class="data-n-b" @click="refereePage = form10" :class="[refereePage == form10 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F10"
+          :class="[refereePage == form10 ? 'datapage' : '']"
+        >
           10
         </button>
-        <button class="data-n-b" @click="refereePage = form11" :class="[refereePage == form11 ? 'datapage' : '']">
+        <button
+          class="data-n-b"
+          @click="F11"
+          :class="[refereePage == form11 ? 'datapage' : '']"
+        >
           11
         </button>
       </div>
     </div>
-    <!-- side bar component for sorting  -->
     <!-- inner data content -->
     <div class="inner-data-content">
-      <component :is="nextStore.nextRoute" />
+      <component :is="refereePage" />
     </div>
     <div>
     </div>
