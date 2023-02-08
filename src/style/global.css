@@ -1,11 +1,19 @@
 @media screen {
   * {
     /* dynamic style */
+    --pdf-color:rgb(36, 34, 71);
+    --pdf-light:rgb(228, 228, 242);
+    --general-color: rgb(20, 182, 114);
+    --post-color: rgb(255, 153, 11);
+    --pre-color: rgb(237, 94, 7);
+    --referee-color: rgb(236, 0, 142);
+    --assessor-color: rgb(47, 0, 236);
+    --lineup-color: rgb(247, 0, 1);
     --secondary-color: rgb(61, 54, 61);
     --light-color: rgb(244, 240, 244);
     --dark-color: rgb(204, 201, 204);
     --primary-color: rgb(240, 114, 36);
-    --background-color: rgb(255, 255, 255);
+    --background-color: #ffffff;
     --primary-darken-color: rgb(212, 109, 44);
     --background-shadow:0 0 0 10000px rgba(10, 10, 12, 0.5);
     --box-shadow-style: rgba(0, 0, 0, 0.09) 0px 3px 12px;

@@ -1,11 +1,14 @@
 <script setup>
 import axios from "axios";
+import { useRouter } from "vue-router";
 import { ref, onMounted, watchEffect,  computed } from "vue";
 import { useRouteStore } from "@/stores/route";
 
 
+
 const url = "https://be-tblp.dimbaa.com/api/teammanager/players/";
 const Team = ref("");
+const router = useRouter();
 const Tournament = ref("");
 const City = ref("");
 const Referee = ref("");
@@ -20,10 +23,37 @@ const playerId = ref("");
 
 const routeStore = useRouteStore();
 
+
+const general = () =>{
+  router.push({ name: "general-pdf" });
+}
+
+const lineup = () =>{
+  router.push({ name: "lineup-pdf" });
+}
+
+const assesor = () =>{
+  router.push({ name: "assessor-pdf" });
+}
+
+const report = () =>{
+  router.push({ name: "report-pdf" });
+}
+
+const post = () =>{
+  router.push({ name: "post-pdf" });
+}
+
+const pre = () =>{
+  router.push({ name: "pre-pdf" });
+}
+
 const getDetails = () => {
 
   reset();
 };
+
+
 
 //Reset the form
 const reset = () => {
@@ -103,33 +133,33 @@ onMounted(async () => {
         <div class="match-wrapper1">
           <div class="match-container">
             <label for="match-select" class="match-label">Line UP Report team A</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="lineup">View</button>
           </div>
           <div class="match-container">
             <label for="match-select" class="match-label">Line UP Report team B</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="lineup">View</button>
           </div>
           <div class="match-container">
             <label for="match-select" class="match-label">Pre-Match Report</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="pre">View</button>
           </div>
         </div>
         <div class="match-wrapper2">
           <div class="match-container">
             <label for="match-select" class="match-label">Post-Match Report </label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="post">View</button>
           </div>
           <div class="match-container">
             <label for="match-select" class="match-label">Referee</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="report">View</button>
           </div>
           <div class="match-container">
             <label for="match-select" class="match-label">Referee Assesor</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="assesor">View</button>
           </div>
           <div class="match-container">
             <label for="match-select" class="match-label">general commissioner</label>
-            <button type="submit" class="btn-Vi">View</button>
+            <button type="submit" class="btn-Vi" @click="general">View</button>
           </div>
         </div>
       </div>

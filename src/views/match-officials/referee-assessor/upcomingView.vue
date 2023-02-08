@@ -1,10 +1,16 @@
 <script setup>
 import axios from "axios";
 import { useDrawerStore } from "@/stores/drawer";
+import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 
 const drawerStore = useDrawerStore();
+const router = useRouter();
 const data = ref([]);
+
+const showPdf = () =>{
+  router.push({ name: "assessor-pdf" });
+}
 
 onMounted(async () => {
   const options = {
@@ -61,8 +67,8 @@ onMounted(async () => {
                 <a href="#" @click="drawerStore.toggleSecond()">Upload</a>
               </div>
               <div class="table-link">
-                <a href="#" @click="openEdit">View</a>
-              </div>
+                  <a href="#" @click="showPdf">View</a>
+                </div>
             </div>
           </td>
         </tr>

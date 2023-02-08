@@ -38,14 +38,23 @@ const reset = () => {
       class="userform-wrapper"
     >
     <div class="userform-input">
-        <label for="add-user-input" class="user-label">User Role</label>
-        <input
+      <label for="add-user-select" class="user-label">User Role</label>
+        <select
           required
-          type="text"
-          class="user-input"
           v-model="userRole"
-          placeholder="user role"
-          />
+          class="user-input"
+          id="add-user-select"
+        >
+          <option>Super Admin</option>
+          <option>Team Admin</option>
+          <option>Team Manager</option>
+          <option>General Coordinator</option>
+          <option>Referee</option>
+          <option>Match Commissioner</option>
+          <option>Referee Assessor</option>
+          <option>Data Manager</option>
+          <option>League Director</option>
+        </select>
         </div>
     <div class="userform-input">
         <label for="add-user-input" class="user-label">Name</label>

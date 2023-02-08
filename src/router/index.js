@@ -83,6 +83,36 @@ const router = createRouter({
       name: 'UserDetails',
       component: () => import('@/components/specific/userComponent.vue')
     },
+    {
+      path: '/general-pdf',
+      name: 'general-pdf',
+      component: () => import('@/views/default-pages/pdf/Gcreport.vue')
+    },
+    {
+      path: '/lineup-pdf',
+      name: 'lineup-pdf',
+      component: () => import('@/views/default-pages/pdf/lineUp.vue')
+    },
+    {
+      path: '/assessor-pdf',
+      name: 'assessor-pdf',
+      component: () => import('../views/default-pages/pdf/assesor.vue')
+    },
+    {
+      path: '/report-pdf',
+      name: 'report-pdf',
+      component: () => import('@/views/default-pages/pdf/report.vue')
+    },
+    {
+      path: '/post-pdf',
+      name: 'post-pdf',
+      component: () => import('@/views/default-pages/pdf/postmatch.vue')
+    },
+    {
+      path: '/pre-pdf',
+      name: 'pre-pdf',
+      component: () => import('@/views/default-pages/pdf/prematch.vue')
+    },
   ]
 })
 

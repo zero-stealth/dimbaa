@@ -29,8 +29,6 @@ const openCreate = (id) => {
   drawerStore.togglePop();
 };
 
-
-
 onMounted(async () => {
   const options = {
     method: "GET",

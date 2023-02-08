@@ -1,10 +1,20 @@
 <script  setup>
 import { useDrawerStore } from "@/stores/drawer";
+import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const drawerStore = useDrawerStore();
+const router = useRouter();
 const data = ref([]);
+
+const showPdf = () =>{
+  router.push({ name: "post-pdf" });
+}
+
+const showPdf2 = () =>{
+  router.push({ name: "pre-pdf" });
+}
 
 onMounted(async () => {
   const options = {
@@ -63,7 +73,7 @@ onMounted(async () => {
                   <a href="#" @click="drawerStore.togglePre()">Upload</a>
                 </div>
                 <div class="table-link">
-                  <a href="#" @click="">View</a>
+                  <a href="#" @click="showPdf2">View</a>
                 </div>
               </div>
             </td>
@@ -73,9 +83,9 @@ onMounted(async () => {
                   <a href="#" @click="drawerStore.togglePost()">Upload</a>
                 </div>
                 <div class="table-link">
-                  <a href="#" @click="openEdit">View</a>
+                  <a href="#" @click="showPdf">View</a>
                 </div>
-              </div>
+            </div>
             </td>
           </tr>
         </table>
