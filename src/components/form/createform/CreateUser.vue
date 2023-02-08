@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref , watchEffect } from "vue";
 import axios from "axios";
 
 const userName = ref("");
@@ -9,6 +9,23 @@ const userRole = ref("");
 const password = ref("");
 const error = ref("");
 const confirmPassword = ref("");
+const showField = ref(false);
+
+watchEffect(() => {
+  switch (userRole.value) {
+    case "Team Admin":
+      showField.value = true;
+      break;
+      case "Team Manager":
+      showField.value = true;
+      break;
+    default:
+      showField.value = false;
+      break;
+  }
+})
+
+
 
 // //Stored in session
 // userRole.value 
@@ -92,6 +109,18 @@ const reset = () => {
           <option>Referee Assessor</option>
           <option>Data Manager</option>
           <option>League Director</option>
+        </select>
+      </div>
+      <div class="userform-input" v-show="showField == true">
+        <label for="add-user-select" class="user-label">Select a team</label>
+        <select
+          required
+          v-model="userRole"
+          class="user-input"
+          id="add-user-select"
+        >
+          <option>Harambee </option>
+          <option>Chelsea</option>
         </select>
       </div>
       <div class="userform-input">

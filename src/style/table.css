@@ -23,8 +23,16 @@
         display: flex;
         padding: 10px;
         align-items: center;
+        color: var(--secondary-color);
         justify-content: space-between;
-        background-color: var(--dark-color);
+        background-color: var(--pdf-light);
+    }
+
+    .graph-tbl {
+        margin: 20px 0;
+        padding: 10px;
+        height: 200px;
+        background-color: var(--pdf-light);
     }
 
     .inn-t {
@@ -73,6 +81,10 @@
         gap: 50px;
     }
     
+    .graph-tbl {
+        height: 300px;
+    }
+
  
     .inn-t span {
         font-size: .8rem;
