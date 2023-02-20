@@ -102,7 +102,7 @@ const searchResult = computed(() => {
 
 onMounted(async () => {
   const options = {
-    method: "GET",
+    method: "GET", 
     url: "https://be-tblp.dimbaa.com/api/admin/teams",
     headers: {
       "Content-Type": "application/json",
@@ -116,7 +116,7 @@ onMounted(async () => {
     .request(options)
     .then(function (response) {
       data.value = response.data.teams;
-    })
+    })  
     .catch(function (error) {
       console.error(error);
     });

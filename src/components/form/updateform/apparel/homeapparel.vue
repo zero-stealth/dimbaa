@@ -1,4 +1,7 @@
 <script setup>
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
 import { ref, onMounted } from "vue";
 import AddPhoto from "@/components/icons/AddPhoto.vue";
 
@@ -67,6 +70,44 @@ onMounted(() => {
 const openElementImg = () => {
   console.log(input)
 };
+
+
+const data = new FormData();
+data.append('team_type', 'home');
+data.append('home_team_id', homegame);
+data.append('away_team_id', awaygame);
+data.append('match_id', '1');
+data.append('start_date', startDate);
+data.append('end_date', endDate);
+data.append('home_color', color);
+data.append('away_color', color);
+data.append('home_shirt_image', fs.createReadStream(Shirt));
+data.append('home_full_kit_image', fs.createReadStream(Kit));
+data.append('home_short_image', fs.createReadStream(Short));
+data.append('away_shirt_image', fs.createReadStream(Shirt));
+data.append('away_full_kit_image', fs.createReadStream(Kit));
+data.append('away_short_image', fs.createReadStream(Short));
+data.append('home_socks_image', fs.createReadStream(Socks));
+data.append('away_socks_image', fs.createReadStream(Socks));
+
+var config = {
+  method: 'patch',
+  url: 'http://be-tblp.dimbaa.com/api/teammanager/apparels',
+  headers: { 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+
 
 //Reset the form
 const reset = () => {
