@@ -46,10 +46,6 @@ const openDelete = () => {
   drawerStore.togglePop();
 };
 
-//api
-const searchResult = computed(() => {
-  return data.value.filter((d) => d.name.includes(search.value));
-});
 
 
 onMounted(async () => {
@@ -73,6 +69,13 @@ await axios
       console.error(error);
     });
 });
+
+//filter by search
+const searchResult = computed(() => {
+  return data.value.filter((d) => d.name.includes(search.value));
+});
+
+
 </script>
 <template>
     <component :is="showPage"  v-if="routeStore.showPage  == true " />

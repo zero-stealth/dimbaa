@@ -45,7 +45,7 @@ const data = JSON.stringify({
 onMounted(async () => {
   const options = {
     method:"POST",
-    url: "http://be-tblp.dimbaa.com/api/referee-assessor/4th-official/evaluation",
+    url: "https://be-tblp.dimbaa.com/api/referee-assessor/4th-official/evaluation",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

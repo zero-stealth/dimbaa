@@ -2,7 +2,7 @@ import axios from "axios";
 import { onMounted, ref, computed } from "vue";
 
 
-export function getApi(url, dataType, token, search) {
+export function getApi(url, token, search) {
   const data = ref([]);
   const searchResult = computed(() => {
     return data.value.filter((d) => d.name.includes(search));

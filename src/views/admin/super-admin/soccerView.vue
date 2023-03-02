@@ -216,12 +216,12 @@ onMounted(async () => {
             </div>
             <div class="sort-label-i">
               <label for="descending">Descending</label>
-              <!-- custom made radio  -->
-              <div class="radio-wrapper" @click="toggleB">
-                <div class="inner-radio" v-show="Descending == true">
-                </div>
-              </div>
-              <!-- custom made radio  -->
+              <!-- Rounded switch -->
+             <label class="switch">
+                <input type="checkbox" v-model="showAll" @click="showAllFilter"/>
+                <span class="slider round"></span>
+              </label>
+              <!-- Rounded switch -->
             </div>
           </div>
         </div>

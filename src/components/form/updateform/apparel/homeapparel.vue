@@ -92,7 +92,7 @@ data.append('away_socks_image', fs.createReadStream(Socks));
 
 var config = {
   method: 'patch',
-  url: 'http://be-tblp.dimbaa.com/api/teammanager/apparels',
+  url: 'https://be-tblp.dimbaa.com/api/teammanager/apparels',
   headers: { 
     ...data.getHeaders()
   },

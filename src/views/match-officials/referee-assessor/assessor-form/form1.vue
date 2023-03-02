@@ -10,6 +10,8 @@ import { useNextStore } from "@/stores/next.js";
 const drawerStore = useDrawerStore();
 const nextStore = useNextStore();
 const check = ref(false);
+const fullname = ref();
+const filterName = ref()
 
 const openInfo = () => {
   check.value = true;
@@ -19,6 +21,7 @@ const openInfo = () => {
 // update on changes
 watchEffect(() => {
   open.value = drawerStore.popDrawer;
+  filterName.value = fullname.value;
 });
 
 
@@ -49,6 +52,12 @@ onMounted(async () => {
 });
 
 
+//show data based on name
+const filter = computed(() => {
+  return data.value.filter((d) => d.name.includes(filterName.value));
+});
+
+
 </script>
 <template>
   <div class="form1-container r1">
@@ -66,7 +75,7 @@ onMounted(async () => {
             <label for="">Name</label>
             <div class="report-12 short-1ra">
               <label for="">Full Name</label>
-              <input type="text" class="form1-input short12ra"  placeholder="predefined"/>
+              <input type="text" class="form1-input short12ra" v-bind="fullname"   placeholder="predefined"/>
             </div>
             <div class="report-12 short-1ra">
               <label for="">Referee Reg No </label>

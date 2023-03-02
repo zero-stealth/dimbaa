@@ -48,7 +48,7 @@ if (password.value != confirmPassword.value) {
 async () => {
   const options = {
     method: "POST",
-    url: "http://be-tblp.dimbaa.com/api/admin/users",
+    url: "https://be-tblp.dimbaa.com/api/admin/users",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

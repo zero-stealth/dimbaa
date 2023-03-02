@@ -54,13 +54,13 @@ onMounted(async () => {
             <th>Pre match Report</th>
             <th>Post match Report</th>
           </tr>
-          <tr
+          <!-- <tr
         v-for="(
             { city, venue, date, id, home_team_id, away_team_id,  }, index
           ) in data"
           :key="index"
-        >
-        
+        > -->
+        <tr>
           <td>{{ id }}</td>
           <td>{{ date }}</td>
           <td>{{ home_team_id }}</td>

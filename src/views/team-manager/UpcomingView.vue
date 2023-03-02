@@ -49,6 +49,7 @@ onMounted(async () => {
           ) in data"
           :key="index"
         >
+        
           <td>{{ id }}</td>
           <td>{{ name }}</td>
           <td>{{ region }}</td>
